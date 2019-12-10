@@ -22,7 +22,7 @@ var t=[];for (t.i=0; t.i<10; t.i++){t.push(0);}
 var com=[];
 
 function init() {
-				camera = new THREE.PerspectiveCamera( 70, 50 / 50, 1, 100000);
+				camera = new THREE.PerspectiveCamera( 70, 607 / 500, 1, 100000);
 				camera.position.set(-3.7,3.15,10.21);
 				camera.position.set(-2.34,0.854,5.2701);
 				camera.position.set(-0.4794080197622761, 0.7325266157002019,1.5891770600042139);
@@ -50,7 +50,7 @@ function init() {
 
 				renderer = new THREE.WebGLRenderer( { antialias: true } );
 				renderer.setPixelRatio( window.devicePixelRatio );
-				renderer.setSize( 50, 50 );
+				renderer.setSize( 607, 500 );
 				document.body.appendChild( renderer.domElement );
 				controls = new THREE.OrbitControls( camera, renderer.domElement );
 				controls.zoomSpeed=3;

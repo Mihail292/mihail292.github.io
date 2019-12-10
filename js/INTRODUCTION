@@ -1,0 +1,21 @@
+INTRODUCTION
+In researching the archaeology of the Hungarian Conquest period, the analysis of organic remains with
+modern scientic techniques has sparked increasing interest in the past decades.
+1
+ Despite being a rare
+nd – and mostly only fragmentarily preserved – organic remains are an immensely rich source of data. Among them, textile fragments are to be mentioned in the rst place. In regard to materials from the 10th century, two categories of textiles could be identied thus far. Linen, of which there was a more dense (better quality), and another, of inferior quality. On the other hand, there has been also a number of silk nds found (a textile often associated with the Hungarians in the written sources), moreover, their different knitting patterns could be also identied. Most of the silk nds recovered thus far were samite (samitum), almost without exception, demonstrating that this was a generally widespread type of fabric in this period. A different type of silk (taqueté) was documented rst at Tarpa (in 2012),
+2
+ and then in 2016, at Derecske  – both situated in Eastern Hungary. As will be discussed below, this latter nd is particularly interesting as it demonstrates that the occurence of the taqueté fabric was not a unique phenomenon in the 10
+th
+ century. However, there are no examples among the published textile materials from Northern and Western Europe, and it seems that they occur also quite rarely in Byzantium. Nonetheless, the nd from Derecske suggests that the conquering Hungarians could have access to silk transports not only through Western Europe (as
+this could be attested both on the basis of historical and archaeological data), but also had other sources,
+ perhaps through their eastern contacts.
+
+mixer = new THREE.AnimationMixer( unit );
+clips = mixer.clipAction(animations[ 0 ] );
+
+mixer = new THREE.AnimationMixer( l);
+
+mixer = new THREE.AnimationMixer( unit );
+clips = mixer.clipAction(animations[ 0 ] );
+l.scenes.children[0]

@@ -1,7 +1,0 @@
-		var aj = new XMLHttpRequest();
-		aj.open('GET', 'http://localhost/reg.php?'+"login="+login,true);
-		aj.onreadystatechange = function(){
-		if(aj.readyState ==4 && aj.status == 200){console.log(aj.responseText)};
-		};
-		aj.send();
-		};

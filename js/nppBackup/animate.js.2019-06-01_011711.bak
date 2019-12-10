@@ -1,0 +1,9 @@
+function animate() {
+	requestAnimationFrame( animate);
+	raycaster.setFromCamera( mouse, camera );
+	intersects = raycaster.intersectObjects( selects, true);
+	
+	document.getElementById('rayinfo').innerHTML=ray['info'];
+	document.getElementById('rayinfo2').innerHTML=ray['info2'];
+	renderer.render( scene, camera );
+	};	

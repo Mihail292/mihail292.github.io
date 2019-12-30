@@ -20,12 +20,12 @@
 	const x=new THREE.Vector3( 1, 0, 0);
 	const y=new THREE.Vector3( 0, 1, 0);
 	const z=new THREE.Vector3( 0, 0, 1);
-  var lights=[];var t=[];var com=[];var mixers=[];var act=[];
+  var lights=[];var t=[];var com=[];var mixers=[];var act=[];var snegok=[];
   t['elochkagory']=0;
   var texture;
 	texture=new THREE.TextureLoader().load( "https://sun9-39.userapi.com/c855736/v855736064/1b9a48/kp92dUpYYOI.jpg");
 	var bump;
-  var pol, elka, snegurka, sneginka, ded, god, sneg;
+  var pol, elka, snegurka, sneginka, ded, god, sneg, materialSnega;
   function rnd(a,b) {return a+Math.floor(Math.random()*(b-a+1))};
   init();
   function init() {
@@ -96,8 +96,9 @@
   });
   loader.load( 'models/sneginka.glb', function ( load ) {
   sneginka=load;
-  sneginka.scene.children[0].material.side=2;
+  //sneginka.scene.children[0].material.side=2;
   sneg =new THREE.Object3D;
+	materialSnega=new THREE.MeshBasicMaterial( {side:THREE.DoubleSide});
   scene.add(sneg);cSneg(202);
   });
   loader.load( 'models/dm.glb', function ( load ) {
@@ -108,7 +109,7 @@
   lights['ded'] = new THREE.SpotLight();
   lights['ded'].position.set( -10, 3, -8 );
   lights['ded'].target=ded.scene.getObjectByName('Скелет');
-  lights['ded'].intensity=1.5;
+  lights['ded'].intensity=2;
   lights['ded'].distance=15;
   lights['ded'].angle=1.2;
   scene.add(ded.scene, lights['ded']);
@@ -121,19 +122,19 @@
   };
   function cSneg(kolvo){
     for (i=0;i<kolvo;i++){
-    var snegok =sneginka.scene.children[0].clone();
-    snegok.material=new THREE.MeshBasicMaterial();
-    var rs=(rnd(1,99))/1000;
-    snegok.scale.x=rs;
-    snegok.scale.y=rs;
-    snegok.scale.z=rs;
-    snegok.position.x=rnd(-20, 0);
-    snegok.position.y=rnd(20, 35);
-    snegok.position.z=rnd(-5,-20);
-    snegok.rotation.x=rnd(0,Math.PI*2);
-    snegok.rotation.y=rnd(0,Math.PI*2);
-    snegok.rotation.z=rnd(0,Math.PI*2);
-    sneg.add(snegok)};
+		snegok[i]=new THREE.Mesh(sneginka.scene.children[0].geometry,materialSnega);
+		var rs=(rnd(1,99))/1000;
+    snegok[i].scale.x=rs;
+    snegok[i].scale.y=rs;
+    snegok[i].scale.z=rs;
+    snegok[i].position.x=rnd(-20, 0);
+    snegok[i].position.y=rnd(20, 35);
+    snegok[i].position.z=rnd(-5,-20);
+    snegok[i].rotation.x=rnd(0,Math.PI*2);
+    snegok[i].rotation.y=rnd(0,Math.PI*2);
+    snegok[i].rotation.z=rnd(0,Math.PI*2);
+
+    sneg.add(snegok[i])};
     com['snegopad']=true;
     animate();};
     function animate() {
@@ -150,12 +151,13 @@
     };
     if (com['snegopad']==true){
     if (sneg.children.length<101)cSneg(202);
-
-		sneg.children.forEach(function(child) {
+    sneg.children.forEach(function(child) {
     child.position.y-=0.02;
     child.rotateOnWorldAxis(y,Math.PI/rnd(45,90));
     child.rotateOnWorldAxis(x,Math.PI/rnd(45,90));
-    if (child.position.y<2) { sneg.remove(child); child=0;};
+    if (child.position.y<2) {
+			child.position.set(rnd(-20, 0), rnd(20, 35), rnd(-5,-20));
+		};
     });
     };
     renderer.render( scene, camera );

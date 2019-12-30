@@ -150,11 +150,12 @@
     };
     if (com['snegopad']==true){
     if (sneg.children.length<101)cSneg(202);
-    sneg.children.forEach(function(child) {
+
+		sneg.children.forEach(function(child) {
     child.position.y-=0.02;
     child.rotateOnWorldAxis(y,Math.PI/rnd(45,90));
     child.rotateOnWorldAxis(x,Math.PI/rnd(45,90));
-    if (child.position.y<2) {child=0; sneg.remove(child)};
+    if (child.position.y<2) { sneg.remove(child); child=0;};
     });
     };
     renderer.render( scene, camera );

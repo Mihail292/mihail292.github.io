@@ -22,11 +22,14 @@
 	const z=new THREE.Vector3( 0, 0, 1);
   var lights=[];var t=[];var com=[];var mixers=[];var act=[];
   t['elochkagory']=0;
-  var texture;  var bump;
+  var texture;
+	texture=new THREE.TextureLoader().load( "https://sun9-39.userapi.com/c855736/v855736064/1b9a48/kp92dUpYYOI.jpg");
+	var bump;
   var pol, elka, snegurka, sneginka, ded, god, sneg;
   function rnd(a,b) {return a+Math.floor(Math.random()*(b-a+1))};
   init();
   function init() {
+
   camera = new THREE.PerspectiveCamera( 36, 640 / 480, 1, 100);
   camera.position.set(-9.624745232512899,14.437440587459843,8.665715182388219);
 	camera.quaternion.set(-0.18866292375413798, 0.006427398261990329, 0.0012348135803620537, 0.9820200939835925);
@@ -52,7 +55,7 @@
   pol.receiveShadow = true;
   scene.add(pol);
   var loader = new THREE.GLTFLoader();
-  loader.load( 'models/elk.gltf', function ( load ) {
+  loader.load( 'models/elk.glb', function ( load ) {
   elka = load;
   elka.scene.position.set(-10,0,-20);
   lights['elka'] = new THREE.SpotLight();
@@ -63,7 +66,9 @@
   lights['elka'].decay=2;
   lights['elka'].angle=3.14;
   scene.add(lights['elka']);
-  elka.scene.getObjectByName('ель').material.bumpMap=elka.scene.getObjectByName('ель').material.map
+
+	elka.scene.getObjectByName('ель').material.map=texture;
+  elka.scene.getObjectByName('ель').material.bumpMap=texture;
   elka.scene.getObjectByName('ель').material.roughness=0.7;
   elka.scene.getObjectByName('красные').material.metalness=1;
   elka.scene.getObjectByName('красные').material.emissiveIntensity=0.1;
@@ -81,7 +86,7 @@
   lights['snegurka'] = new THREE.SpotLight();
   lights['snegurka'].position.set( -10, 3, -8 );
   lights['snegurka'].target=snegurka.scene.getObjectByName('Скелет');
-  lights['snegurka'].intensity=1;
+  lights['snegurka'].intensity=1.5;
   lights['snegurka'].distance=15;
   lights['snegurka'].angle=1.2;
   scene.add( lights['snegurka']);

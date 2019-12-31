@@ -12,10 +12,19 @@
 		</style>
 	</head>
 	<body>
+
+	<img id ='preload'  src="https://sun9-52.userapi.com/c858336/v858336135/13150b/8fIVDRlgypQ.jpg" alt="альтернативный текст" style="position: absolute; top: 0;  left: 0;  width: 100%; height: 100%; "/>
+
+	</div>
   <script src="./lib/three.min.js"></script>
   <script src="./lib/OrbitControls.js"></script>
   <script src="./lib/GLTFLoader.js"></script>
   <script>
+	let Alload=0;
+	function zagruzka() {Alload++;
+		if (Alload==7){document.getElementById('preload').hidden=true;
+				animate();}
+	}
   var clock = new THREE.Clock();
 	const x=new THREE.Vector3( 1, 0, 0);
 	const y=new THREE.Vector3( 0, 1, 0);
@@ -24,8 +33,9 @@
   t['elochkagory']=0;
   var texture;
 	texture=new THREE.TextureLoader().load( "https://sun9-39.userapi.com/c855736/v855736064/1b9a48/kp92dUpYYOI.jpg");
+
 	var bump;
-  var pol, elka, snegurka, sneginka, ded, god, sneg, materialSnega;
+  var pol, elka, snegurka, sneginka, ded, god, sneg, materialSnega, muz;
   function rnd(a,b) {return a+Math.floor(Math.random()*(b-a+1))};
   init();
   function init() {
@@ -54,9 +64,23 @@
   pol.rotation.x=-1.570796326794897;
   pol.receiveShadow = true;
   scene.add(pol);
+
+var audioListener = new THREE.AudioListener();
+camera.add(audioListener);
+Muz = new THREE.Audio( audioListener );
+scene.add(Muz);
+var Muzloader = new THREE.AudioLoader();
+Muzloader.load('models/602.mp3',function (audioBuffer ) {
+		Muz.setBuffer( audioBuffer );
+    Muz.loop=true;
+		Muz.play();
+		zagruzka();
+	});
+
   var loader = new THREE.GLTFLoader();
   loader.load( 'models/elk.glb', function ( load ) {
   elka = load;
+
   elka.scene.position.set(-10,0,-20);
   lights['elka'] = new THREE.SpotLight();
   lights['elka'].position.set(-10,12,-20);
@@ -77,6 +101,7 @@
   elka.scene.getObjectByName('желтые').material.emissiveIntensity=0.8;
   elka.scene.getObjectByName('желтые').material.roughness=0.1;
   scene.add(elka.scene);com['elochkagory']=true;
+  zagruzka();
   });
   loader.load( 'models/sn.glb', function ( load ) {
   snegurka=load;
@@ -93,13 +118,14 @@
   scene.add(snegurka.scene);
   act['poklon'].timeScale=0.5;
   act['poklon'].play();
+	zagruzka();
   });
   loader.load( 'models/sneginka.glb', function ( load ) {
   sneginka=load;
-  //sneginka.scene.children[0].material.side=2;
+
   sneg =new THREE.Object3D;
 	materialSnega=new THREE.MeshBasicMaterial( {side:THREE.DoubleSide});
-  scene.add(sneg);cSneg(202);
+  scene.add(sneg);cSneg(202);zagruzka();
   });
   loader.load( 'models/dm.glb', function ( load ) {
   ded=load;
@@ -113,11 +139,14 @@
   lights['ded'].distance=15;
   lights['ded'].angle=1.2;
   scene.add(ded.scene, lights['ded']);
-  act['ded'].play();});
+  act['ded'].play();
+	zagruzka();
+  });
   loader.load( 'models/2020.glb', function ( load ) {
   god=load;
   god.scene.position.set(-10,0,-15);
   scene.add(god.scene);
+	zagruzka();
   });
   };
   function cSneg(kolvo){
@@ -136,7 +165,7 @@
 
     sneg.add(snegok[i])};
     com['snegopad']=true;
-    animate();};
+		zagruzka();};
     function animate() {
     requestAnimationFrame( animate);
     var delta = clock.getDelta();

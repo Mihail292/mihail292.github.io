@@ -50,7 +50,7 @@
   document.body.appendChild( renderer.domElement );
   controls = new THREE.OrbitControls( camera, renderer.domElement );
   controls.zoomSpeed=3;
-  controls.keys=0;
+  controls.keys=0;controls.mouseButtons.RIGHT=1000;
   controls.target.set(-10,3,-20);
 	camera.lookAt(controls.target);
   controls.minPolarAngle=Math.PI/4;

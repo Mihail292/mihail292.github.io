@@ -22,7 +22,7 @@
   <script>
 	let Alload=0;
 	function zagruzka() {Alload++;
-		if (Alload==7){document.getElementById('preload').hidden=true;
+		if (Alload==8){document.getElementById('preload').hidden=true;
 				animate();}
 	}
   var clock = new THREE.Clock();
@@ -135,17 +135,21 @@ Muzloader.load('models/602.mp3',function (audioBuffer ) {
 	sfer=load;
 	sfer.scene.children[0].scale.set(10,10,10);
 	sfer.scene.children[0].position.set(-9,5.5,-14);
+	sfer.scene.getObjectByName('Сфера_1').material.emissive.set(62, 209, 199);
+	sfer.scene.getObjectByName('Сфера_1').material.opacity=0.12;
+	sfer.scene.getObjectByName('Сфера_1').material.metalness=1;
 	scene.add(sfer.scene);
 	zagruzka();
 	});
   loader.load( 'models/2020.glb', function ( load ) {
   god=load;
   god.scene.position.set(-10,0,-15);
+	god.scene.children[0]
 	lights['god'] = new THREE.SpotLight();
-  lights['god'].position.set( -10, 3, -8 );
+  lights['god'].position.set( -10, 8, -4 );
   lights['god'].target=god.scene.children[0];
-  lights['god'].intensity=2;
-  lights['god'].distance=15;
+  lights['god'].intensity=3;
+  lights['god'].distance=17;
   lights['god'].angle=Math.PI;
   scene.add(lights['god']);
   scene.add(god.scene);

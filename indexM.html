@@ -35,7 +35,7 @@
 	texture=new THREE.TextureLoader().load( "https://sun9-39.userapi.com/c855736/v855736064/1b9a48/kp92dUpYYOI.jpg");
 
 	var bump;
-  var pol, elka, snegurka, sneginka, ded, god, sneg, materialSnega, muz;
+  var pol, elka, snegurka, sneginka, ded, god, sneg, materialSnega, muz,sfer;
   function rnd(a,b) {return a+Math.floor(Math.random()*(b-a+1))};
   init();
   function init() {
@@ -59,11 +59,11 @@
   controls.minAzimuthAngle=-Math.PI/4;
   controls.minDistance=27;
   controls.maxDistance=46;
-  pol=new THREE.Mesh(new THREE.PlaneGeometry( 100, 100 ),new THREE.MeshPhongMaterial( {side: THREE.DoubleSide}));
-  
-  pol.rotation.x=-1.570796326794897;
-  pol.receiveShadow = true;
-  scene.add(pol);
+  //pol=new THREE.Mesh(new THREE.PlaneGeometry( 100, 100 ),new THREE.MeshPhongMaterial( {side: THREE.DoubleSide}));
+
+  //pol.rotation.x=-1.570796326794897;
+  //pol.receiveShadow = true;
+  //scene.add(pol);
 
 var audioListener = new THREE.AudioListener();
 camera.add(audioListener);
@@ -142,6 +142,13 @@ Muzloader.load('models/602.mp3',function (audioBuffer ) {
   act['ded'].play();
 	zagruzka();
   });
+	loader.load( 'models/sfer.glb', function ( load ) {
+	sfer=load;
+	sfer.scene.children[0].scale.set(10,10,10);
+	sfer.scene.children[0].position.set(-9,5.5,-14);
+	scene.add(sfer.scene);
+	zagruzka();
+	});
   loader.load( 'models/2020.glb', function ( load ) {
   god=load;
   god.scene.position.set(-10,0,-15);

@@ -108,13 +108,7 @@ Muzloader.load('models/602.mp3',function (audioBuffer ) {
   mixers['snegurka'] = new THREE.AnimationMixer(snegurka.scene);
   act['poklon']=mixers['snegurka'].clipAction( THREE.AnimationClip.findByName( snegurka.animations, 'поворот' ));
   snegurka.scene.getObjectByName('Скелет').position.set(-14,0,-12)
-  lights['snegurka'] = new THREE.SpotLight();
-  lights['snegurka'].position.set( -10, 3, -8 );
-  lights['snegurka'].target=snegurka.scene.getObjectByName('Скелет');
-  lights['snegurka'].intensity=1.5;
-  lights['snegurka'].distance=15;
-  lights['snegurka'].angle=1.2;
-  scene.add( lights['snegurka']);
+
   scene.add(snegurka.scene);
   act['poklon'].timeScale=0.5;
   act['poklon'].play();
@@ -132,13 +126,8 @@ Muzloader.load('models/602.mp3',function (audioBuffer ) {
   mixers['ded'] = new THREE.AnimationMixer(ded.scene);
   act['ded']=mixers['ded'].clipAction( THREE.AnimationClip.findByName( ded.animations, 'хлоп' ));
   ded.scene.getObjectByName('Скелет').position.set(-5,0,-14);
-  lights['ded'] = new THREE.SpotLight();
-  lights['ded'].position.set( -10, 3, -8 );
-  lights['ded'].target=ded.scene.getObjectByName('Скелет');
-  lights['ded'].intensity=2;
-  lights['ded'].distance=15;
-  lights['ded'].angle=1.2;
-  scene.add(ded.scene, lights['ded']);
+
+	scene.add(ded.scene);
   act['ded'].play();
 	zagruzka();
   });
@@ -152,6 +141,13 @@ Muzloader.load('models/602.mp3',function (audioBuffer ) {
   loader.load( 'models/2020.glb', function ( load ) {
   god=load;
   god.scene.position.set(-10,0,-15);
+	lights['god'] = new THREE.SpotLight();
+  lights['god'].position.set( -10, 3, -8 );
+  lights['god'].target=god.scene.children[0];
+  lights['god'].intensity=2;
+  lights['god'].distance=15;
+  lights['god'].angle=Math.PI;
+  scene.add(lights['god']);
   scene.add(god.scene);
 	zagruzka();
   });

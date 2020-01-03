@@ -19,12 +19,6 @@ function init() {
 //https://oauth.vk.com/authorize?сlient_id=7265919&scope=docs;
 console.log(data);
 //VK.callMethod("showSettingsBox", 8214);
-var aj = new XMLHttpRequest();
-		aj.open('GET', 'https://oauth.vk.com/authorize?'+"сlient_id=7265919&scope=docs&display=page&response_type=code&v=5.103",true);
-		aj.onreadystatechange = function(){
-		if(aj.readyState ==4 && aj.status == 200){console.log(aj.responseText)};
-		};
-		aj.send();
 
 });
 }

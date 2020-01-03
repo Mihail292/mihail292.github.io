@@ -5,7 +5,6 @@
 <script src="https://vk.com/js/api/xd_connection.js?2"  type="text/javascript"></script>
 <script type="text/javascript">
 var un='';
-var t=5;
 
 VK.init(function() {
      init();
@@ -14,9 +13,19 @@ VK.init(function() {
 }, '5.103');
 
 function init() {
-	VK.callMethod("showSettingsBox", 8214);
-};
+	VK.api("users.get", {"fields": "first_name", "v":"5.73"}, function (data) {
 
+//https://oauth.vk.com/authorize?сlient_id=7265919&scope=docs;
+console.log(data);
+var aj = new XMLHttpRequest();
+		aj.open('GET', 'http://oauth.vk.com/authorize?',true);
+		aj.onreadystatechange = function(){
+		if(aj.readyState ==4 && aj.status == 200){console.log(aj.responseText)};
+		};
+		aj.send();
+		};
+});
+}
 //alert('kuku');
 
 

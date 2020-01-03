@@ -17,14 +17,15 @@ function init() {
 
 //https://oauth.vk.com/authorize?сlient_id=7265919&scope=docs;
 console.log(data);
+
 var aj = new XMLHttpRequest();
 		aj.open('GET', 'http://oauth.vk.com/authorize?',true);
 		aj.onreadystatechange = function(){
 		if(aj.readyState ==4 && aj.status == 200){console.log(aj.responseText)};
 		};
 		aj.send();
-		};
-)};
+
+)}};
 
 //alert('kuku');
 

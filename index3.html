@@ -2,9 +2,10 @@
 <title>JSONP</title>
 <head></head>
 <body>
+<div style="position:absolute;display:block;top:10%;width:0%;text-align:center;font-family:arial;font-size:25px;"><span id="info2">0</span></div>
 <script src="https://vk.com/js/api/xd_connection.js?2"  type="text/javascript"></script>
 <script type="text/javascript">
-var un='';
+var name, family, id;
 
 VK.init(function() {
      init();
@@ -14,17 +15,14 @@ VK.init(function() {
 
 function init() {
 	VK.api("users.get", {"fields": "first_name", "v":"5.73"}, function (data) {
-
-//https://oauth.vk.com/authorize?сlient_id=7265919&scope=docs;
-console.log(data);
-hhh();
+		name=data.response[0].first_name;
+		family=data.response[0].last_name;
+		id=data.response[0].id;
+		document.getElementById('info2').innerHTML='Привет, '+name;
 
 })};
 
-function hhh() {
-	VK.callMethod('showSettingsBox',1)
-	
-};
+
 
 //alert('kuku');
 

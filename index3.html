@@ -13,11 +13,11 @@ VK.init(function() {
 }, '5.103');
 
 function init() {
-	VK.api("users.get", {"fields": "first_name", "v":"5.73"}, function (data) {
+	VK.api("users.get", {"fields": "first_name, api_settings", "v":"5.73"}, function (data) {
 
 //https://oauth.vk.com/authorize?сlient_id=7265919&scope=docs;
 console.log(data);
-VK.callMethod('showSettingsBox',{8192}); 
+//VK.callMethod('showSettingsBox',{8192});
 
 
 })};

@@ -17,15 +17,19 @@ function init() {
 
 //https://oauth.vk.com/authorize?сlient_id=7265919&scope=docs;
 console.log(data);
-VK.callMethod('showSettingsBox',8192,function (e) {
-
-//https://oauth.vk.com/authorize?сlient_id=7265919&scope=docs;
-console.log(e);
-};
-);
-
+hhh();
 
 })};
+
+function hhh() {
+	VK.callMethod('showSettingsBox',8192,function (e) {
+
+	//https://oauth.vk.com/authorize?сlient_id=7265919&scope=docs;
+	console.log(e);
+	}
+	)
+
+};
 
 //alert('kuku');
 

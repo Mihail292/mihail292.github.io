@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>CandyHeart</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<style>
+			body {
+				margin: 0px;
+
+				overflow: hidden;
+			};
+		</style>
+	</head>
+	<body>
+  	<script src="./lib/three.min.js"></script>
+    <script src="./lib/OrbitControls.js"></script>
+    <script src="./lib/GLTFLoader.js"></script>
+
+    <script>var lights=[];var lightFly2;var t=[];var ms=[];var com=[];var texture=[];var loader;var flameMaterials = [];var time=0;t['sin']=0;
+var clock = new THREE.Clock();
+      init();
+      function init() {
+      texture['rose'] = new THREE.TextureLoader().load( "https://sun9-17.userapi.com/c858528/v858528389/ab38e/E1YJBhFwe9g.jpg");
+      texture['rose2'] = new THREE.TextureLoader().load( "https://sun9-19.userapi.com/c858528/v858528389/ab385/B9q0oCYZWCY.jpg");
+      texture['rose'].wrapS = THREE.RepeatWrapping;
+      texture['rose'].wrapT = THREE.RepeatWrapping;
+      texture['rose2'].wrapS = THREE.RepeatWrapping;
+      texture['rose2'].wrapT = THREE.RepeatWrapping;
+
+      camera = new THREE.PerspectiveCamera( 36, window.innerWidth / window.innerHeight, 1, 1000);
+      camera.position.set(384.2874801296715, 262.88363463072255, 8.033721869762037);
+      camera.quaternion.set(-0.1915308751061885, 0.6744415143895196, 0.18778891277126644, 0.68788072497288);
+      scene = new THREE.Scene();
+      scene.background = new THREE.TextureLoader().load( "https://sun9-35.userapi.com/c858528/v858528389/ab398/B0zx7i_9C4Y.jpg");
+      lightFly2= new THREE.PointLight();
+      lightFly2.position.set(0,10,0);
+      lightFly2.intensity=1;
+      lightFly2.distance=100;
+      scene.add(lightFly2);
+
+      				renderer = new THREE.WebGLRenderer( { antialias: true } );
+      				renderer.setPixelRatio( window.devicePixelRatio );
+      				renderer.setSize( window.innerWidth, window.innerHeight );
+      				renderer.shadowMap.enabled = true;
+      				renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+      				document.body.appendChild( renderer.domElement );
+							window.addEventListener( 'resize', onWindowResize, false );
+      				controls = new THREE.OrbitControls( camera, renderer.domElement );
+      				controls.zoomSpeed=3;
+      				  controls.keys=0;controls.mouseButtons.RIGHT=1000;
+      				  controls.target.set(-9.44302749633789, 25.152841567993164, 0.26471972465515137);
+      					camera.lookAt(controls.target);
+      				  controls.minPolarAngle=Math.PI/4;
+      				  controls.maxPolarAngle=1.2861147302935076;
+      				  controls.minZoom=controls.minDistance=27;
+      				  controls.maxZoom=controls.maxDistance=460;
+          dia();
+      			}
+      			function onWindowResize() {
+      				camera.aspect = window.innerWidth / window.innerHeight;
+      				camera.updateProjectionMatrix();
+      				renderer.setSize( window.innerWidth, window.innerHeight );
+      			}
+            function dia() {
+            loader = new THREE.GLTFLoader();
+            loader.load( 'models/candys.glb', function ( load ) {
+            ms['dia']=load;
+
+            ms['dia'].scene.getObjectByName("Circle").material.side=2;
+            ms['dia'].scene.getObjectByName("Circle").material.map=texture['rose'];
+
+            ms['dia'].scene.getObjectByName("Circle001").material.side=2;
+            ms['dia'].scene.getObjectByName("Circle001").material.map=texture['rose2'];
+            ms['dia'].scene.getObjectByName(`Circle033`).material.emissive.r=0.3;
+            scene.add(ms['dia'].scene);
+            for(i=0;i<10;i++){plamya(i)};
+            com['lightOn']=true;
+            com['lightFly']=true;
+            })};
+            function plamya(p) {
+            lights[`${p}`]=new THREE.PointLight(0xffaa33, 1, 50, 2);
+            ms['dia'].scene.getObjectByName(`ОкружностьБезье00${p}`).getWorldPosition(lights[`${p}`].position);
+            scene.add(lights[`${p}`]);
+
+
+              function flame(isFrontSide){
+                let flameGeo = new THREE.SphereBufferGeometry(0.5, 32, 32);
+                flameGeo.translate(0, 0.5, 0);
+                let flameMat = getFlameMaterial(true);
+                flameMaterials.push(flameMat);
+                let flame = new THREE.Mesh(flameGeo, flameMat);
+                ms['dia'].scene.getObjectByName(`ОкружностьБезье00${p}`).getWorldPosition(flame.position);
+                flame.rotation.y = THREE.Math.degToRad(-45);
+                scene.add(flame);
+                com['flame']=true;
+
+              }
+
+              flame(false);
+            	flame(true);
+
+            };
+
+            function getFlameMaterial(isFrontSide){
+            	 let side = isFrontSide ? THREE.FrontSide : THREE.BackSide;
+            	 return new THREE.ShaderMaterial({
+            		 uniforms: {
+            			 time: {value: 0}
+            		 },
+            		 vertexShader: `
+            			 uniform float time;
+            			 varying vec2 vUv;
+            			 varying float hValue;
+
+            			 //https://thebookofshaders.com/11/
+            			 // 2D Random
+            			 float random (in vec2 st) {
+            					 return fract(sin(dot(st.xy,
+            																vec2(12.9898,78.233)))
+            												* 43758.5453123);
+            			 }
+
+            			 // 2D Noise based on Morgan McGuire @morgan3d
+            			 // https://www.shadertoy.com/view/4dS3Wd
+            			 float noise (in vec2 st) {
+            					 vec2 i = floor(st);
+            					 vec2 f = fract(st);
+
+            					 // Four corners in 2D of a tile
+            					 float a = random(i);
+            					 float b = random(i + vec2(1.0, 0.0));
+            					 float c = random(i + vec2(0.0, 1.0));
+            					 float d = random(i + vec2(1.0, 1.0));
+
+            					 // Smooth Interpolation
+
+            					 // Cubic Hermine Curve.  Same as SmoothStep()
+            					 vec2 u = f*f*(3.0-2.0*f);
+            					 // u = smoothstep(0.,1.,f);
+
+            					 // Mix 4 coorners percentages
+            					 return mix(a, b, u.x) +
+            									 (c - a)* u.y * (1.0 - u.x) +
+            									 (d - b) * u.x * u.y;
+            			 }
+
+            			 void main() {
+            				 vUv = uv;
+            				 vec3 pos = position;
+
+            				 pos *= vec3(0.8, 2, 0.725);
+            				 hValue = position.y;
+            				 //float sinT = sin(time * 2.) * 0.5 + 0.5;
+            				 float posXZlen = length(position.xz);
+
+            				 pos.y *= 1. + (cos((posXZlen + 0.25) * 3.1415926) * 0.25 + noise(vec2(0, time)) * 0.125 + noise(vec2(position.x + time, position.z + time)) * 0.5) * position.y; // flame height
+
+            				 pos.x += noise(vec2(time * 2., (position.y - time) * 4.0)) * hValue * 0.0312; // flame trembling
+            				 pos.z += noise(vec2((position.y - time) * 4.0, time * 2.)) * hValue * 0.0312; // flame trembling
+
+            				 gl_Position = projectionMatrix * modelViewMatrix * vec4(pos,1.0);
+            			 }
+            		 `,
+            		 fragmentShader: `
+            			 varying float hValue;
+            			 varying vec2 vUv;
+
+            			 // honestly stolen from https://www.shadertoy.com/view/4dsSzr
+            			 vec3 heatmapGradient(float t) {
+            				 return clamp((pow(t, 1.5) * 0.8 + 0.2) * vec3(smoothstep(0.0, 0.35, t) + t * 0.5, smoothstep(0.5, 1.0, t), max(1.0 - t * 1.7, t * 7.0 - 6.0)), 0.0, 1.0);
+            			 }
+
+            			 void main() {
+            				 float v = abs(smoothstep(0.0, 0.4, hValue) - 1.);
+            				 float alpha = (1. - v) * 0.99; // bottom transparency
+            				 alpha -= 1. - smoothstep(1.0, 0.97, hValue); // tip transparency
+            				 gl_FragColor = vec4(heatmapGradient(smoothstep(0.0, 0.3, hValue)) * vec3(0.95,0.95,0.4), alpha) ;
+            				 gl_FragColor.rgb = mix(vec3(0,0,1), gl_FragColor.rgb, smoothstep(0.0, 0.3, hValue)); // blueish for bottom
+            				 gl_FragColor.rgb += vec3(1, 0.9, 0.5) * (1.25 - vUv.y); // make the midst brighter
+            				 gl_FragColor.rgb = mix(gl_FragColor.rgb, vec3(0.66, 0.32, 0.03), smoothstep(0.95, 1., hValue)); // tip
+            			 }
+            		 `,
+            		 transparent: true,
+            		 side: side
+            	 });
+             };
+
+
+      animate();
+      function animate() {
+      requestAnimationFrame( animate);
+      var delta = clock.getDelta();
+      if (com['flame']==true){
+      	time += delta;
+      	flameMaterials.forEach(function (i){i.uniforms.time.value = time})
+      };
+      if (com['lightOn']==true){
+      	lights.forEach((ch)=>{
+      		ch.position.x += Math.sin(time*75)/200;
+      		ch.position.z += Math.cos(time*75)/200;
+      		ch.intensity = 2 + Math.sin(time * Math.PI * 2) * Math.cos(time * Math.PI * 1.5) * 0.25;}
+      	)};
+
+      	if (com['lightFly']==true){t['sin']++
+      		//lightFly.position.x = 300*Math.sin(t['sin']/25);
+      		//lightFly.position.z = 100*Math.cos(t['sin']/25);
+      		lightFly2.position.x = 300*Math.sin(t['sin']/-100);
+      		lightFly2.position.z = 125*Math.cos(t['sin']/-100);
+      	};
+        renderer.render( scene, camera );
+        };
+
+
+    </script>
+	</body>
+	</html>

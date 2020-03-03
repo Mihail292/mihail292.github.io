@@ -9,11 +9,11 @@
 
 
 <div><video src="./audio/ECV.mp3" controls> </video></div>
-<div><input type="file" id="file"></div>
+
 <div> л </div>
-<div><button id="bt1">СМЕНИТЬ КАНАЛ (ДО/ПОСЛЕ 1000Гц)</></div>
+<div><button id="bt1">СМЕНИТЬ КАНАЛ</></div>
 <div>  л </div>
-<div><button id="bt2">сбросить фильтры в ноль</></div>
+<div><button id="bt2">сбросить фильтры</></div>
   <div>  л </div>
 
 <div><button id="bt3000">3000</></div>
@@ -27,7 +27,7 @@
 
 document.getElementById('bt3000').addEventListener('click',pish3000)
 
-var p=75;
+var p=80;
 function pish2000() {
   for (var i = 0; i <= 10; i++) {filters[i].gain.value=-25};
   filters[6].gain.value=p;

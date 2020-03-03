@@ -10,11 +10,11 @@
 
 <div><video src="./audio/ECV.mp3" controls> </video></div>
 
-<div> л </div>
+<div>  </div>
 <div><button id="bt1">СМЕНИТЬ КАНАЛ</></div>
-<div>  л </div>
+<div>   </div>
 <div><button id="bt2">сбросить фильтры</></div>
-  <div>  л </div>
+  <div>   </div>
 
 <div><button id="bt3000">3000</></div>
 
@@ -48,18 +48,6 @@ function pish8000() {
   for (var i = 0; i <= 10; i++) {filters[i].gain.value=-25};
   filters[10].gain.value=p;
 }
-
-
-
-
-
-  document.getElementById('file').addEventListener('change', function (e) {
-        var url = URL.createObjectURL(e.target.files[0]);
-
-
-        document.getElementsByTagName('video')[0].src = url;
-      }, false);
-
 
   window.AudioContext = window.AudioContext || window.webkitAudioContext;
 var filter,filters=[];

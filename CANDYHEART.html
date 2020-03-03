@@ -15,22 +15,18 @@
 <div>  л </div>
 <div><button id="bt2">сбросить фильтры в ноль</></div>
   <div>  л </div>
-<div><button id="bt2000">пищалка 2000</></div>
-<div><button id="bt3000">пищалка 3000</></div>
-<div><button id="bt4000">пищалка 4000</></div>
-<div><button id="bt6000">пищалка 6000</></div>
-<div><button id="bt8000">пищалка 8000</></div>
+
+<div><button id="bt3000">3000</></div>
+
 
 
   <script>
   document.getElementById('bt1').addEventListener('click',func)
   document.getElementById('bt2').addEventListener('click',nul)
 
-document.getElementById('bt2000').addEventListener('click',pish2000)
+
 document.getElementById('bt3000').addEventListener('click',pish3000)
-document.getElementById('bt4000').addEventListener('click',pish4000)
-document.getElementById('bt6000').addEventListener('click',pish6000)
-document.getElementById('bt8000').addEventListener('click',pish8000)
+
 var p=75;
 function pish2000() {
   for (var i = 0; i <= 10; i++) {filters[i].gain.value=-25};
@@ -109,12 +105,13 @@ var frequencies = [125,250,500,750,1000,1500,2000,3000,4000,6000,8000];
   equalize(a);
 
 var V=-5;
+var v=1;
 function func() {
-console.log('lk');
+
 
 V*=-1;
 for (var i = 0; i <= 10; i++) {filters[i].gain.value=0};
-for (var i = 5; i <= 10; i++) {filters[i].gain.value=V}for (var i = 3; i < 5; i++) {filters[i].gain.value=-V};
+for (var i = 5; i <= 10; i++) {filters[i].gain.value=V-v}for (var i = 3; i < 5; i++) {filters[i].gain.value=-V+v};
 }
 
 

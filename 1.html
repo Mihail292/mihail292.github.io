@@ -190,7 +190,21 @@ cards[i].ves=0;cards[i].sw=0;
 vsekarty=[]=cards.slice();
 };
 cards.find(i=>i.n=='король пики').ochki=12;
-
+for (s of cards){
+switch (s.d) {
+  case 'девять':s.ves=9;break;
+  case 'семь':s.ves=7;break;
+  case 'шесть':s.ves=6;break;
+  case 'туз':s.ves=5;break;
+  case 'десять':s.ves=4;break;
+  case 'восемь':s.ves=3;break;
+  case 'король':s.ves=2;break;
+  case 'валет':s.ves=1;break;
+  case 'дама':s.ves=-5;break;
+ }
+ if (s.n=='король пики')s.ves=8;
+ if (s.n=='дама пики')s.ves=-8;
+ };
 
 
 
@@ -411,27 +425,14 @@ document.getElementById(`div${hodit_igrok}`).style.background="";
 function sled_igrok(){var si=hodit_igrok+1;if (si>kolichestvoIgrokov-1){si=0};return si;};
 function pred_igrok(){var pi=hodit_igrok-1;if (pi<0){pi=kolichestvoIgrokov-1};return pi;};
 function obnulenie_parametrov(){
-for (i=0; i<kartyIgrokov[hodit_igrok].length;i++){
-			kartyIgrokov[hodit_igrok][i].ves=0;
-			}};
+
+			
+			};
 
 function hod(){sovpadNaRukah=[];proverka_sovpadeniy();rubashka();nH==false;
 log('~~~~~~~~~~~');
-for (s of kartyIgrokov[hodit_igrok]){
-switch (s.d) {
-  case 'девять':s.ves=9;break;
-  case 'семь':s.ves=7;break;
-  case 'шесть':s.ves=6;break;
-  case 'туз':s.ves=5;break;
-  case 'десять':s.ves=4;break;
-  case 'восемь':s.ves=3;break;
-  case 'король':s.ves=2;break;
-  case 'валет':s.ves=1;break;
-  case 'дама':s.ves=-5;break;
- }
- if (s.n=='король пики')s.ves=8;
- if (s.n=='дама пики')s.ves=-8;
- };
+
+
 
 if (sovpadNaRukah.length==0){BeretKarty();
 rk(kartyIgrokov[hodit_igrok][kartyIgrokov[hodit_igrok].length-1],5);proverka_sovpadeniy();
@@ -439,10 +440,16 @@ if (sovpadNaRukah.length==0){if(kon.d!="девять")smena_igroka();return;}};
 
 if (sovpadNaRukah.length==1){kartu_naKon();return;};
 
-if (sovpadNaRukah.length==2&&sovpadNaRukah.find(i=>i.d=='дама')&&sovpadNaRukah.find(i=>i.d!='дама')){sovpadNaRukah[0]=sovpadNaRukah.find(i=>i.d!='дама');kartu_naKon();return;}
-if (!sovpadNaRukah.filter(i=>i.d!='дама').length){if (ndp=sovpadNaRukah.find(i=>i.n!='дама пики')){sovpadNaRukah[0]=ndp}else{sovpadNaRukah[0]=sovpadNaRukah.find(i=>i.n=='дама пики')}kartu_naKon();return;};
-if (sovpadNaRukah.length>1){postroyka_variaciy();}
+//if (sovpadNaRukah.length==2&&sovpadNaRukah.find(i=>i.d=='дама')&&sovpadNaRukah.find(i=>i.d!='дама')){sovpadNaRukah[0]=sovpadNaRukah.find(i=>i.d!='дама');kartu_naKon();return;}
+//две карты одна дама, другая не дама
 
+//только дамы
+if (!sovpadNaRukah.filter(i=>i.d!='дама').length){if (ndp=sovpadNaRukah.find(i=>i.n!='дама пики')){sovpadNaRukah[0]=ndp}else{sovpadNaRukah[0]=sovpadNaRukah.find(i=>i.n=='дама пики')}kartu_naKon();return;};
+
+// одна не дама
+if (sovpadNaRukah.filter(i=>i.d!='дама').length==1){sovpadNaRukah[0]=sovpadNaRukah.find(i=>i.d!='дама');kartu_naKon();return;};
+
+if (sovpadNaRukah.length>1){postroyka_variaciy();}
 };
 
 function postroyka_variaciy(){
@@ -456,7 +463,7 @@ for (var c of karty_igroka){for (var cc of karty_igroka){
 if (cc!=c && ( cc.d==c.d || cc.m==c.m )){nnn[0].push([]); nnn[0][i].push(c,cc);i++;}}}mmm=nnn.slice();
 
 if(nnn[0].length){
-ioio=[];for (iii of nnn[0]){log('вошёл в иом');if(!iii.find(i=>i.pr==false))ioio.push(iii);}nnn[0]=ioio;
+ioio=[];for (iii of nnn[0]){log('вошёл в иом ' + nnn[0].length);if(!iii.find(i=>i.pr==false))ioio.push(iii);}nnn[0]=ioio;
 labN: for (var z=1;;z++){nnn[z]=[];for (j of nnn[z-1]){
 for (m of nnn[0]){if(j[j.length-1]==m[0]&&j.indexOf(m[1])==-1){
 nnn[z].push([]);nnn[z][nnn[z].length-1]=nnn[z][nnn[z].length-1].concat(j.slice(0,j.length-1),m)}}}
@@ -474,8 +481,13 @@ if (!mmm[z].length) break labM;}
 M: for (i=2;;){if (mmm[mmm.length-i].filter(u=>sovpadNaRukah.indexOf(u[0])!=-1).length){
 mmm[mmm.length-1]=mmm[mmm.length-i].filter(u=>sovpadNaRukah.indexOf(u[0])!=-1);break M}
 else{if(mmm[mmm.length-i]==mmm[0]){break M}else{i++}}}
-if(mmm[mmm.length-i].length){sbv=[];for(m of mmm[mmm.length-1]){sbv.push(m[0])};sbv.sort((b,a)=>a.ves-b.ves);
-K=sbv[0];sovpadNaRukah[0]=K;log(K.n+' mmm[0]');kartu_naKon();return;}};
+if(mmm[mmm.length-i].length){sbv=[];for(m of mmm[mmm.length-1]){sbv.push(m[0])};
+if(sbv.length){sbv.sort((b,a)=>a.ves-b.ves);
+if(sbv.filter(i=>i.ves==sbv[0].ves).length){
+sbx=mmm[0].filter(p=>sovpadNaRukah.indexOf(p[0])!=-1);sbx.sort((b,a)=>a[1].ves-b[1].ves);
+if(sbx[0][0].ves>=sbv[0]){sovpadNaRukah[0]=sbx[0][0];log(sbx[0][0].n+' sbx[0][0]');kartu_naKon();return;}};
+K=sbv[0];sovpadNaRukah[0]=K;log(K.n+' mmm[0]');kartu_naKon();return;}
+else{sovpadNaRukah.sort((b,a)=>a.ves-b.ves);log(' sovpadNaRukah[0]');kartu_naKon();return;}}};
  
 
  log('не вышло');

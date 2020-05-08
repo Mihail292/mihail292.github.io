@@ -22,12 +22,11 @@
 </html>
 
 <div id="div0" style="position:fixed;top:0px;left:0px;width:110px;height: 150px;"></div>
-<div id="div5" style="position:fixed;top:0px;left:110px;width:110px;height: 150px;"></div>
 <div id="div1" style="position:fixed;overflow: auto;top:0px;left:220px;width:70%;height: 100px;"></div>
 <div id="div2" style="position:fixed;overflow: auto;top:100px;left:220px;width:70%;height: 100px;"></div>
 <div id="div3" style="position:fixed;overflow: auto;top:200px;left:220px;width:70%;height: 100px;"></div>
 <div id="div4" style="position:fixed;overflow: auto;top:300px;left:220px;width:70%;height: 100px;"></div>
-
+<div id="div5" style="position:fixed;top:0px;left:110px;width:110px;height: 150px;"></div>
 
 
 
@@ -40,7 +39,7 @@ canvas.width=1028/wh;canvas.height=1586/wh;var ctxk = canvas.getContext('2d');va
 window.addEventListener( 'keydown', KeyboardDOWN, false );
 var kartyIgrokov=[];var kon;var nk=0;var cards=[];var coloda=[];var sovpadNaRukah=[];var img=[];var loadImg=0;
 var K={};snbd=[];snb=[];
-var kolichestvoIgrokov=2,po_skolko_kart=11;index_karty=0;hodit_igrok=0;ochkiigrokow=[];var nH=false;
+var kolichestvoIgrokov=4,po_skolko_kart=5;index_karty=0;hodit_igrok=0;ochkiigrokow=[];var nH=false;
 for (var i=1; i<7; i++){img[i] = document.createElement("IMG");img[i].src = `./карты/${i}.jpg`;};
 for (var i=1; i<7; i++){img[i].onload=function(){loadImg++;if(loadImg==6){rk(kon,0);rubashka();
 risuem_karty_igrokov()};}};
@@ -345,37 +344,13 @@ case "крести":kr.push(mast);break;
 case "бубны":bu.push(mast);break;
 case "черви":ch.push(mast);break;}};
 mast=[];mast.push(pi,ch,kr,bu);mast.sort((b,a)=>a.length-b.length);nuznMast=mast[0][0].m;
+arl=mast.filter(i=>(i.length==mast[0].length)&&(i!=mast[0]))
+if(arl.length){arl.push(mast[0]);asq=[];for(a of arl){asq.push(a.reduce((t,i)=>t+i.ves,0))}
+nuznMast=arl[asq.indexOf(Math.max(...asq))][0].m};
 zamenennayadama={};zamenennayadama.n='дама ' +nuznMast;rk(zamenennayadama,0)};
 
 
-function zakaz_masty2(){var masty=[0,0,0,0];
-for(let mast of kartyIgrokov[hodit_igrok]){
-switch (mast.m) {
-  case "пики":masty[0]++; break;
-  case "крести":masty[1]++;break;
-  case "бубны":masty[2]++;break;
-  case "черви":masty[3]++;break;
-  }};
-  //какой масти сколько 
-var ovm=[0,0,0,0];
-for(let mast of kartyIgrokov[hodit_igrok]){
-switch (mast.m) {
-  case "пики":ovm[0]+=mast.ochki; break;
-  case "крести":ovm[1]+=mast.ochki;break;
-  case "бубны":ovm[2]+=mast.ochki;break;
-  case "черви":ovm[3]+=mast.ochki;break;
-  }};
-
-var SbObshVesMast=getMaxOfArray(ovm);
-var stmast;
-switch (ovm.indexOf(SbObshVesMast)) {
-  case 0:stmast='пики'; break;
-  case 1:stmast='крести';break;
-  case 2:stmast='бубны';break;
-  case 3:stmast='черви';break;};
-//в какой масти (верхняя) больше очков
-
-
+function zakaz_masty2(){
 fsbo=[];
 for(var dost of kartyIgrokov[hodit_igrok]){fsbo.push(dost.ochki)};
 var sbo=getMaxOfArray(fsbo);
@@ -440,9 +415,6 @@ if (sovpadNaRukah.length==0){if(kon.d!="девять")smena_igroka();return;}};
 
 if (sovpadNaRukah.length==1){kartu_naKon();return;};
 
-//if (sovpadNaRukah.length==2&&sovpadNaRukah.find(i=>i.d=='дама')&&sovpadNaRukah.find(i=>i.d!='дама')){sovpadNaRukah[0]=sovpadNaRukah.find(i=>i.d!='дама');kartu_naKon();return;}
-//две карты одна дама, другая не дама
-
 //только дамы
 if (!sovpadNaRukah.filter(i=>i.d!='дама').length){if (ndp=sovpadNaRukah.find(i=>i.n!='дама пики')){sovpadNaRukah[0]=ndp}else{sovpadNaRukah[0]=sovpadNaRukah.find(i=>i.n=='дама пики')}kartu_naKon();return;};
 
@@ -478,17 +450,19 @@ labM: for (var z=1;;z++){mmm[z]=[];for (j of mmm[z-1]){
 for (m of mmm[0]){if(j[j.length-1]==m[0]&&j.indexOf(m[1])==-1){
 mmm[z].push([]);mmm[z][mmm[z].length-1]=mmm[z][mmm[z].length-1].concat(j.slice(0,j.length-1),m)}}}
 if (!mmm[z].length) break labM;}
+
 M: for (i=2;;){if (mmm[mmm.length-i].filter(u=>sovpadNaRukah.indexOf(u[0])!=-1).length){
 mmm[mmm.length-1]=mmm[mmm.length-i].filter(u=>sovpadNaRukah.indexOf(u[0])!=-1);break M}
 else{if(mmm[mmm.length-i]==mmm[0]){break M}else{i++}}}
-if(mmm[mmm.length-i].length){sbv=[];for(m of mmm[mmm.length-1]){sbv.push(m[0])};
-if(sbv.length){sbv.sort((b,a)=>a.ves-b.ves);
-if(sbv.filter(i=>i.ves==sbv[0].ves).length){
+
+if(mmm[mmm.length-1].length){sbv=[];for(m of mmm[mmm.length-1]){sbv.push(m[0])};sbv.sort((b,a)=>a.ves-b.ves);
+
+if(sbv.filter(i=>(i.ves==sbv[0].ves)&&(i!=sbv[0])).length){
 sbx=mmm[0].filter(p=>sovpadNaRukah.indexOf(p[0])!=-1);sbx.sort((b,a)=>a[1].ves-b[1].ves);
 if(sbx[0][0].ves>=sbv[0]){sovpadNaRukah[0]=sbx[0][0];log(sbx[0][0].n+' sbx[0][0]');kartu_naKon();return;}};
-K=sbv[0];sovpadNaRukah[0]=K;log(K.n+' mmm[0]');kartu_naKon();return;}
-else{sovpadNaRukah.sort((b,a)=>a.ves-b.ves);log(' sovpadNaRukah[0]');kartu_naKon();return;}}};
- 
+K=sbv[0];sovpadNaRukah[0]=K;log(K.n+' mmm[0]');kartu_naKon();return;}};
+
+sovpadNaRukah.sort((b,a)=>a.ves-b.ves);log(' sovpadNaRukah[0]');kartu_naKon();return;
 
  log('не вышло');
 

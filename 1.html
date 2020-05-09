@@ -347,45 +347,14 @@ mast=[];mast.push(pi,ch,kr,bu);mast.sort((b,a)=>a.length-b.length);nuznMast=mast
 arl=mast.filter(i=>(i.length==mast[0].length)&&(i!=mast[0]))
 if(arl.length){arl.push(mast[0]);asq=[];for(a of arl){asq.push(a.reduce((t,i)=>t+i.ves,0))}
 nuznMast=arl[asq.indexOf(Math.max(...asq))][0].m};
+
+//bv=[...kartyIgrokov[hodit_igrok]].sort((b,a)=>a.ves-b.ves)[0].ves;
+if (kartyIgrokov[hodit_igrok].length==2 && (r=kartyIgrokov[hodit_igrok].find(i=>i.m!='пики'))){nuznMast=r.m;}
+
+//if (kartyIgrokov[hodit_igrok].length==2){nuznMast=kartyIgrokov[hodit_igrok].find(i=>i).m}
+
+if (kartyIgrokov[hodit_igrok].length==1 && kartyIgrokov[hodit_igrok][0].n=='дама пики'){nuznMast=kon.m}
 zamenennayadama={};zamenennayadama.n='дама ' +nuznMast;rk(zamenennayadama,0)};
-
-
-function zakaz_masty2(){
-fsbo=[];
-for(var dost of kartyIgrokov[hodit_igrok]){fsbo.push(dost.ochki)};
-var sbo=getMaxOfArray(fsbo);
-//самое большое очко в картах игрока
-for(var dost of kartyIgrokov[hodit_igrok]){if (sbo==3 && dost.d=='девять'&&dost.m!='пики'){stmast=dost.m};break;};
-//если самое большое очко у дамы - берется масть девятки (верхней), но не пики
-for(var dost of kartyIgrokov[hodit_igrok]){if (kartyIgrokov[hodit_igrok].length==2 && dost.m!='пики'){stmast=dost.m};break;};
-//ЕСЛИ У ИГРОКА ВСЕГО ДВЕ КАРТЫ -берется масть которая не пики
-for(var dost of kartyIgrokov[hodit_igrok]){if (sbo==3 && dost.d=='девять' ){stmast=dost.m};break;};
-//если самое большое очко у дамы - берется масть девятки (верхней)
-
-if (kartyIgrokov[hodit_igrok].length==1 && kartyIgrokov[hodit_igrok][0].d=='дама'){stmast=kartyIgrokov[hodit_igrok][0].m};
-//ЕСЛИ У ИГРОКА ВСЕГО дама - её масть  и берется.
-
-
-if(stmast=='пики'&&(kartyIgrokov[hodit_igrok].filter(i=>i.d!='дама'&&i.m!='пики').length>=kartyIgrokov[hodit_igrok].filter(i=>i.d!='дама'&&i.m=='пики').length)&&!kartyIgrokov[hodit_igrok].find(i=>i.n=='король пики'))stmast=kartyIgrokov[hodit_igrok].find(i=>i.d!='дама'&&i.m!='пики').m;
-//если не-пикей больше чем пикей и нет короля пики - берется верхняя масть не пики
-
-if(kartyIgrokov[hodit_igrok].length<4&&kartyIgrokov[hodit_igrok].find(i=>i.d=='шесть'||i.d=='семь'))stmast=kartyIgrokov[hodit_igrok].find(i=>i.d=='шесть'||i.d=='семь').m;
-//если у игрока меньше четырех карт, и в картах есть шесть или семь (верхняя), беерется масть шесть или семь(верхняя),
-
-postroyka_variaciy();vesa=[];for (y=0; y<kartyIgrokov[hodit_igrok].length; y++){vesa.push(kartyIgrokov[hodit_igrok][y].ves)};
-var SbVES=getMaxOfArray(vesa);
-//полчаются веса из постройки вариаций - находится верний самый большой вес
-
-//if(!kartyIgrokov[hodit_igrok].find(i=>i.d=='дама')){stmast=kartyIgrokov[hodit_igrok][vesa.indexOf(SbVES)].m;};
-// если кроме выложеной на кон дамы в картах игрока нет ещё дамы, берется масть карты с самым большим весом.
-
-//если карта однв
-if (kartyIgrokov[hodit_igrok].length==1){stmast=kartyIgrokov[hodit_igrok][0].m};
-//если всегод одна карта то ее масть берется
-
-//на кону рисуется нужная масть
-zamenennayadama={};nuznMast=stmast;zamenennayadama.n='дама ' +stmast;rk(zamenennayadama,0)};
-
 
 function smena_igroka(){
 
@@ -460,100 +429,16 @@ if(mmm[mmm.length-1].length){sbv=[];for(m of mmm[mmm.length-1]){sbv.push(m[0])};
 if(sbv.filter(i=>(i.ves==sbv[0].ves)&&(i!=sbv[0])).length){
 sbx=mmm[0].filter(p=>sovpadNaRukah.indexOf(p[0])!=-1);sbx.sort((b,a)=>a[1].ves-b[1].ves);
 if(sbx[0][0].ves>=sbv[0]){sovpadNaRukah[0]=sbx[0][0];log(sbx[0][0].n+' sbx[0][0]');kartu_naKon();return;}};
-K=sbv[0];sovpadNaRukah[0]=K;log(K.n+' mmm[0]');kartu_naKon();return;}};
+if(kolichestvoIgrokov==2){K=sbv[0];sovpadNaRukah[0]=K;log(K.n+' первая карта самой длинной цепи');kartu_naKon();return;}}};
 
 sovpadNaRukah.sort((b,a)=>a.ves-b.ves);log(' sovpadNaRukah[0]');kartu_naKon();return;
 
  log('не вышло');
 
-//if (iom.length){ioi=iom.filter(i=>i[0].pr==true);sioi=ioi;}
-
-//if (ioi.length){ioi=ioi.filter(i=>i[1].pr==true);}
-
-
-
-
-//if (iom.length){var dsdc=iom[iom.length-1].length;ioi=iom.filter(i=>i.length==dsdc);sioi=ioi;
-//for(u=0;u<dsdc;u++){oio=ioi.filter(i=>i[u].pr==true);if(!oio.length){break;}else{ioi=oio}}};
-//if(sioi!=ioi||ioi.length&&ioi[0][0].pr)K=ioi[0][0];
-
-//if (iom.length){ioi=iom.filter(i=>i[0].pr==true);sioi=ioi;var dsdc=ioi[ioi.length-1].length-2;
-//for(u=0;;u++){oio=ioi.filter(i=>i[u].pr==true);if(!oio.length){break;}else{ioi=oio}}};
-//if(sioi!=ioi||ioi.length&&ioi[0][0].pr)K=ioi[0][0];
-
-
-//попорядку ??????????????
-//for (s of sovpadNaRukah){
-//switch (s.d) {
- // case 'девять':K=s;break;
- // case 'семь':K=s;break;
- // case 'шесть':K=s;break;
- // case 'туз':K=s;break;
- // case 'десять':K=s;break;
- // case 'восемь':K=s;break;
- // case 'король':K=s;break;
- // case 'валет':K=s;break;
- // case 'дама':K=s;break;
-// }};
-
- //sovpadNaRukah[0]=K;kartu_naKon();return;
-//sovpadNaRukah[0]=piom[0][0];kartu_naKon();log('piom по очам');}
-//sovpadNaRukah[0]=sovpadNaRukah[vesa.indexOf(SbVES)];
-//kartu_naKon();
-
-
-
 }
 
 function log(x){console.log(x);};
-
-function postroyka_logiki(){
-
-
-var massivOchey=[];var Samoebolshoeochko=0; 
-for (y=0; y<sovpadNaRukah.length; y++){massivOchey.push(sovpadNaRukah[y].ochki)}; 
-Samoebolshoeochko=getMaxOfArray(massivOchey);
-var indeksochka=-1;
-for (i=0; i<massivOchey.length; i++){indeksochka=massivOchey.indexOf(Samoebolshoeochko,indeksochka+1);
-if (indeksochka!=-1){sovpadNaRukah[indeksochka].ves+=3; log(sovpadNaRukah[indeksochka].n+ 'Samoebolshoeochko ves+3');}
-else{i=massivOchey.length};}
-//веса для специальных карт
-	
-
-if 	(kartyIgrokov[sled_igrok()].length==1){
-for (y=0; y<sovpadNaRukah.length; y++){
-if(sovpadNaRukah[y].n=='дама пики'){sovpadNaRukah[y].ves-=5;log('св 2 дама пики -5 ')}
-if(sovpadNaRukah[y].n=='король пики'){sovpadNaRukah[y].ves+=40;log('св 2 король пики +40')}
-switch (sovpadNaRukah[y].ochki) {
-  case 3:sovpadNaRukah[y].ves-=5;break;log('св 2 дама -5');
-  case 6:sovpadNaRukah[y].ves+=40;break;log('св 2 шесть +40');
-  case 7:sovpadNaRukah[y].ves+=40;break;log('св 2 семь +40');
-  
-  case 10:sovpadNaRukah[y].ves+=10;break;log('св 2 10 +10');
-  case 11:sovpadNaRukah[y].ves+=20;break;log('св 2 туз +20');
-}}};
-//if(sovpadNaRukah.find(i=>i.d=='девять')){
-//if(iom.find(i=>i[0].d=='девять'&&i[i.length-1].d!='девять'))
-
-
-
-	postroyka_variaciy();
-//if (sovpadNaRukah.length==2&&kolichestvoIgrokov==2&&sovpadNaRukah.find(i=>i.d=='туз'||i.d=='туз'||
-	proverka_sovpadeniy();
-			vesa=[];
-			for (y=0; y<sovpadNaRukah.length; y++){vesa.push(sovpadNaRukah[y].ves)};
-			var SbVES=getMaxOfArray(vesa);			
-			document.getElementById(`d`).innerHTML = "";
-			csl (kon.n);
-			for(var k of kartyIgrokov[hodit_igrok]){csl(k.n +' '+ k.ves)};
-			sovpadNaRukah[0]=sovpadNaRukah[vesa.indexOf(SbVES)];
-			kartu_naKon();
-				
-					
-															
-															
-															
-};//конец функции логики						
+						
 ct();peretus(cards);razd();
 </script>
 </body>

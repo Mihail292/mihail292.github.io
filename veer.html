@@ -7,8 +7,8 @@
 
 .pole{
  position:fixed;
-width:200px;
-height:350px;
+width:50px;
+height:100px;
 border: 4px double black;
   border-radius:5%;
   bottom:40%;
@@ -75,9 +75,9 @@ function rot (e,g){e.rot+=g; e.style.transform=`rotate(${e.rot}deg)`}
 
 function ty(e,y){e.py+=y;e.style.bottom=e.py+'px'}
 function tx(e,x){e.px+=x;e.style.left=e.px+'px'}
-//itc=0;
-//interval=setInterval(()=>{dk();itc++;if(itc>=36)clearInterval(interval)},50);
-dk();dk();dk();dk();dk();
+itc=0;
+interval=setInterval(()=>{dk();itc++;if(itc>=36)clearInterval(interval)},100);
+
 //pole[0].style.width=`${pole[0].getBoundingClientRect().height/20}px`
 //# sourceURL=userscript.js
 </script>

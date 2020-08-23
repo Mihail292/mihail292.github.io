@@ -23,6 +23,7 @@ border: 10px solid white;
 box-sizing: border-box;
 background-origin: border-box;
 
+box-shadow: 0 0 10px rgba(0,0,0,0.5);
 border-radius:5%;
 
 left:00px;
@@ -87,7 +88,7 @@ var canvas = document.createElement("CANVAS");var wh=5;var rX=340;var rY=525;var
 canvas.width=1028/wh;canvas.height=1586/wh;var ctxk = canvas.getContext('2d');
 var kartyIgrokov=[];var kon;var nk=0;var cards=[];var coloda=[];var sovpadNaRukah=[];var img=[];var loadImg=0;
 var K={};snbd=[];snb=[];
-var kolichestvoIgrokov=1,po_skolko_kart=36;index_karty=0;hodit_igrok=0;ochkiigrokow=[];var nH=false;
+var kolichestvoIgrokov=1,po_skolko_kart=5;index_karty=0;hodit_igrok=0;ochkiigrokow=[];var nH=false;
 for (var i=1; i<7; i++){img[i] = document.createElement("IMG");img[i].src = `./карты/${i}.jpg`;
 img[i].onload=function(){loadImg++;if(loadImg==6){rubashka();}}};
 function rubashka() {
@@ -219,7 +220,7 @@ switch (krt.n) {
 
   case "восемь черви":ofX=rX*0;ofY=rY*2;risuem(img[2],canva);break;
   case "восемь пики":ofX=rX*1;ofY=rY*2;risuem(img[2],canva);break;
-  case "восемь бубны":ofX=rX*2;ofY=rY*2+35;risuem(img[2],canva);break;
+  case "восемь бубны":ofX=rX*2;ofY=rY*2+10;risuem(img[2],canva);break;
   case "восемь крести":ofX=rX*0;ofY=rY*0;risuem(img[3],canva);break;
 
   case "девять бубны":ofX=rX*1;ofY=rY*0;risuem(img[3],canva);break;
@@ -229,7 +230,7 @@ switch (krt.n) {
 
   case "десять бубны":ofX=rX*2;ofY=rY*1;risuem(img[3],canva);break;
   case "десять пики":ofX=rX*0;ofY=rY*2;risuem(img[3],canva);break;
-  case "десять черви":ofX=rX*1;ofY=rY*2;risuem(img[3],canva);break;
+  case "десять черви":ofX=rX*1-5;ofY=rY*2;risuem(img[3],canva);break;
   case "десять крести":ofX=rX*2;ofY=rY*2;risuem(img[3],canva);break
 
   case "валет пики":ofX=rX*0;ofY=rY*0;risuem(img[4],canva);break;
@@ -240,7 +241,7 @@ switch (krt.n) {
   case "дама крести":ofX=rX*1-25;ofY=rY*1-25;risuem(img[4],canva);break;
   case "дама черви":ofX=rX*2-25;ofY=rY*1-25;risuem(img[4],canva);break;
   case "дама пики":ofX=rX*0-5;ofY=rY*2-35;risuem(img[4],canva);break;
-  case "дама бубны":ofX=rX*1-25;ofY=rY*2-35;risuem(img[4],canva);break
+  case "дама бубны":ofX=rX*1-15;ofY=rY*2-35;risuem(img[4],canva);break
 
   case "король крести":ofX=rX*2-25;ofY=rY*2-35;risuem(img[4],canva);break;
   case "король черви":ofX=rX*0;ofY=rY*0;risuem(img[5],canva);break;
@@ -251,7 +252,7 @@ switch (krt.n) {
   case "туз крести":ofX=rX*1;ofY=rY*1;risuem(img[5],canva);break;
   case "туз черви":ofX=rX*2;ofY=rY*1;risuem(img[5],canva);break;
   case "туз пики":ofX=rX*0;ofY=rY*2;risuem(img[5],canva);break
-  case "туз бубны":ofX=rX*1;ofY=rY*2;risuem(img[5],canva);break
+  case "туз бубны":ofX=rX*1;ofY=rY*2+10;risuem(img[5],canva);break
 
   };
 };
@@ -302,8 +303,8 @@ function veer(e,s){
 	ty(s,-12);
 	tx(s,-18);
 
-	if(ss==12){ty(stol[0],2.5);ty(stol[1],0);}//ty(stol[0],3);rot(stol[0],-0.4);}
-	if(ss==24){ty(stol[0],4.5);ty(stol[1],4.5);}
+	if(ss==12){ty(stol[0],3);ty(stol[1],0);}//ty(stol[0],3);rot(stol[0],-0.4);}
+	if(ss==24){ty(stol[0],6);ty(stol[1],5);}
 };
 
 
@@ -355,6 +356,7 @@ function zatem(e){//e.path[0].style.backgroundColor='#FF7373';
 e.path[0].removeEventListener('mousemove', onMouseMove);
 for (s of stol){s.addEventListener('mouseout',zatem,true);s.addEventListener('mouseover',osvet,true)};
 if (veerok[3])veerok[3].remove();
+console.log(e);
 if(e.path[0].style.zIndex<12){stol[0].append(e.path[0]);return};
 if(e.path[0].style.zIndex<24){stol[1].append(e.path[0]);return};
 stol[2].append(e.path[0]);

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>Текстовое поле</title>
+  <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-app.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-storage.js"></script>
+  <script language="JavaScript">
+
+var firebaseConfig = {
+  apiKey: "AIzaSyCB7-zaSIttCWPdhOEOjn83RD79thKULR4",
+  authDomain: "houndredone-63426.firebaseapp.com",
+  databaseURL: "https://houndredone-63426.firebaseio.com",
+  projectId: "houndredone-63426",
+  storageBucket: "houndredone-63426.appspot.com",
+  messagingSenderId: "955812981428",
+  appId: "1:955812981428:web:a748e9d46f3dd88d4cc5e1",
+  measurementId: "G-J1G01LTK1Q"
+};
+var dp=firebase.initializeApp(firebaseConfig);
+
+var storageRef = firebase.storage().ref();
+var f,t;
+function chang(){f=document.getElementsByName('file')[0].files[0];
+ut=storageRef.child(`im/${f.name}`).put(f);
+}
+
+function getData() {
+t=document.forms[0].textField.value;
+storageRef.child(`im/${t.slice(0,24)}.txt`).putString(t);
+document.forms[0].textField.value='';
+
+}
+</script>
+ </head>
+ <body>
+ <form>
+<textarea name="textField" cols="35" rows="7"></textarea>
+<p><input type=button value="Отправить сообщение" onClick="getData()"></p>
+</form>
+ <input name="file" type=file onChange='chang()'/>
+
+ </body>
+</html>

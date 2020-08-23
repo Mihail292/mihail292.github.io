@@ -1,0 +1,41 @@
+
+var onDisconnectRef = presenceRef.onDisconnect();
+onDisconnectRef.set('I disconnected');
+// some time later when we change our minds
+onDisconnectRef.cancel();
+
+
+
+
+<script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-database.js"></script>
+
+var adaRankRef = firebase.database().ref('users/ada/rank');
+adaRankRef.transaction(function(currentRank) {
+  // If users/ada/rank has never been set, currentRank will be `null`.
+  return currentRank + 1;
+});
+
+var adaRankRef = firebase.database().ref('users/ada/rank');
+
+gasts.transaction(function(currentRank) {
+  return currentRank + 1;
+});
+
+function toggleStar(postRef, uid) {
+  postRef.transaction(function(post) {
+    if (post) {
+      if (post.stars && post.stars[uid]) {
+        post.starCount--;
+        post.stars[uid] = null;
+      } else {
+        post.starCount++;
+        if (!post.stars) {
+          post.stars = {};
+        }
+        post.stars[uid] = true;
+      }
+    }
+    return post;
+  });
+}
+con.onDisconnect().remove();

@@ -11,7 +11,17 @@
   <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-app.js"></script>
 
   <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-storage.js"></script>
-  <script language="JavaScript">
+ 
+ </head>
+ <body>
+ <div id=359 style="background-image: url(./kka.jpg)">
+ <form>
+<textarea name="textField" cols="35" rows="7"></textarea>
+<p><input type=button value="Отправить сообщение" onClick="getData()"></p>
+</form>
+ <input name="file" type=file onChange='chang()'/>
+</div>
+ <script language="JavaScript">
 
 var firebaseConfig = {
   apiKey: "AIzaSyCB7-zaSIttCWPdhOEOjn83RD79thKULR4",
@@ -28,8 +38,13 @@ var dp=firebase.initializeApp(firebaseConfig);
 var storageRef = firebase.storage().ref();
 var f,t;
 
+const ert=document.getElementsByName('textField');
+ert[0].style.width='240px';
+ert[0].style.height='240px';
+ert[0].style.position='relative';
 
-
+ert[0].style.left='0.5%';
+ert[0].style.fontSize='24px';
 
 function chang(){f=document.getElementsByName('file')[0].files[0];
 ut=storageRef.child(`im/${f.name}`).put(f);
@@ -44,14 +59,8 @@ document.forms[0].textField.value='';
 
 
 </script>
- </head>
- <body>
- <div id=359 style="background-image: url(./kka.jpg)">
- <form>
-<textarea name="textField" cols="35" rows="7"></textarea>
-<p><input type=button value="Отправить сообщение" onClick="getData()"></p>
-</form>
- <input name="file" type=file onChange='chang()'/>
-</div>
+
+
+
  </body>
 </html>

@@ -119,28 +119,7 @@ qwe[0].style.backgroundColor='yellow';
 //document.forms[0].textField.value='';
 
 };
-notifyMe();
-function notifyMe() {
-  // Проверка поддержки браузером уведомлений
-  if (!("Notification" in window)) {
-    alert("This browser does not support desktop notification");
-  }
 
-  // Проверка разрешения на отправку уведомлений
-  else if (Notification.permission === "granted") {
-    // Если разрешено, то создаем уведомление
-   // var notification = new Notification("Hi there!");
-  }
-
-   else if (Notification.permission !== 'denied') {
-    Notification.requestPermission(function (permission) {
-      // Если пользователь разрешил, то создаем уведомление 
-      if (permission === "granted") {
-        //var notification = new Notification("Hi there!");
-      }
-    })}}
-    
-    interval=setTimeout(()=>{var notification = new Notification("Прошло 10000!")},10000);
    
 </script>
 

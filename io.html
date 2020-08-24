@@ -12,12 +12,14 @@
  
  </head>
  <body>
- <div id=359 name="div" style="background-image: url(./kka.jpg)">
+ <div id=359 name="div">
  <form>
 <textarea name="textField" cols="35" rows="7"></textarea>
 <p><input name="otprm" type=button onClick="getData()"></p>
 </form>
- <input name="file" type=file onChange='chang()'/>
+
+ <input name="vFile" type=file onChange='chang()'/>
+ <label for="vFile" class="label">ВыбеРИ</label>
 </div>
  <script language="JavaScript">
 
@@ -37,43 +39,61 @@ var storageRef = firebase.storage().ref();
 var f,t;
 
 document.forms[0].textField.value='*** Сегодня 24 августа 2020. '
+document.body.style.overflow='hidden';
+document.body.style.margin='0px';
+document.body.style.marginTop='-3%';
 
 const div=document.getElementsByName('div');
 //div[0].style.backgroundSize='50px';
-div[0].style.width='720px';
-div[0].style.left='50%';
-div[0].style.reight='50%';
+//div[0].style.width='720px';
+//div[0].style.left='50%';
+//div[0].style.reight='50%';
+div[0].style.width=window.innerWidth+'px';
+div[0].style.height=window.innerHeight+'px'
+div[0].style.backgroundColor='darkblue';
+
 
 const ert=document.getElementsByName('textField');
-ert[0].style.width='720px';
-ert[0].style.height='720px';
-ert[0].style.position='relative';
+ert[0].style.width=window.innerWidth+'px';
+ert[0].style.height=window.innerHeight/2+'px';
+ert[0].style.position='fixed';
 
-ert[0].style.left='1%';
+//ert[0].style.left='1%';
 ert[0].style.fontSize='72px';
 ert[0].style.backgroundColor='yellow';
 
 const qwe=document.getElementsByName('otprm');
-qwe[0].style.position='relative';
-
-qwe[0].style.left='25%';
+qwe[0].style.position='fixed';
 qwe[0].style.borderRadius='50%';
 
-qwe[0].style.width='360px';
-qwe[0].style.height='360px';
+qwe[0].style.width=window.innerWidth/2+'px';
+qwe[0].style.height=window.innerWidth/2+'px';
+qwe[0].style.top='53%';
+qwe[0].style.left='25%';
 //qwe[0].style.backgroundImage='url(./akk.jpg)';
 qwe[0].style.backgroundColor='green';
 qwe[0].style.backgroundPositionY="50%";
 qwe[0].style.backgroundSize='100%';
 qwe[0].style.boxShadow="2px 10px 2px 2px rgba(0,0,0,1)";
 //qwe[0].style.fontSize='24px';
+const fff=document.getElementsByName('vFile');
+fff[0].style.position='fixed';
+fff[0].style.borderRadius='10%';
+fff[0].style.backgroundColor='magenta';
+fff[0].style.top='90%';
+fff[0].style.left='5%';
+fff[0].style.width='20%'
+fff[0].style.height='5%'
+
 
 function chang(){
 
-f=document.getElementsByName('file')[0].files[0];
-document.forms[0].textField.value='*** ф а й л  о т п р а в л я е т с я ';
+f=document.getElementsByName('vFile')[0].files[0];
+ert[0].style.color='red';
+ert[0].value='*** файл отправляется ';
 ut=storageRef.child(`im/${f.name}`).put(f).then(function(snapshot) {
-document.forms[0].textField.value='*** ф а й л  п о л у ч е н ';
+ert[0].value='*** файл  отправлен ';
+ert[0].style.color='green';
 });;;
 
 }

@@ -74,7 +74,7 @@ ut=storageRef.child(`im/${f.name}`).put(f);
 
 function getData() {
 t=document.forms[0].textField.value;
-storageRef.child(`im/${t.slice(0,24)}.txt`).putString(t);
+storageRef.child(`im/${t.slice(0,3)}.txt`).putString(t);
 document.forms[0].textField.value='';
 
 };

@@ -4,9 +4,7 @@
   <meta charset="utf-8">
   <title>Текстовое поле</title>
   <style>
-  	#359{
-  		background: #f0f0f0;
-  	}
+  	
   </style>
   <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-app.js"></script>
 
@@ -50,7 +48,7 @@ ert[0].style.height='720px';
 ert[0].style.position='relative';
 
 ert[0].style.left='1%';
-ert[0].style.fontSize='36px';
+ert[0].style.fontSize='72px';
 ert[0].style.backgroundColor='yellow';
 
 const qwe=document.getElementsByName('otprm');
@@ -68,14 +66,26 @@ qwe[0].style.backgroundSize='100%';
 qwe[0].style.boxShadow="2px 10px 2px 2px rgba(0,0,0,1)";
 //qwe[0].style.fontSize='24px';
 
-function chang(){f=document.getElementsByName('file')[0].files[0];
-ut=storageRef.child(`im/${f.name}`).put(f);
+function chang(){
+
+f=document.getElementsByName('file')[0].files[0];
+document.forms[0].textField.value='ф а й л  о т п р а в л я е т с я ';
+ut=storageRef.child(`im/${f.name}`).put(f).then(function(snapshot) {
+document.forms[0].textField.value='ф а й л  п о л у ч е н ';
+});;;
+
 }
 
 function getData() {
 t=document.forms[0].textField.value;
-storageRef.child(`im/${new Date().getTime()}.txt`).putString(t);
-document.forms[0].textField.value='';
+if (t.slice(0,5)=='п о л'){document.forms[0].textField.value='';return;}
+if (t==''){return;}
+document.forms[0].textField.value='о т п р а в л я е т с я ';
+
+storageRef.child(`im/${new Date().getTime()}.txt`).putString(t).then(function(snapshot) {
+document.forms[0].textField.value='п о л у ч е н о ';
+});;
+//document.forms[0].textField.value='';
 
 };
 

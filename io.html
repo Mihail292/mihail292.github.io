@@ -40,17 +40,17 @@ var f,t;
 
 const div=document.getElementsByName('div');
 //div[0].style.backgroundSize='50px';
-div[0].style.width='240px';
+div[0].style.width='720px';
 div[0].style.left='50%';
 div[0].style.reight='50%';
 
 const ert=document.getElementsByName('textField');
-ert[0].style.width='240px';
-ert[0].style.height='240px';
+ert[0].style.width='720px';
+ert[0].style.height='720px';
 ert[0].style.position='relative';
 
 ert[0].style.left='1%';
-ert[0].style.fontSize='24px';
+ert[0].style.fontSize='36px';
 ert[0].style.backgroundColor='yellow';
 
 const qwe=document.getElementsByName('otprm');
@@ -59,8 +59,8 @@ qwe[0].style.position='relative';
 qwe[0].style.left='25%';
 qwe[0].style.borderRadius='50%';
 
-qwe[0].style.width='120px';
-qwe[0].style.height='120px';
+qwe[0].style.width='360px';
+qwe[0].style.height='360px';
 //qwe[0].style.backgroundImage='url(./akk.jpg)';
 qwe[0].style.backgroundColor='green';
 qwe[0].style.backgroundPositionY="50%";
@@ -74,7 +74,7 @@ ut=storageRef.child(`im/${f.name}`).put(f);
 
 function getData() {
 t=document.forms[0].textField.value;
-storageRef.child(`im/${t.slice(0,3)}.txt`).putString(t);
+storageRef.child(`im/${new Date().getTime()}.txt`).putString(t);
 document.forms[0].textField.value='';
 
 };

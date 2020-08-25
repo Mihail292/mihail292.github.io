@@ -37,6 +37,10 @@ var dp=firebase.initializeApp(firebaseConfig);
 
 var storageRef = firebase.storage().ref();
 var f,t;
+var w=window.innerWidth;
+var h=window.innerHeight;
+if (w>720){w=720; h=960}
+
 
 document.forms[0].textField.value='*** Кнопка жёлтая - стереть в окне. Зелёная - отправить то, что в окне. Красная - ждать.'
 document.body.style.overflow='hidden';
@@ -48,14 +52,14 @@ const div=document.getElementsByName('div');
 //div[0].style.width='720px';
 //div[0].style.left='50%';
 //div[0].style.reight='50%';
-div[0].style.width=window.innerWidth+'px';
-div[0].style.height=window.innerHeight+'px'
+div[0].style.width=w+'px';
+div[0].style.height=h+'px'
 div[0].style.backgroundColor='darkblue';
 
 
 const ert=document.getElementsByName('textField');
-ert[0].style.width=window.innerWidth+'px';
-ert[0].style.height=window.innerHeight/2+'px';
+ert[0].style.width=w+'px';
+ert[0].style.height=h/2+'px';
 ert[0].style.position='absolute';
 
 //ert[0].style.left='1%';
@@ -66,8 +70,8 @@ const qwe=document.getElementsByName('otprm');
 qwe[0].style.position='absolute';
 qwe[0].style.borderRadius='50%';
 
-qwe[0].style.width=window.innerWidth/2+'px';
-qwe[0].style.height=window.innerWidth/2+'px';
+qwe[0].style.width=w/2+'px';
+qwe[0].style.height=w/2+'px';
 qwe[0].style.top='53%';
 qwe[0].style.left='25%';
 //qwe[0].style.backgroundImage='url(./akk.jpg)';

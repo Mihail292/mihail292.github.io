@@ -38,7 +38,7 @@ var dp=firebase.initializeApp(firebaseConfig);
 var storageRef = firebase.storage().ref();
 var f,t;
 
-document.forms[0].textField.value='*** Сегодня 25 августа 2020. '
+document.forms[0].textField.value='*** Сегодня 25 сентября 2020. '
 document.body.style.overflow='hidden';
 document.body.style.margin='0px';
 document.body.style.marginTop='-3%';
@@ -106,7 +106,7 @@ t=document.forms[0].textField.value;
 
 if (t==''){return;}
 if (qwe[0].style.backgroundColor=='red'){return;}
-if (qwe[0].style.backgroundColor=='yellow'){ert[0].style.color='black';}
+if (qwe[0].style.backgroundColor=='yellow'){ert[0].style.color='black';ert[0].focus();}
 if (t.slice(0,3)=='***'){document.forms[0].textField.value='';qwe[0].style.backgroundColor='green';return;}
 document.forms[0].textField.value='*** о т п р а в л я е т с я ';
 qwe[0].style.backgroundColor='red';

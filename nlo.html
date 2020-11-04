@@ -9,13 +9,24 @@
 				margin: 0px;
 				overflow: hidden;
 			};
+			.inf{
+				position: absolute;
+				width: 100px;
+				height: 100px;
+				z-index: 100;
+				background-color: red;
+			}
 		</style>
 	</head>
 	<body>
 
 		
 
-	</div>
+	<div id="hhh" style="position:absolute;left:50%;
+    top:50%;margin-left:-59px; 
+    margin-top:-3/2px;font-family:arial;font-size:30px;color:#ffff00;">+<span id="health">100</span></div>
+
+
   <script src="/three.min.js"></script>
   <script src="/OrbitControls.js"></script>
 	
@@ -92,7 +103,7 @@ plane2 = new THREE.Mesh( geometry2, material2 );
 scene.add( plane2 );
 //plane.position.z=-10;plane.position.y=5;
 lights= new THREE.SpotLight();
-lights.position.z=-15;
+lights.position.z=-15;lights.position.y=11;
 
 scene.add(lights);
 camera.position.z=-70;

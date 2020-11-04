@@ -52,11 +52,13 @@ document.onload=init();
   renderer.setPixelRatio( window.devicePixelRatio );
   renderer.setSize( window.innerWidth, window.innerHeight );
   document.body.appendChild( renderer.domElement );
-const composer = new EffectComposer( renderer );
-const renderPass = new RenderPass( scene, camera );
+
+
+const composer = new THREE.EffectComposer( renderer );
+const renderPass = new THREE.RenderPass( scene, camera );
 composer.addPass( renderPass );
 
-const luminosityPass = new ShaderPass( LuminosityShader );
+const luminosityPass = new THREE.ShaderPass( LuminosityShader );
 composer.addPass( luminosityPass );
 
   controls = new THREE.OrbitControls( camera, renderer.domElement );

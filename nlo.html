@@ -37,7 +37,7 @@
 
 
 var scene;
-
+const texture = new THREE.TextureLoader().load( '3.jpg' );
 function textureFilter(a) {
 a.minFilter = THREE.LinearFilter;
 a.magFilter = THREE.LinearFilter;
@@ -51,7 +51,7 @@ document.onload=init();
   
 	
 
-  scene = new THREE.Scene();
+  scene = new THREE.Scene();scene.background=texture;
 
 
 

@@ -18,9 +18,10 @@
 	</div>
   <script src="/three.min.js"></script>
   <script src="/OrbitControls.js"></script>
+	
 	<script src="/EffectComposer.js"></script>
-  <script src="/GlitchPass.js"></script>
-<script src="/UnrealBloomPass.js"></script>
+  <script src="/LuminosityShader.js"></script>
+<script src="/ShaderPass.js"></script>
 
 
   <script>
@@ -55,8 +56,8 @@ const composer = new EffectComposer( renderer );
 const renderPass = new RenderPass( scene, camera );
 composer.addPass( renderPass );
 
-const glitchPass = new GlitchPass();
-composer.addPass( glitchPass );
+const luminosityPass = new ShaderPass( LuminosityShader );
+composer.addPass( luminosityPass );
 
   controls = new THREE.OrbitControls( camera, renderer.domElement );
   controls.zoomSpeed=3;

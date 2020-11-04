@@ -35,7 +35,7 @@ a.magFilter = THREE.LinearFilter;
 a.format = THREE.RGBFormat;
 }
 
-init();
+document.onload=init();
   function init() {
 
   camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 0.1, 50000);

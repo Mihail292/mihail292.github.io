@@ -146,7 +146,7 @@ var suda=false;
     
   if(tuda){plane2.position.set(curveObject.geometry.vertices[t].x,curveObject.geometry.vertices[t].y,curveObject.geometry.vertices[t].z);t++;if(t==50){tuda=false;suda=true}};
   if(suda){plane2.position.set(curveObject.geometry.vertices[t].x,curveObject.geometry.vertices[t].y,curveObject.geometry.vertices[t].z);t--;if(t==0){suda=false;tuda=true}}
-    //renderer.render( scene, camera );
+    renderer.render( scene, camera );
     composer.render();
     //const composer = new EffectComposer( renderer );
 

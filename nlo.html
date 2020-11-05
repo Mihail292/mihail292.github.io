@@ -105,7 +105,44 @@ plane.material.emissive.setRGB(0.45,0.67,0.75);
 plane.material.emissiveIntensity=1.5;
 plane2.material.emissiveIntensity=1;plane2.material.emissive.setRGB(0.46,0.6,0.77);
 
+const audioListener = new THREE.AudioListener();
 
+// add the listener to the camera
+camera.add( audioListener );
+
+// instantiate audio object
+const oceanAmbientSound = new THREE.Audio( audioListener );
+
+// add the audio object to the scene
+scene.add( oceanAmbientSound );
+
+// instantiate a loader
+const loader = new THREE.AudioLoader();
+
+// load a resource
+loader.load(
+	// resource URL
+	'https://s29vla.storage.yandex.net/get-mp3/3dab689b62aa464a5376ee3344ba9776/0005b352c125ac48/rmusic/U2FsdGVkX1_3BgXbRUc8LaLTYaeaDtr6OmmXY5ALb8Ukd_CPhjJRUcsufoTqXH4K2AKqrU2GfNmQylVGf7LiSBCeQJR7AdmTTOWdODqzwMs/d5b03d1ededb1cd8cedc228e0d46f8ef35749dade30d6b0b2b421562502358ae?track-id=5400361&play=false',
+
+	// onLoad callback
+	function ( audioBuffer ) {
+		// set the audio object buffer to the loaded object
+		oceanAmbientSound.setBuffer( audioBuffer );
+
+		// play the audio
+		oceanAmbientSound.play();
+	},
+
+	// onProgress callback
+	function ( xhr ) {
+		console.log( (xhr.loaded / xhr.total * 100) + '% loaded' );
+	},
+
+	// onError callback
+	function ( err ) {
+		console.log( 'An error happened' );
+	}
+);
 
 
 }

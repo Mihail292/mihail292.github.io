@@ -6,43 +6,50 @@
   <style>
   body{
   	background-color:#3366CC;
-     display: flex;
-  justify-content: center;
+    
+    margin: 0 0 0 0;
   
   }
+
   .telo{
   	position: absolute;
-  	height: 250px;
-  	width: 240px;
+    
+  	height: 640px;
+  	width: 640px;
   	background-image: url('/17.png');
-  	background-size: cover;
-  	position: absolute;
+  	background-size: contain;
+    background-repeat: no-repeat;
+  	min-width: 640px;
+    min-height: 640px;
+    bottom: 0px;
+    
    
- 
  
   }
   
   .textField{
-  	position: absolute;
-  	margin: 0px 0px 0px 0px;
+  	
+  	margin: 20% 0 0 25%;
   	padding: 0px;
   	resize: none;
-  	height: 140px;
-  	width: 120px;
-  	top: 40px;
-  	left: 60px;
+  	height: 55%;
+  	width: 50%;
+  
   	overflow: hidden;
   	background-color: transparent;
   	border: none;
-	outline: none;
+	  outline: none;
   }
 
   </style>
  </head>
  <body>
- <div class="telo"><textarea name='ta' class="textField" cols="35" rows="7"></textarea></div>
+ <div class="telo"><textarea name='ta' class="textField"></textarea></div>
 
 <script type="text/javascript">
+const telo=document.getElementsByClassName('telo');
+var rect = telo[0].getBoundingClientRect();
+telo[0].style.left=window.innerWidth/2-rect.width/2+'px';
 
 </script>
  </body>

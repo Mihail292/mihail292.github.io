@@ -11,6 +11,11 @@
   
   }
 
+  @font-face {
+  font-family: rusja01;
+  src: url('./3681.ttf');
+}
+
   .telo{
   	position: absolute;
     
@@ -29,23 +34,36 @@
   }
   
   .textField{
-  	
+  	font-family: rusja01;
   	margin: 20% 0 0 25%;
   	padding: 0px;
   	resize: none;
   	height: 55%;
   	width: 50%;
-    font-size: 50px;
+    font-size: 100px;
   	overflow: hidden;
   	background-color: transparent;
   	border: none;
 	  outline: none;
   }
 
+  .nadpis{
+    position: absolute;
+    
+    width: 100%;
+    font-size: 60px;
+    overflow: hidden;
+    text-align: center;
+    font-family: rusja01;
+  }
+
   </style>
  </head>
  <body>
- <div class="telo"><textarea name='ta' class="textField"></textarea></div>
+ <div class="telo">
+<div class="nadpis" style="top: 7%">Отказать</div>
+<div class="nadpis" style="top: 79%">Отослать</div>
+  <textarea name='ta' class="textField"></textarea></div>
 
 <script type="text/javascript">
 const telo=document.getElementsByClassName('telo');

@@ -28,9 +28,26 @@
   	min-width: 640px;
     min-height: 640px;
     top:0%;
-    
    
- 
+  }
+   .zamech{
+    position: absolute;
+
+    font-size: 60px;
+    overflow: hidden;
+    text-align: center;
+    font-family: rusja01;
+    width: 100%;
+    height: 0%;
+    background-image: url('/17.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-width: 640px;
+    max-width: 1000px;
+    margin: auto;
+    max-height: 160px;
+    top:0%;
+   
   }
   
   .textField{
@@ -40,7 +57,7 @@
   	resize: none;
   	height: 55%;
   	width: 50%;
-    font-size: 100px;
+    font-size: 77px;
   	overflow: hidden;
   	background-color: transparent;
   	border: none;
@@ -60,17 +77,31 @@
   </style>
  </head>
  <body>
+  <div class="zamech"><div style="margin-top: 70px" onclick="otkr()">Замечание</div></div>
  <div class="telo">
-<div class="nadpis" style="top: 7%">Отказать</div>
+<div class="nadpis" style="top: 7%" onclick="zakr()">Отказать</div>
 <div class="nadpis" style="top: 79%">Отослать</div>
   <textarea name='ta' class="textField"></textarea></div>
 
 <script type="text/javascript">
 const telo=document.getElementsByClassName('telo');
-var rect = telo[0].getBoundingClientRect();
-telo[0].style.left=window.innerWidth/2-rect.width/2+'px';
-telo[0].style.height=rect.width+'px';
-
+const zamech=document.getElementsByClassName('zamech');
+vyr(telo[0]);
+vyr(zamech[0]);
+zakr();
+function vyr(e){
+  var rect = e.getBoundingClientRect();
+e.style.left=window.innerWidth/2-rect.width/2+'px';
+e.style.height=rect.width+'px';
+}
+function otkr() {
+  telo[0].hidden=false;
+zamech[0].hidden=true;
+}
+function zakr() {
+  telo[0].hidden=true;
+zamech[0].hidden=false;
+}
 </script>
  </body>
 </html>

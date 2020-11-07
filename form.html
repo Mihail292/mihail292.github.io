@@ -96,15 +96,23 @@
  <div class="telo">
 <div class="nadpis" style="top: 7%" onclick="zakr()">Отказать</div>
 <div class="nadpis" style="top: 79%">Отослать</div>
-  <textarea name='ta' class="textField"></textarea></div>
+  <textarea id='tf' class="textField"></textarea></div>
 
 <script type="text/javascript">
 const telo=document.getElementsByClassName('telo');
 const svitok=telo[0];
 const zamech=document.getElementsByClassName('zamech');
+const tf= document.getElementById('tf');
+
 vyr(svitok);
 vyr(zamech[0]);
 zakr();
+
+window.onresize=function(){
+vyr(svitok);
+vyr(zamech[0]);
+}
+
 function vyr(e){
   var rect = e.getBoundingClientRect();
 e.style.left=window.innerWidth/2-rect.width/2+'px';
@@ -113,7 +121,7 @@ e.style.height=rect.width+'px';
 function otkr() {
   var rect = zamech[0].getBoundingClientRect();
 
-  
+  tf.autofocus=true;
   svitok.hidden=false;
 zamech[0].hidden=true;
 svitok.className='pods';vyr(svitok);

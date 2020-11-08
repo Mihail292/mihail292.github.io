@@ -32,7 +32,7 @@ document.onload=init();
   
 	
 
-  scene = new THREE.Scene();scene.background=texture;
+  scene = new THREE.Scene();//scene.background=texture;
 
 
 
@@ -120,7 +120,7 @@ loader.load(
 		oceanAmbientSound.setBuffer( audioBuffer );
 
 		// play the audio
-		oceanAmbientSound.play();
+		//oceanAmbientSound.play();
 	},
 
 	// onProgress callback

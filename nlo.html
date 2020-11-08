@@ -90,15 +90,15 @@
     font-family: rusja01;
   }
 		</style>
-<script src="/three.min.js"></script>
-<script src="/OrbitControls.js"></script>
+
 <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-database.js"></script>
-
+<script src="/three.min.js"></script>
+<script src="/OrbitControls.js"></script>
 	</head>
 	<body>
 <div class="zamech"><div style="margin-top: 70px" onclick="otkr()">Замечание</div></div>
-<div class="telo">
+<div class="telo" hidden>
 <div class="nadpis" style="top: 7%" onclick="zakr()">Отказать</div>
 <div class="nadpis" style="top: 79%" onclick="upd()">Отослать</div>
 <textarea id='tf' class="textField"></textarea></div>

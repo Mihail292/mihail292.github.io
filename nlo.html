@@ -84,7 +84,8 @@ plane2 = new THREE.Mesh( geometry2, material2 );
 scene.add( plane2 );
 //plane.position.z=-10;plane.position.y=5;
 lights= new THREE.SpotLight();
-lights.position.z=-15;lights.position.y=11;
+lights.position.z=-15;
+lights.color.setRGB(0,6,2);
 
 scene.add(lights);
 camera.position.z=-70;

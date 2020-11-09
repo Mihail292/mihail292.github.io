@@ -1,147 +1,158 @@
 <!DOCTYPE html>
-<html lang="en">
-	<head>
-		<title>nlo</title>
-		<meta charset="utf-8">
-		 <link rel="stylesheet" href="/mi.css">
-		
-			
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>form</title>
+  <style>
+  body{
+  	background-color:#3366CC;
+    
+    margin: 0 0 0 0;
+  
+  }
 
-<script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-database.js"></script>
-<script src="/three.min.js"></script>
-<script src="/OrbitControls.js"></script>
-	</head>
-	<body>
-<div class="zamech"><div style="margin-top: 70px" onclick="otkr()">Замечание</div></div>
-<div class="telo" hidden>
+  @font-face {
+  font-family: rusja01;
+  src: url('./3681.ttf');
+}
+ .pods{
+    position: absolute;
+    
+    
+    width: 100%;
+    height: 50%;
+    background-image: url('/17.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-width: 640px;
+    max-width: 1000px;
+    margin: auto;
+    max-height: 1000px;
+    top:0%;
+   
+  }
+  .telo{
+  	position: absolute;
+    
+  	
+  	width: 100%;
+    height: 50%;
+  	background-image: url('/17.png');
+  	background-size: cover;
+    background-repeat: no-repeat;
+  	min-width: 640px;
+    min-height: 640px;
+    top:0%;
+   
+  }
+   .zamech{
+    position: absolute;
+
+    font-size: 60px;
+    overflow: hidden;
+    text-align: center;
+    font-family: rusja01;
+    width: 100%;
+    height: 0%;
+    background-image: url('/17.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-width: 640px;
+    max-width: 1000px;
+    margin: auto;
+    max-height: 160px;
+    top:0%;
+   
+  }
+  
+  .textField{
+  	font-family: rusja01;
+  	margin: 20% 0 0 25%;
+  	padding: 0px;
+  	resize: none;
+  	height: 55%;
+  	width: 50%;
+    font-size: 77px;
+  	overflow: hidden;
+  	background-color: transparent;
+  	border: none;
+	  outline: none;
+  }
+
+  .nadpis{
+    position: absolute;
+    
+    width: 100%;
+    font-size: 60px;
+    overflow: hidden;
+    text-align: center;
+    font-family: rusja01;
+  }
+
+  </style>
+ </head>
+
+
+<script src="/three.min.js"></script><script src="/OrbitControls.js"></script>
+ <body>
+  <div class="zamech"><div style="margin-top: 70px" onclick="otkr()">Замечание</div></div>
+ <div class="telo" hidden>
 <div class="nadpis" style="top: 7%" onclick="zakr()">Отказать</div>
 <div class="nadpis" style="top: 79%" onclick="upd()">Отослать</div>
-<textarea id='tf' class="textField"></textarea></div>
- 
-<script src="/form.js"></script>
-  <script>
+  <textarea id='tf' class="textField"></textarea></div>
 
-var scene;
-const texture = new THREE.TextureLoader().load( '3.jpg' );
-function textureFilter(a) {
-a.minFilter = THREE.LinearFilter;
-a.magFilter = THREE.LinearFilter;
-a.format = THREE.RGBFormat;
+<script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+<script src="/firebase-database.js"></script>
+
+<script type="text/javascript">
+const telo=document.getElementsByClassName('telo');
+const svitok=telo[0];
+const zamech=document.getElementsByClassName('zamech');
+const tf= document.getElementById('tf');
+
+vyr(svitok);
+vyr(zamech[0]);
+zakr();
+
+window.onresize=function(){
+vyr(svitok);
+vyr(zamech[0]);
 }
 
-document.onload=init();
-  function init() {
+function vyr(e){
+  var rect = e.getBoundingClientRect();
+e.style.left=window.innerWidth/2-rect.width/2+'px';
+e.style.height=rect.width+'px';
+}
+function otkr() {
+  var rect = zamech[0].getBoundingClientRect();
 
-  camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 0.1, 50000);
-  
-	
-
-  scene = new THREE.Scene();//scene.background=texture;
-
-
-
-
-  renderer = new THREE.WebGLRenderer( { antialias: true } );
-  renderer.setPixelRatio( window.devicePixelRatio );
-  renderer.setSize( window.innerWidth, window.innerHeight );
-  document.body.appendChild( renderer.domElement );
-
-
-
-  controls = new THREE.OrbitControls( camera, renderer.domElement );
-  controls.zoomSpeed=3;
-  controls.keys=0;controls.mouseButtons.RIGHT=1000;
-
-
-
-	
- 
-
-meshes();
-loads();
-
-  animate();
-
-
-  };
-
-function loads(){
-
-
-
-
+  tf.autofocus=true;
+  svitok.hidden=false;
+zamech[0].hidden=true;
+svitok.className='pods';vyr(svitok);
+controls.enabled=false;
+}
+function zakr() {
+  svitok.hidden=true;
+zamech[0].hidden=false;vyr(zamech[0]);
+controls.enabled=true;
 }
 
 
 
-var plane,plane2;
-function meshes(){
-var geometry = new THREE.SphereBufferGeometry( 4, 64, 64 );
-var material = new THREE.MeshPhongMaterial();
-var material2 = new THREE.MeshPhongMaterial({color:'red'});
-plane = new THREE.Mesh( geometry, material );
-scene.add( plane );
+function upd(){
 
-var geometry2 = new THREE.SphereBufferGeometry( 0.5, 24, 12 );
-plane2 = new THREE.Mesh( geometry2, material2 );
+ //var newPostKey = dataBase.child('posts').push().key;
 
-scene.add( plane2 );
-//plane.position.z=-10;plane.position.y=5;
-lights= new THREE.SpotLight();
-lights.position.z=-15;
-lights.color.setRGB(0,6,2);
-
-scene.add(lights);
-camera.position.z=-70;
-controls.target=plane.position;
-
-camera.lookAt(plane.position)
-plane.material.emissive.setRGB(0.45,0.67,0.75);
-plane.material.emissiveIntensity=1.5;
-plane2.material.emissiveIntensity=1;plane2.material.emissive.setRGB(0.46,0.6,0.77);
+dataBase.child(new Date().getTime()).update({key:tf.value});
+tf.value='Здрав будь, боярин!'
+};
 
 
 
 
-}
-
-const curve = new THREE.EllipseCurve(
-	0,  0,            // ax, aY
-	5, 5,           // xRadius, yRadius
-	Math.PI/2, 2* Math.PI/2, // aStartAngle, aEndAngle
-	false,            // aClockwise
-	0                 // aRotation
-);
-
-            var points = curve.getPoints( 50 );
-
-            var geometry = new THREE.Geometry().setFromPoints( points );
-
-            var material = new THREE.LineBasicMaterial( { color : 0xff0000 } );
-
-            // Create the final object to add to the scene
-            curveObject = new THREE.Line( geometry, material );
-
-            //scene.add( curveObject );
-
-            curveObject.curve = curve;
-				plane2.position.set(curveObject.geometry.vertices[0].x,curveObject.geometry.vertices[0].y,curveObject.geometry.vertices[0].z);
-var t=0;
-var tuda=true;
-var suda=false;
-  function animate() {
-    requestAnimationFrame( animate);
-    
-  if(tuda){plane2.position.set(curveObject.geometry.vertices[t].x,curveObject.geometry.vertices[t].y,curveObject.geometry.vertices[t].z);t++;if(t==50){tuda=false;suda=true}};
-  if(suda){plane2.position.set(curveObject.geometry.vertices[t].x,curveObject.geometry.vertices[t].y,curveObject.geometry.vertices[t].z);t--;if(t==0){suda=false;tuda=true}}
-    renderer.render( scene, camera );
-    
-    //const composer = new EffectComposer( renderer );
-
-}
-
-
-  </script>
-  </body>
-  </html>
+</script>
+<script src="/nlo.js"></script>
+ </body>
+</html>

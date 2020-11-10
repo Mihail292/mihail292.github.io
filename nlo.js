@@ -10,7 +10,7 @@ document.onload=init();
   function init() {
 
   camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 0.1, 50000);
-  
+  camera.layers.enable(1);
 	
 
   scene = new THREE.Scene();//scene.background=texture;
@@ -22,8 +22,27 @@ document.onload=init();
   renderer.setPixelRatio( window.devicePixelRatio );
   renderer.setSize( window.innerWidth, window.innerHeight );
   document.body.appendChild( renderer.domElement );
-
-
+ renderScene = new THREE.RenderPass( scene, camera )
+	
+//effectFXAA = new THREE.ShaderPass( THREE.FXAAShader )
+//effectFXAA.uniforms.resolution.value.set( 1 / window.innerWidth, 1 / window.innerHeight )
+	
+bloomPass = new THREE.UnrealBloomPass( new THREE.Vector2( window.innerWidth, window.innerHeight ), 1.5, 0.4, 0.85 )
+bloomPass.threshold = 0.21
+bloomPass.strength = 1.2
+bloomPass.radius = 0.55
+bloomPass.renderToScreen = true
+	
+composer = new THREE.EffectComposer( renderer )
+composer.setSize( window.innerWidth, window.innerHeight )
+	
+composer.addPass( renderScene )
+//composer.addPass( effectFXAA )
+composer.addPass( bloomPass )
+	
+renderer.gammaInput = true
+renderer.gammaOutput = true
+renderer.toneMappingExposure = Math.pow( 0.9, 4.0 ) 
 
   controls = new THREE.OrbitControls( camera, renderer.domElement );
   controls.zoomSpeed=3;
@@ -112,8 +131,8 @@ var suda=false;
     
   if(tuda){plane2.position.set(curveObject.geometry.vertices[t].x,curveObject.geometry.vertices[t].y,curveObject.geometry.vertices[t].z);t++;if(t==50){tuda=false;suda=true}};
   if(suda){plane2.position.set(curveObject.geometry.vertices[t].x,curveObject.geometry.vertices[t].y,curveObject.geometry.vertices[t].z);t--;if(t==0){suda=false;tuda=true}}
-    renderer.render( scene, camera );
     
+    composer.render(scene, camera);
     //const composer = new EffectComposer( renderer );
 
 }

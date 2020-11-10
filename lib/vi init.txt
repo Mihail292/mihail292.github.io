@@ -1,0 +1,15 @@
+<script src="https://vk.com/js/api/xd_connection.js?2"  type="text/javascript"></script>
+
+	VK.init(function() {
+		VK.api("users.get", {"fields": "sex", "v":"5.73"}, function (data) {
+//req.push(data);
+imya=data.response[0].first_name;
+sex=data.response[0].sex;
+if (sex==2){
+document.getElementById("in").innerHTML='Извините, но это только для девочек ;-)'};
+if (sex==1)init();
+
+});
+		  }, function() {
+		     console.log('666');
+		}, '5.103');

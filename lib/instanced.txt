@@ -1,0 +1,4 @@
+this.InstanceGeometry = new THREE.InstancedBufferGeometry();
+THREE.BufferGeometry.prototype.copy.call(this.InstanceGeometry,this.geometry);
+let offset = new Float32Array(this.count);
+this.InstanceGeometry.setAttribute( 'offset', new THREE.InstancedBufferAttribute( offset,1);

@@ -1,0 +1,43 @@
+pos.y +=  cos(pos.z * 5.0 + uTime) * 0.1 * sin(pos.x * 5.0 + uTime);
+
+
+
+vec2 uv=vUv;
+float iGlobalTime=time;
+float X = uv.x*25.+iGlobalTime/10.;
+float Y = uv.y*25.+iGlobalTime/10.;
+uv.y += cos(X+Y)*0.01*cos(Y);
+uv.x += sin(X-Y)*0.01*sin(Y);
+
+gl_FragColor = texture2D ( texture, uv);
+
+ƒожить до весны -
+задача сука не из простых,
+мороз неистов, лют и не внушаем
+врем€ расп€то вдоль полушари€
+
+ varying vec3 vColor;
+
+    void main()
+    {
+        vec4 worldPosition = modelMatrix * vec4(position, 1.0);
+        vColor = normalize(abs(worldPosition.xyz));
+        gl_Position = projectionMatrix * viewMatrix * worldPosition;
+		
+		
+		  time = time < 1e12 ? time : time - animtime;
+
+    cube1.position.set(R * Math.cos(0.0001 * time), R * Math.sin(-0.0005 * time), R * Math.cos(0.0004 * time));
+    cube2.position.set(R * Math.sin(-0.0004 * time), R * Math.sin(0.0002 * time), R * Math.cos(-0.0003 * time));
+    cube3.position.set(R * Math.cos(0.0002 * time), R * Math.cos(0.0004 * time), R * Math.sin(-0.0001 * time));
+		
+		varying vec2 vUv;
+
+void main() {
+    if ((fract(vUv.x * 10.0) < EPSILON)
+        || (fract(vUv.y * 10.0) < EPSILON)) {
+        gl_FragColor = vec4(vec3(0.0), 1.0);
+    } else {
+        gl_FragColor = vec4(1.0);
+    }
+}

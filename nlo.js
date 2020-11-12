@@ -73,13 +73,13 @@ function loads(){
 
 var plane,plane2;
 function meshes(){
-var geometry = new THREE.SphereBufferGeometry( 4, 64, 64 );
+var geometry = new THREE.SphereBufferGeometry( 4, 12, 12 );
 var material = new THREE.MeshPhongMaterial();
 var material2 = new THREE.MeshPhongMaterial({color:'red'});
 plane = new THREE.Mesh( geometry, material );
 scene.add( plane );
 
-var geometry2 = new THREE.SphereBufferGeometry( 0.5, 24, 12 );
+var geometry2 = new THREE.SphereBufferGeometry( 0.5, 12, 12 );
 plane2 = new THREE.Mesh( geometry2, material2 );
 
 scene.add( plane2 );

@@ -1,0 +1,8 @@
+ufo.getObjectByName('Torus001');
+ufo.getObjectByName('Torus002');
+ufo.getObjectByName('Torus003');
+ufo.getObjectByName('Torus004');
+ufo.getObjectByName('Икосфера');
+ufo.getObjectByName('Сфера');
+ufo.getObjectByName('Сфера003');
+Bluster - Dust Project;

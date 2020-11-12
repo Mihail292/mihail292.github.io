@@ -11,7 +11,7 @@ document.onload=init();
 
   camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 0.1, 50000);
   camera.layers.enable(1);
-	
+
 
   scene = new THREE.Scene();//scene.background=texture;
 
@@ -23,26 +23,26 @@ document.onload=init();
   renderer.setSize( window.innerWidth, window.innerHeight );
   document.body.appendChild( renderer.domElement );
  renderScene = new THREE.RenderPass( scene, camera )
-	
+
 //effectFXAA = new THREE.ShaderPass( THREE.FXAAShader )
 //effectFXAA.uniforms.resolution.value.set( 1 / window.innerWidth, 1 / window.innerHeight )
-	
+
 bloomPass = new THREE.UnrealBloomPass( new THREE.Vector2( window.innerWidth, window.innerHeight ), 1.5, 0.4, 0.85 )
 bloomPass.threshold = 0.21
 bloomPass.strength = 1.2
 bloomPass.radius = 0.55
 bloomPass.renderToScreen = true
-	
+
 composer = new THREE.EffectComposer( renderer )
 composer.setSize( window.innerWidth, window.innerHeight )
-	
+
 composer.addPass( renderScene )
 //composer.addPass( effectFXAA )
 composer.addPass( bloomPass )
-	
+
 renderer.gammaInput = true
 renderer.gammaOutput = true
-renderer.toneMappingExposure = Math.pow( 0.9, 4.0 ) 
+renderer.toneMappingExposure = Math.pow( 0.9, 4.0 )
 
   controls = new THREE.OrbitControls( camera, renderer.domElement );
   controls.zoomSpeed=3;
@@ -51,8 +51,8 @@ renderer.toneMappingExposure = Math.pow( 0.9, 4.0 )
 
 
 
-	
- 
+
+
 
 meshes();
 loads();
@@ -68,7 +68,13 @@ function loads(){
 
 
 }
-
+const shaderMaterial = new THREE.ShaderMaterial({
+    uniforms: {
+        // . . .
+    },
+    vertexShader:   document.getElementById('sphere-vertex-shader').textContent,
+    fragmentShader: document.getElementById('sphere-fragment-shader').textContent
+});
 
 
 var plane,plane2;
@@ -105,7 +111,7 @@ plane2.material.emissiveIntensity=1;plane2.material.emissive.setRGB(0.46,0.6,0.7
 const curve = new THREE.EllipseCurve(
 	0,  0,            // ax, aY
 	5, 5,           // xRadius, yRadius
-	-Math.PI/6-Math.PI/6, Math.PI/2, // aStartAngle, aEndAngle
+	Math.PI/2, 2* Math.PI/2, // aStartAngle, aEndAngle
 	false,            // aClockwise
 	0                 // aRotation
 );
@@ -122,16 +128,16 @@ const curve = new THREE.EllipseCurve(
             //scene.add( curveObject );
 
             curveObject.curve = curve;
-				plane2.position.set(curveObject.geometry.vertices[50].x,curveObject.geometry.vertices[50].y,curveObject.geometry.vertices[50].z);
-var t=50;
+				plane2.position.set(curveObject.geometry.vertices[0].x,curveObject.geometry.vertices[0].y,curveObject.geometry.vertices[0].z);
+var t=0;
 var tuda=true;
 var suda=false;
   function animate() {
     requestAnimationFrame( animate);
-    
-  if(tuda){plane2.position.set(curveObject.geometry.vertices[t].x,curveObject.geometry.vertices[t].y,curveObject.geometry.vertices[t].z);t--;if(t==0){t=50}};
+
+  if(tuda){plane2.position.set(curveObject.geometry.vertices[t].x,curveObject.geometry.vertices[t].y,curveObject.geometry.vertices[t].z);t++;if(t==50){tuda=false;suda=true}};
   if(suda){plane2.position.set(curveObject.geometry.vertices[t].x,curveObject.geometry.vertices[t].y,curveObject.geometry.vertices[t].z);t--;if(t==0){suda=false;tuda=true}}
-    
+
     composer.render(scene, camera);
     //const composer = new EffectComposer( renderer );
 

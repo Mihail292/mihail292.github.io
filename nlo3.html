@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>form</title>
+  <style>
+  body{
+  	background-color:#3366CC;
+    
+    margin: 0 0 0 0;
+  
+  }
+
+  @font-face {
+  font-family: rusja01;
+  src: url('./3681.ttf');
+}
+ .pods{
+    position: absolute;
+    
+    
+    width: 100%;
+    height: 50%;
+    background-image: url('/17.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-width: 640px;
+    max-width: 1000px;
+    margin: auto;
+    max-height: 1000px;
+    top:0%;
+   
+  }
+  .telo{
+  	position: absolute;
+    
+  	
+  	width: 100%;
+    height: 50%;
+  	background-image: url('/17.png');
+  	background-size: cover;
+    background-repeat: no-repeat;
+  	min-width: 640px;
+    min-height: 640px;
+    top:0%;
+   
+  }
+   .zamech{
+    position: absolute;
+
+    font-size: 60px;
+    overflow: hidden;
+    text-align: center;
+    font-family: rusja01;
+    width: 100%;
+    height: 0%;
+    background-image: url('/17.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-width: 640px;
+    max-width: 1000px;
+    margin: auto;
+    max-height: 160px;
+    top:0%;
+   
+  }
+  
+  .textField{
+  	font-family: rusja01;
+  	margin: 20% 0 0 25%;
+  	padding: 0px;
+  	resize: none;
+  	height: 55%;
+  	width: 50%;
+    font-size: 77px;
+  	overflow: hidden;
+  	background-color: transparent;
+  	border: none;
+	  outline: none;
+  }
+
+  .nadpis{
+    position: absolute;
+    
+    width: 100%;
+    font-size: 60px;
+    overflow: hidden;
+    text-align: center;
+    font-family: rusja01;
+  }
+
+  </style>
+ </head>
+
+
+<script src="/three.min.js"></script><script src="/OrbitControls.js"></script>
+<script src="./lib/EffectComposer.js"></script>
+<script src="./lib/RenderPass.js"></script>
+
+
+<script src='https://threejs.org/examples/js/postprocessing/EffectComposer.js'></script>
+<script src='https://threejs.org/examples/js/postprocessing/RenderPass.js'></script>
+<script src='https://threejs.org/examples/js/postprocessing/ShaderPass.js'></script>
+<script src='https://threejs.org/examples/js/shaders/CopyShader.js'></script>
+
+<script src="https://threejs.org/examples/js/shaders/LuminosityHighPassShader.js"></script>
+<script src="https://threejs.org/examples/js/postprocessing/UnrealBloomPass.js"></script>
+<script src="https://threejs.org/examples/js/loaders/"></script>
+ <body>
+  <div class="zamech"><div style="margin-top: 70px" onclick="otkr()">Замечание</div></div>
+ <div class="telo" hidden>
+<div class="nadpis" style="top: 7%" onclick="zakr()">Отказать</div>
+<div class="nadpis" style="top: 79%" onclick="upd()">Отослать</div>
+  <textarea id='tf' class="textField"></textarea></div>
+
+<script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+<script src="/firebase-database.js"></script>
+
+<script type="text/javascript">
+const telo=document.getElementsByClassName('telo');
+const svitok=telo[0];
+const zamech=document.getElementsByClassName('zamech');
+const tf= document.getElementById('tf');
+
+vyr(svitok);
+vyr(zamech[0]);
+zakr();
+
+window.onresize=function(){
+vyr(svitok);
+vyr(zamech[0]);
+}
+
+function vyr(e){
+  var rect = e.getBoundingClientRect();
+e.style.left=window.innerWidth/2-rect.width/2+'px';
+e.style.height=rect.width+'px';
+}
+function otkr() {
+  var rect = zamech[0].getBoundingClientRect();
+
+  tf.autofocus=true;
+  svitok.hidden=false;
+zamech[0].hidden=true;
+svitok.className='pods';vyr(svitok);
+controls.enabled=false;
+}
+function zakr() {
+  svitok.hidden=true;
+zamech[0].hidden=false;vyr(zamech[0]);
+controls.enabled=true;
+}
+
+
+
+function upd(){
+
+ //var newPostKey = dataBase.child('posts').push().key;
+
+dataBase.child(new Date().getTime()).update({key:tf.value});
+tf.value='Здрав будь, боярин!'
+};
+
+
+
+
+</script>
+<script src="/nlo.js"></script>
+ </body>
+</html>

@@ -156,13 +156,20 @@ var dataBase = firebase.database().ref('data');
 function upd(){
 
  //var newPostKey = dataBase.child('posts').push().key;
+pen={};
+pen[`${new Date().getTime()}`]=tf.value;
+dataBase.update(pen);
 
-dataBase.child(new Date().getTime()).update({key:tf.value});
 tf.value='Здрав будь, боярин!'
 };
 
+Notification.requestPermission(function(){
+dataBase.child('test').on('value',(snap)=>{
 
-
+  var notification = new Notification(snap.val())
+notification.onshow = function() { console.log('dsd') };
+});
+});
 
 </script>
  </body>

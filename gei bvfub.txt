@@ -1,0 +1,10 @@
+
+
+ms.forEach(e => crImg(e));
+function crImg (e){
+var img;
+img=document.createElement('img');
+img.src=e;
+PE=document.body;
+PE.append(img);
+}

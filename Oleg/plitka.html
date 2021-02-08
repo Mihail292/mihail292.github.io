@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>tile</title>
+		<title>ipagoda</title>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, height=device-height, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<style>
@@ -12,7 +12,26 @@
 		</style>
 	</head>
 	<body>
+<script>
+var spis=[];
+spis.push(
+'/plitka.png',
 
-	<img src='plitka.png'> </img>
+
+	)
+
+krS(spis);
+
+function krS(e1){
+e1.forEach(e => crImg(e))};
+
+function crImg (e){
+var img;
+img=document.createElement('img');
+img.src=e;
+PE=document.body;
+PE.appendChild(img);
+}
+</script>
   </body>
   </html>

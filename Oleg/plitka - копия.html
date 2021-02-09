@@ -2,57 +2,10 @@
 <html lang="en">
 	<head>
 		<title>tile</title>
-
+		<link rel="stylesheet" href="st.css">
+	<script type="text/javascript" defer="true" src="./js.js"></script>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, height=device-height, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-
-	<style type="text/css">
-		
-		body {margin: 0px;}
-
-#ass{
-width:100%;
-height:200px;
-display: flex
-}
-
-.hed {
-margin-left: 5%;
-margin-top: 1%;
-font-size: 30px}
-
-.podkar{
-width:33%; 
-height:200px;
-display: flex;
-justify-content:center;
-align-items:center;
-}
-
-.kartinka{
-width:33%; 
-height:150px;
-border: 2px solid black;
-
-}
-
-.podtext{
-width:67%; 
-height:200px;
-}
-
-.opis{
-width:67%; 
-margin-left: 5%;
-margin-top: 1%;}
-
-.kup{
-width:auto; 
-margin-left: 7%;
-margin-top: 1%;
-border: 1px solid green;
-}
-	</style>
  
 		
 	</head>
@@ -69,7 +22,7 @@ border: 1px solid green;
 			<div class="opis">
 			Из натурального песка.<br/>
 			Морозоустойчивая.<br/>
-			Нержавеющая.<br/>
+			Непромокаемая.<br/>
 			Огнеупорная.<br/>
 			</div>
 			<div class="kup">
@@ -84,26 +37,27 @@ border: 1px solid green;
 			</div>
 			<div class="opis">
 			Из настоящей глины без примесей.<br/>
+			Морозоустойчивая.<br/>
 			Непромокаемая.<br/>
+			Огнеупорная.<br/>
 			</div>
 			<div class="kup">
 			Купить. За 5$ штука.
 			</div></div></div>
 
-	<div id='ass'>
-	<div class="podkar"><div class="kartinka"></div></div>
-	<div class="podtext">
-			<div class="hed">
-			AlleyTile арт. 532
-			</div>
-			<div class="opis">
-			Не скользская.<br/>
-			Ударопрочная.<br/>
-			Стильная.<br/>
-			</div>
-			<div class="kup">
-			Купить. За 10$ штука.
-			</div></div></div>
+<div id='crB'>
+<input id='iH' class='input' type="text" value='Наименование товара'>
+</input>	
+<input id='iO' class='input' type="text" value='Описание товара'>
+</input>
+<input id='iI' class='input' type="text" value='Адрес картинки'>
+</input>
+<BUTTON id='iB' style='margin-left: 30%;left: 30%; bottom:0%; height: 40px; margin-top: 2px;' onclick='bClik()'>СОЗДАТЬ</BUTTON> 
+<BUTTON id='iC' style='position:absolute; left: 50%; bottom:0%; height: 40px; margin-top: 2px;' onclick='bClear()'>Очистить</BUTTON> 
+<BUTTON id='iU' style='position:absolute; left: 70%; bottom:0%; height: 40px; margin-top: 2px;' onclick='bUd()'>Убрать</BUTTON> 
+</div>
+
+
 	<audio controls autoplay='true' style='margin-left: 3%; position:absolute'>
   <source src="sg.mp3" type="audio/mpeg"/>
 </audio>

@@ -14,8 +14,9 @@
 	<body>
 <script>
 var spis=[];
+var plitka;
 spis.push(
-'/plitka.png'
+'/p2.png'
 	);
 
 krS(spis);
@@ -29,10 +30,12 @@ img=document.createElement('img');
 img.src=e;
 PE=document.body;
 PE.appendChild(img);
+plitka=img;
+plitka.style.width='100%';PE.style.overflow='hidden'
 }
 
-const plitka=PE.children[4];
-plitka.style.width='100%';
+
+
 </script>
   </body>
   </html>

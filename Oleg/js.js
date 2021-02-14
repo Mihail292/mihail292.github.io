@@ -18,11 +18,32 @@ function createTile(H,O,A){
 	d.src=A;d.alt='alt';
 	e.innerHTML=H;f.innerHTML=O;g.innerHTML='Купить';
 }
-
+function ct(H,O,A){
+	html=`<div id='ass'>
+	<div class="podkar"><div class="kartinka"></div></div>
+	<div class="podtext">
+			<div class="hed">
+			GleenTile арт. 3346
+			</div>
+			<div class="opis">
+			Из настоящей глины без примесей.<br/>
+			Морозоустойчивая.<br/>
+			Непромокаемая.<br/>
+			Огнеупорная.<br/>
+			</div>
+			<div class="kup">
+			Купить. За 5$ штука.
+			</div></div></div>`
+	document.body.insertAdjacentHTML('beforeend',html)
+	e.innerHTML=H;f.innerHTML=O;g.innerHTML='Купить';
+}
 function bClik(){
-createTile(document.getElementById('iH').value,
+ct(document.getElementById('iH').value,
+
 	document.getElementById('iO').value,
 	document.getElementById('iI').value)
+
+
 }
 
 function bClear(){

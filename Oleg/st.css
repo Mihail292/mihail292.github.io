@@ -41,13 +41,19 @@ margin-left: 5%;
 margin-top: 1%;}
 
 .kup{
+
 width:auto; 
 margin-left: 7%;
 margin-top: 1%;
 border: 1px solid green;
+cursor: pointer;
+transition: border 1s;
 }
 
-
+.kup:hover{
+	
+	border: 3px solid green;
+}
 
 
 			

@@ -18,7 +18,7 @@ document.onload=init();
 
 
 
-  renderer = new THREE.WebGLRenderer( { antialias: true } );
+  renderer = new THREE.WebGLRenderer( { antialias: false } );
   renderer.setPixelRatio( window.devicePixelRatio );
   renderer.setSize( window.innerWidth, window.innerHeight );
   document.body.appendChild( renderer.domElement );
@@ -64,7 +64,7 @@ const shaderMaterial = new THREE.ShaderMaterial({
 
 var plane,plane2;var material2,material3;
 function meshes(){
-var geometry = new THREE.SphereBufferGeometry( 4, 64, 64 );
+var geometry = new THREE.SphereBufferGeometry( 4, 8, 8 );
 var material = new THREE.MeshPhongMaterial();
 material2 = new THREE.MeshPhongMaterial({color:'red'});
 material3 = new THREE.MeshPhongMaterial({color:'yellow'});

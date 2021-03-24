@@ -68,13 +68,13 @@ var geometry = new THREE.SphereBufferGeometry( 4, 8, 8 );
 var material = new THREE.MeshPhongMaterial();
 material2 = new THREE.MeshPhongMaterial({color:'red'});
 material3 = new THREE.MeshPhongMaterial({color:'yellow'});
-material3.emissive.setRGB(0.46,0.6,0.77);
+//material3.emissive.setRGB(0.46,0.6,0.77);
 
-material3.emissiveIntensity=1.5;
+//material3.emissiveIntensity=1.5;
 plane = new THREE.Mesh( geometry, material );
 scene.add( plane );
 
-var geometry2 = new THREE.SphereBufferGeometry( 0.5, 24, 12 );
+var geometry2 = new THREE.SphereBufferGeometry( 0.5, 8, 8 );
 plane2 = new THREE.Mesh( geometry2, material2 );
 
 scene.add( plane2 );
@@ -84,15 +84,15 @@ lights.position.z=20;
 lights.color.setRGB(0,0.612,0.57);
 lights2= new THREE.SpotLight();
 lights2.position.z=-20;
-lights2.color.setRGB(0.07,0.26,0.67);
-scene.add(lights,lights2);
+//lights2.color.setRGB(0.07,0.26,0.67);
+scene.add(lights2);
 camera.position.z=-70;
 controls.target=plane.position;
 
 camera.lookAt(plane.position)
-plane.material.emissive.setRGB(0.45,0.67,0.75);
-plane.material.emissiveIntensity=1.5;
-plane2.material.emissiveIntensity=1;plane2.material.emissive.setRGB(0.46,0.6,0.77);
+//plane.material.emissive.setRGB(0.45,0.67,0.75);
+//plane.material.emissiveIntensity=1.5;
+//plane2.material.emissiveIntensity=1;plane2.material.emissive.setRGB(0.46,0.6,0.77);
 
 
 

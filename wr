@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=windows-1251"/>
+	<title></title>
+	
+</head>
+<body>
+<video id='v' autoplay></video>
+<script>
+const vid=document.getElementById('v');
+navigator.mediaDevices.getUserMedia({video:true}).then((stream)=>{vid.srcObject=stream})
+</script>
+</body>
+</html>

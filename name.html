@@ -2,21 +2,14 @@
 <html>
 <head>
 	
-	<title>name4</title>
+	<title>name5</title>
 	
 	
 </head>
 <body>
   <script type="module">
     import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js'
-
-    // If you enabled Analytics in your project, add the Firebase SDK for Google Analytics
-    import { getAnalytics } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-analytics.js'
-
-    // Add Firebase products that you want to use
-    import { getAuth } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js'
-    import { getFirestore } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js'
-
+    import { getFirestore, collection, getDocs } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js';
 	  
 	  var firebaseConfig = {
   apiKey: "AIzaSyCB7-zaSIttCWPdhOEOjn83RD79thKULR4",
@@ -29,8 +22,14 @@
   measurementId: "G-J1G01LTK1Q"
 };
 	  const app = initializeApp(firebaseConfig);
+	  const db = getFirestore(app);
 	  
-  
+  async function getCities(db) {
+  const citiesCol = collection(db, 'cities');
+  const citySnapshot = await getDocs(citiesCol);
+  const cityList = citySnapshot.docs.map(doc => doc.data());
+  return cityList;
+}
   
   </script>
 

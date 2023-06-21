@@ -3,12 +3,27 @@
 <head>
 	
 	<title>name</title>
+	<script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-database.js"></script>
 	
 </head>
 <body>
 
 <script>
+var firebaseConfig = {
+  apiKey: "AIzaSyCB7-zaSIttCWPdhOEOjn83RD79thKULR4",
+  authDomain: "houndredone-63426.firebaseapp.com",
+  databaseURL: "https://houndredone-63426.firebaseio.com",
+  projectId: "houndredone-63426",
+  storageBucket: "houndredone-63426.appspot.com",
+  messagingSenderId: "955812981428",
+  appId: "1:955812981428:web:a748e9d46f3dd88d4cc5e1",
+  measurementId: "G-J1G01LTK1Q"
+};
 
+firebase.initializeApp(firebaseConfig);
+var database = firebase.database();
+var dataBase = firebase.database().ref('data');
 </script>
 </body>
 </html>

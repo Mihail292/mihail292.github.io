@@ -43,14 +43,14 @@ var text = PECH;
 		
 		
 	};			
-
+ 
 const start = () => {gapi.client.init({
-    'apiKey': 'AIzaSyB6aEYUWsr2-UVwITCdhL7Nm2zGNnXQ9MM',
+    'apiKey': '{AIzaSyB6aEYUWsr2-UVwITCdhL7Nm2zGNnXQ9MM}',
     'discoveryDocs': ["https://sheets.googleapis.com/$discovery/rest?version=v4"],
   }).then(() => {
     return gapi.client.sheets.spreadsheets.values.get({
-      spreadsheetId: '17gLBVdOkI9dN_FjeG819l1naQPPdUnJz_g6KwS8RoV8',
-      range: 'ust', // for example: List 1!A1:B6
+      spreadsheetId: '{17gLBVdOkI9dN_FjeG819l1naQPPdUnJz_g6KwS8RoV8}',
+      range: 'List 1!A1:E1', // for example: List 1!A1:B6
     })
   }).then((response) => {
     

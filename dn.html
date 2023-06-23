@@ -59,7 +59,14 @@ const start = () => {gapi.client.init({
 		    };
 
 gapi.load('client', start);	 
-
+function rq(){var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+       console.log(xhttp.responseText);
+    }
+};
+xhttp.open("GET", "https://script.google.com/macros/s/AKfycbye7_8hphpv1numF_rG9TTQisriauc_y5LODNhMRXTs9ExhAd6OfiiWzUsBDwUANG33/exec", true);
+xhttp.send();}
 		</script>
 
 </body>

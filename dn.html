@@ -29,7 +29,7 @@ var ta=document.getElementsByName("textarea");
 				ta[0].focus();
 
 function save(){fs(ta[0].value)};	
-function clr(){start()};
+function clr(){rq()};
 
 function fs(PECH){
 var text = PECH;
@@ -59,14 +59,17 @@ const start = () => {gapi.client.init({
 		    };
 
 gapi.load('client', start);	 
-function rq(){var xhttp = new XMLHttpRequest();
+function rq(){
+
+	var xhttp = new XMLHttpRequest();
 xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
        console.log(xhttp.responseText);
     }
 };
-xhttp.open("GET", "https://script.google.com/macros/s/AKfycbye7_8hphpv1numF_rG9TTQisriauc_y5LODNhMRXTs9ExhAd6OfiiWzUsBDwUANG33/exec", true);
-xhttp.send();}
+xhttp.open("GET", "https://script.google.com/macros/s/AKfycbwvpq1wkumPira0t0SN7MyDkige7cM220SBAKNUKnMfdPB7ncVZAp9pDOaigtSUBrbN/exec", true);
+xhttp.send();
+}
 		</script>
 
 </body>

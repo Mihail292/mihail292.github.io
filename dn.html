@@ -11,7 +11,7 @@
   src: url('./3681.ttf');
   }
  #clear {width: 50%;height: 100px;}
- #save {width: 50%;height: 110px%;}
+ #save {width: 50%;height: 110px;}
 </style>
 
 		
@@ -28,7 +28,7 @@ var ta=document.getElementsByName("textarea");
 				ta[0].focus();
 
 function save(){fs(ta[0].value)};	
-function clear(){document.getElementById("ta").value=''};
+function clear(){ta[0].value=" "};
 
 function fs(PECH){
 var text = PECH;

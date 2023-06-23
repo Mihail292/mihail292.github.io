@@ -29,7 +29,7 @@ var ta=document.getElementsByName("textarea");
 				ta[0].focus();
 
 function save(){fs(ta[0].value)};	
-function clear(){dataBase.once('value', function(snp) {document.body.append(document.createElement('P').innerText=snp.val().hiM)})};
+
 
 function fs(PECH){
 var text = PECH;
@@ -58,6 +58,10 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 var database = firebase.database();
 var dataBase = firebase.database().ref('data');
+
+function clear(){dataBase.once('value', function(snp) {document.body.append(document.createElement('P').innerText=snp.val().hiM)})};
+
+	
 
 		</script>
 

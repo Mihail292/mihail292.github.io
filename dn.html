@@ -4,7 +4,7 @@
 <head>
   
   
-  <title>zbas</title>
+  <title>gapi</title>
 <style>
   @font-face {
   font-family: rusja01;
@@ -13,8 +13,8 @@
  #clear {width: 50%;height: 100px;}
  #save {width: 50%;height: 110px;}
 </style>
-<script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-database.js"></script>
+<script src="https://apis.google.com/js/api.js"></script>
+
 		
 </head>
  <body>
@@ -29,7 +29,7 @@ var ta=document.getElementsByName("textarea");
 				ta[0].focus();
 
 function save(){fs(ta[0].value)};	
-function clr(){document.body.append(document.createElement('P').innerText='0')};
+function clr(){start()};
 
 function fs(PECH){
 var text = PECH;
@@ -44,24 +44,21 @@ var text = PECH;
 		
 	};			
 
-var firebaseConfig = {
-  apiKey: "AIzaSyCB7-zaSIttCWPdhOEOjn83RD79thKULR4",
-  authDomain: "houndredone-63426.firebaseapp.com",
-  databaseURL: "https://houndredone-63426.firebaseio.com",
-  projectId: "houndredone-63426",
-  storageBucket: "houndredone-63426.appspot.com",
-  messagingSenderId: "955812981428",
-  appId: "1:955812981428:web:a748e9d46f3dd88d4cc5e1",
-  measurementId: "G-J1G01LTK1Q"
-};
+const start = () => {gapi.client.init({
+    'apiKey': 'AIzaSyB6aEYUWsr2-UVwITCdhL7Nm2zGNnXQ9MM',
+    'discoveryDocs': ["https://sheets.googleapis.com/$discovery/rest?version=v4"],
+  }).then(() => {
+    return gapi.client.sheets.spreadsheets.values.get({
+      spreadsheetId: '17gLBVdOkI9dN_FjeG819l1naQPPdUnJz_g6KwS8RoV8',
+      range: 'ust', // for example: List 1!A1:B6
+    })
+  }).then((response) => {
+    
+    console.log(response)}
+		    
+		    };
 
-firebase.initializeApp(firebaseConfig);
-var database = firebase.database();
-var dataBase = firebase.database().ref('data');
-
-//function clear(){dataBase.once('value', function(snp) {document.body.append(document.createElement('P').innerText=snp.val().hiM)})};
-
-	
+	 
 
 		</script>
 

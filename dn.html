@@ -13,7 +13,7 @@
  #clear {width: 50%;height: 100px;}
  #save {width: 50%;height: 110px;}
 </style>
-<script src="https://apis.google.com/js/api.js"></script>
+
 
 		
 </head>
@@ -42,23 +42,8 @@ var text = PECH;
 		anchor.click();
 		
 		
-	};			
- 
-const start = () => {gapi.client.init({
-    'apiKey': '{AIzaSyB6aEYUWsr2-UVwITCdhL7Nm2zGNnXQ9MM}',
-    'discoveryDocs': ["https://sheets.googleapis.com/$discovery/rest?version=v4"],
-  }).then(() => {
-    return gapi.client.sheets.spreadsheets.values.get({
-      spreadsheetId: '{17gLBVdOkI9dN_FjeG819l1naQPPdUnJz_g6KwS8RoV8}',
-      range: 'List 1!A1:E1', // for example: List 1!A1:B6
-    })
-  }).then((response) => {
-    
-    console.log(response)})
-		    
-		    };
-
-gapi.load('client', start);	 
+	};
+	
 function rq(){
 
 	var xhttp = new XMLHttpRequest();
@@ -69,7 +54,7 @@ xhttp.onreadystatechange = function() {
 };
 xhttp.open("GET", "https://script.google.com/macros/s/AKfycbwvpq1wkumPira0t0SN7MyDkige7cM220SBAKNUKnMfdPB7ncVZAp9pDOaigtSUBrbN/exec", true);
 xhttp.send();
-}
+};
 		</script>
 
 </body>

@@ -4,7 +4,7 @@
 <head>
   
   
-  <title>gapi</title>
+  <title>чаппи</title>
 <style>
   @font-face {
   font-family: rusja01;
@@ -50,11 +50,18 @@ function rq(){
 xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
        console.log(xhttp.responseText);
+	    var p=document.createElement('p');
+	    p.innerText=xhttp.responseText;
+	    body.appendChild(p);
     }
 };
 xhttp.open("GET", "https://script.google.com/macros/s/AKfycbwvpq1wkumPira0t0SN7MyDkige7cM220SBAKNUKnMfdPB7ncVZAp9pDOaigtSUBrbN/exec", true);
 xhttp.send();
 };
+
+	var body=document.body;
+	var p=document.createElement('p');
+	
 		</script>
 
 </body>

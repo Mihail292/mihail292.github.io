@@ -12,6 +12,7 @@
   }
  #clear {width: 50%;height: 100px;}
  #save {width: 50%;height: 110px;}
+ #save2 {width: 50%;height: 110px;}
 </style>
 
 
@@ -21,7 +22,11 @@
 
 
 <textarea  name="textarea" id="ta" style="font-family:rusja01;font-size:50px;width:100%;" rows="4" cols="auto"></textarea>
+
+
+	 
 <button id='save' onclick='save()'>SAVE</button>
+<button id='save1' onclick='sive()'>SAVE</button>
 <button id='clear' onclick='clr()'>clr</button>
 
 <script>
@@ -44,7 +49,7 @@ var text = PECH;
 		
 	};
 	
-function rq(){
+function rq(prm){
 
 	var xhttp = new XMLHttpRequest();
 xhttp.onreadystatechange = function() {
@@ -55,13 +60,17 @@ xhttp.onreadystatechange = function() {
 	    body.appendChild(p);
     }
 };
-xhttp.open("GET", "https://script.google.com/macros/s/AKfycbwvpq1wkumPira0t0SN7MyDkige7cM220SBAKNUKnMfdPB7ncVZAp9pDOaigtSUBrbN/exec", true);
+
+xhttp.open("GET", "https://script.google.com/macros/s/AKfycbwvpq1wkumPira0t0SN7MyDkige7cM220SBAKNUKnMfdPB7ncVZAp9pDOaigtSUBrbN/exec"+prm, true);
 xhttp.send();
 };
 
 	var body=document.body;
 	var p=document.createElement('p');
+function sive(){
+	rq('?z='+ta[0].value)
 	
+}
 		</script>
 
 </body>

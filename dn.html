@@ -26,7 +26,7 @@
 
 	 
 <button id='save' onclick='save()'>SAVE</button>
-<button id='save1' onclick='sive()'>SAVE</button>
+<button id='save1' onclick='sive()'>siv</button>
 <button id='clear' onclick='clr()'>clr</button>
 
 <script>
@@ -35,7 +35,11 @@ var ta=document.getElementsByName("textarea");
 
 function save(){fs(ta[0].value)};	
 function clr(){rq()};
-
+function sive(){
+	var tat='?z='+ta[0].value;
+		rq(tat);
+	
+}
 function fs(PECH){
 var text = PECH;
 //const text=JSON.stringify(PECH);
@@ -60,17 +64,14 @@ xhttp.onreadystatechange = function() {
 	    body.appendChild(p);
     }
 };
-
-xhttp.open("GET", "https://script.google.com/macros/s/AKfycbwvpq1wkumPira0t0SN7MyDkige7cM220SBAKNUKnMfdPB7ncVZAp9pDOaigtSUBrbN/exec"+prm, true);
+var xsrc="https://script.google.com/macros/s/AKfycbz4HeVvwPWuw3FuCZVoIDDwNR3B-Q1rZyR0y9e5H6A_8BWGWfKsRlXPj9NgjIz2PTy-/exec"+prm;
+xhttp.open("GET", xsrc, true);
 xhttp.send();
 };
 
 	var body=document.body;
 	var p=document.createElement('p');
-function sive(){
-	rq('?z='+ta[0].value)
-	
-}
+
 		</script>
 
 </body>

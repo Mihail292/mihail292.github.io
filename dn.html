@@ -4,7 +4,7 @@
 <head>
   
   
-  <title>version4</title>
+  <title>version5</title>
 <style>
   @font-face {
   font-family: rusja01;
@@ -33,10 +33,11 @@
 const selectedFile = document.getElementById("input").files[0];
 	const inputElement = document.getElementById("input");
 inputElement.addEventListener("change", handleFiles, false);
-function handleFiles() {
-  console.log(selectedFile);
-}
 
+function  handleFiles(){
+var f=document.getElementsByName('file')[0].files[0];
+console.log(f);
+}
 
 
 

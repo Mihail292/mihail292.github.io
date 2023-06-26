@@ -35,7 +35,7 @@ const selectedFile = document.getElementById("input").files[0];
 inputElement.addEventListener("change", handleFiles, false);
 
 function  handleFiles(){
-var f=document.getElementsByName('file')[0].files[0];
+var f=document.getElementById("input")[0].files[0];
 console.log(f);
 }
 

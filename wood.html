@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>three.js webgl - geometry - cube</title>
+		<title>Версия 8e</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<style>
@@ -45,7 +45,22 @@
 	</body>
 
 <script>
-	function sive(){console.log(document.getElementsByName("textarea")[0].value);
-		       document.getElementsByName("textarea")[0].value='ok'};
+	function sive(){
+
+			rq('?z='+document.getElementsByName("textarea")[0].value);
+document.getElementsByName("textarea")[0].value='  '
+	};
+
+function rq(prm){
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {  console.log(xhttp.responseText) }
+};
+var gkey="https://script.google.com/macros/s/AKfycbwfsTG_SGYJWh1ZRZ6UoW6TiGfk5p7hnw9CLra32rmLs1CQ1CUS2W9LcoZkoSDvFOI/exec"
+var xsrc=gkey+prm;
+xhttp.open("GET", xsrc, true);
+xhttp.send();
+};
+
 </script>
 </html>

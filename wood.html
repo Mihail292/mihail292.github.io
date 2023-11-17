@@ -14,7 +14,7 @@
 	</head>
 	<body>
 <img src="https://sun9-41.userapi.com/impg/AXa6Tv4rksiWCB4dps8up96QO3j4deGOFc-i5w/Ii-tZfNzHok.jpg?size=945x630&amp;quality=96&amp;sign=8fa95a7164d0d5f478f35e8a8881632c&amp;type=album" style="width:100%">
-<div style='position: absolute;
+<div style='position: absolute; width:100%;
   left: 0px;
   top: 0px;
   z-index: 15;'>
@@ -27,11 +27,22 @@
   text-shadow: 5px 4px #6b75a5;
   " id="ta" name="textarea"></textarea>	
 		
-<button id='save1' onclick='sive()'>siv</button>
+<button id="save1"  onclick='sive()'
+	 style="
+	 width:100%;
+	 opacity: 0.4;
+	 font-size: 50px;
+	 border-radius: 50%;
+	 min-height: 5rem;
+	">siv</button>
 
 
   </div>
 
 	
 	</body>
+
+<script>
+	function sive(){console.log(document.getElementsByName("textarea")[0].value));
+</script>
 </html>

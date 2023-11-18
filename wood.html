@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>Версия 8e</title>
+		<title>Версия 9b</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<style>
@@ -18,6 +18,7 @@
   left: 0px;
   top: 0px;
   z-index: 15;'>
+	
 <textarea cols="auto" rows="4" style="
   font-family:rusja01;
   font-size:50px;
@@ -37,7 +38,23 @@
 	 border-radius: 50%;
 	 min-height: 5rem;
 	">siv</button>
-
+<button id="save2"  onclick='vy_wood()'
+	 style="
+	 width:50%;
+	 opacity: 0.4;
+	 font-size: 50px;
+	 border-radius: 50%;
+	 min-height: 5rem;
+	">wood</button>
+<textarea cols="auto" rows="4" style="
+ 	 font-family:rusja01;
+ 	 font-size:50px;
+ 	 width:50%;
+  	Zindex: 0;
+   	 background-color: transparent;
+  	text-shadow: 5px 4px #65e5a6;
+ 	 color: rgb(11 153 29 / 90%); 
+ 	 " id="infa" name="infa"></textarea>
 
   </div>
 
@@ -45,7 +62,19 @@
 	</body>
 
 <script>
-	function sive(){
+var gkey="https://script.google.com/macros/s/AKfycbwfsTG_SGYJWh1ZRZ6UoW6TiGfk5p7hnw9CLra32rmLs1CQ1CUS2W9LcoZkoSDvFOI/exec"
+var rqst = new XMLHttpRequest();
+	rqst.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {  console.log(xhttp.responseText) ;
+						    document.getElementsByName("infa")[0].value=xhttp.responseText}
+};
+function wood(){
+
+xhttp.open("GET", gkey+'?z='+document.getElementsByName("infa")[0].value, true);
+xhttp.send();
+}
+	
+function sive(){
 
 			rq('?z='+document.getElementsByName("textarea")[0].value);
 document.getElementsByName("textarea")[0].value='  '

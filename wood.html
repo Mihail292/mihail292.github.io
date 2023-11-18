@@ -38,7 +38,7 @@
 	 border-radius: 50%;
 	 min-height: 5rem;
 	">siv</button>
-<button id="save2"  onclick='vy_wood()'
+<button id="save2"  onclick='wood()'
 	 style="
 	 width:50%;
 	 opacity: 0.4;
@@ -70,8 +70,8 @@ var rqst = new XMLHttpRequest();
 };
 function wood(){
 
-xhttp.open("GET", gkey+'?z='+document.getElementsByName("infa")[0].value, true);
-xhttp.send();
+rqst.open("GET", gkey+'?z='+document.getElementsByName("infa")[0].value, true);
+rqst.send();
 }
 	
 function sive(){

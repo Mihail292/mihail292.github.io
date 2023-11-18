@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>Версия 10</title>
+		<title>Версия 10a</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<style>
@@ -32,7 +32,7 @@
 		
 <button id="save1"  onclick='sive()'
 	 style="
-	 width:100%;
+	 width:30%;
 	 opacity: 0.4;
 	 font-size: 50px;
 	 border-radius: 50%;
@@ -66,7 +66,7 @@ var gkey="https://script.google.com/macros/s/AKfycbxeXKHqRYiF1C0smLHmZenGH8bdRsk
 var rqst = new XMLHttpRequest();
 	rqst.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {  console.log(rqst.responseText) ;
-						    document.getElementsByName("infa")[0].value=rqst.responseText}
+						    document.getElementsByName("textarea")[0].value=rqst.responseText}
 };
 function wood(){
 

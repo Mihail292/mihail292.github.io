@@ -65,8 +65,8 @@
 var gkey="https://script.google.com/macros/s/AKfycbwfsTG_SGYJWh1ZRZ6UoW6TiGfk5p7hnw9CLra32rmLs1CQ1CUS2W9LcoZkoSDvFOI/exec"
 var rqst = new XMLHttpRequest();
 	rqst.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {  console.log(xhttp.responseText) ;
-						    document.getElementsByName("infa")[0].value=xhttp.responseText}
+    if (this.readyState == 4 && this.status == 200) {  console.log(rqst.responseText) ;
+						    document.getElementsByName("infa")[0].value=rqst.responseText}
 };
 function wood(){
 

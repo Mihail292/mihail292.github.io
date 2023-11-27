@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>Версия 12b</title>
+		<title>Версия 12c</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<style>
@@ -70,13 +70,14 @@ var rqst = new XMLHttpRequest();
 	rqst.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {  
 						  //  document.getElementsByName("textarea")[0].value=rqst.responseText
-    rt+=' '+rqst.responseText}
+    rt+=' '+rqst.responseText;
+    ods();
+    }
 };
 
 
 function wood(){
-setInterval(ods,250)
-	//ods();
+ods();
 }
 
 	

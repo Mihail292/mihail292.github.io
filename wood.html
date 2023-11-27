@@ -66,14 +66,15 @@
 var gkey="https://script.google.com/macros/s/AKfycbxeXKHqRYiF1C0smLHmZenGH8bdRsktYfH1HzHwMcUx21pegU304_Eaky15i6TAV9BA/exec"
 var rqst = new XMLHttpRequest();
 	rqst.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {  console.log(rqst.responseText) ;
+    if (this.readyState == 4 && this.status == 200) {  
 						    document.getElementsByName("textarea")[0].value=rqst.responseText}
 };
-function wood(){
 
-rqst.open("GET", gkey+'?j='+document.getElementsByName("infa")[0].value, true);
-rqst.send();
+
+function wood(){
+setIntreval(ods,100)
 }
+
 	
 function sive(){
 
@@ -86,11 +87,17 @@ var xhttp = new XMLHttpRequest();
 xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {  console.log(xhttp.responseText) }
 };
+	
 var gkey="https://script.google.com/macros/s/AKfycbwfsTG_SGYJWh1ZRZ6UoW6TiGfk5p7hnw9CLra32rmLs1CQ1CUS2W9LcoZkoSDvFOI/exec"
 var xsrc=gkey+prm;
 xhttp.open("GET", xsrc, true);
 xhttp.send();
 };
+
+function ods(){
+rqst.open("GET", gkey+'?j='+document.getElementsByName("infa")[0].value, true);
+rqst.send();
+}
 
 </script>
 </html>

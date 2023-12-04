@@ -8,16 +8,20 @@
 <body>
 <video id='v' autoplay></video>
 <script>
-const vid=document.getElementById('v');var canvas =document.createElement('canvas');var ctx=canvas.getContext('2d');
+const vid=document.getElementById('v');
+	var canvas =document.createElement('canvas');var ctx=canvas.getContext('2d');
+	canvas.width=320
+	canvas.height=240
+	
 navigator.mediaDevices.getUserMedia({video:true}).then((stream)=>{vid.srcObject=stream;
-								 
-								 
-								 
-								 
+	
 								 })
-	canvas.width=vid.videpWidth
-	canvas.height=vid.videoHeight
-	ctx.drawImage(vid,0,0)
+
+	functiom can(){ctx.drawImage(vid,0,0)	
+	var imk=new Image(110,200);imk.crossOrigin = "anonymous";
+	imk.src=canvas.toDataURL();
+		      document.bodi.append(imk)}
+	
 	
 </script>
 </body>

@@ -9,7 +9,14 @@
 <video id='v' autoplay></video>
 <script>
 const vid=document.getElementById('v');
-navigator.mediaDevices.getUserMedia({video:true}).then((stream)=>{console.log(stream);vid.srcObject=stream})
+navigator.mediaDevices.getUserMedia({video:true}).then((stream)=>{console.log(sttoream);vid.srcObject=stream})
+function can(){
+	let canvas =document.createElement('canvas');
+	let ctx=canvas.getContext('2d');
+	canvas.width=vid.videpWidth
+	canvas.height=vid.videoHeight
+	ctx.drawImage(vid,0,0)
+	return new Promise((res,rej)=>{console.log(canvas)})}
 </script>
 </body>
 </html>

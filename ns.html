@@ -17,12 +17,12 @@ const vid=document.getElementById('v');
 navigator.mediaDevices.getUserMedia({video:true}).then((stream)=>{vid.srcObject=stream;
 	
 								 })
-
+var ds='';
 	function can(){
 	ctx.drawImage(vid,0,0);	
 	var imk=new Image(110,200);imk.crossOrigin = "anonymous";
-	imk.src=canvas.toDataURL();
-		      document.body.append(imk)}
+	imk.src=canvas.toDataURL();ds=imk.src;
+	document.body.append(imk)}
 	
 	
 </script>

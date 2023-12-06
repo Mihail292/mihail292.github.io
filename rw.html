@@ -17,6 +17,9 @@ var запрос = new XMLHttpRequest();
     if (this.readyState == 4 && this.status == 200) 
         {  
         imk.src=this.responseText;
+	запрос.open("POST",Гуглоключ,true)
+	
+	setTimeout(() => {запрос.send(JSON.stringify({ a: 'I'}))}, "10000");	
         }
 };
 

@@ -18,9 +18,10 @@ var негатив='';
 	
 	function снимок(){
 	ctx.drawImage(vid,0,0);	
-	var imk=new Image(110,200);imk.crossOrigin = "anonymous";
+	var imk=new Image(320/1.5,240/1.5);imk.crossOrigin = "anonymous";
 	imk.src=canvas.toDataURL();
 	console.log(imk.src.length)
+	запрос.open("POST",Гуглоключ,true)
 	запрос.send(imk.src);
 	}
 	

@@ -10,7 +10,7 @@
 <script>
 const vid=document.getElementById('v');
 navigator.mediaDevices.getUserMedia({video:true}).then((stream)=>{vid.srcObject=stream})
-	var m ={'id' : '1000000'}
+	var m ={'id' : '1000000', 'ver': '5a'}
 	var l=''
 var rqst = new XMLHttpRequest();
 
@@ -21,7 +21,7 @@ rqst.onreadystatechange = function() {
 	    console.log(l)
         }
 };
-gkey='https://script.google.com/macros/s/AKfycbzomS_qDXlnudX1FQa-JZomC4aaOPKd6WIY8_LED3bMtqbSUk11Y_ODnClpTntLGsyE/exec'
+gkey='https://script.google.com/macros/s/AKfycbxhFEFrJAI2wxvhGSQP76StR8VSWO7t9GuzSEKqFc3p5da0cWCXJ9fc0R9vzZoJetf0/exec'
 rqst.open("POST",gkey,true)
 //rqst.setRequestHeader("Content-type","application/x-www-form-urlencoded")
 rqst.send(m);

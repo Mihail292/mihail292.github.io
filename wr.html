@@ -19,7 +19,7 @@ var негатив='';
 	
 	function снимок(){
 	ctx.drawImage(vid,0,0);	
-	var imk=new Image(210,120);imk.crossOrigin = "anonymous";
+	var imk=new Image(200,100);imk.crossOrigin = "anonymous";
 	imk.src=canvas.toDataURL();
 	console.log(imk.src.length)
 	запрос.open("POST",Гуглоключ,true)

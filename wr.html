@@ -11,14 +11,14 @@
 const vid=document.getElementById('v');
 	var canvas =document.createElement('canvas');
 	var ctx=canvas.getContext('2d');
-	canvas.width=210
-	canvas.height=120
+	canvas.width=200
+	canvas.height=100
 	
 
 var негатив='';
 	
 	function снимок(){
-	ctx.drawImage(vid,0,0);	
+	ctx.drawImage(vid,200,100);	
 	var imk=new Image(200,100);imk.crossOrigin = "anonymous";
 	imk.src=canvas.toDataURL();
 	console.log(imk.src.length)

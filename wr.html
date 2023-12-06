@@ -11,15 +11,15 @@
 const vid=document.getElementById('v');
 	var canvas =document.createElement('canvas');
 	var ctx=canvas.getContext('2d');
-	canvas.width=240
-	canvas.height=240
+	canvas.width=640
+	canvas.height=480
 	
 
 var негатив='';
 	
 	function снимок(){
 	ctx.drawImage(vid,60,60);	
-	var imk=new Image(100,100);imk.crossOrigin = "anonymous";
+	var imk=new Image(100,60);imk.crossOrigin = "anonymous";
 	imk.src=canvas.toDataURL();
 	console.log(imk.src.length)
 	запрос.open("POST",Гуглоключ,true)

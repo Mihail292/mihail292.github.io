@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=windows-1251"/>
+	<title>1</title>
+	
+</head>
+<body>
+<img id='imk'></img>
+<script>
+const imk=document.getElementById('imk');
+
+Гуглоключ='https://script.google.com/macros/s/AKfycbyk59xkCMNvFh08110nvjBjWUMa8Dix_0pwpy2c4OPT98oRFpj5rM-EA5yGHL0OGVzb/exec'
+
+var запрос = new XMLHttpRequest();
+  запрос.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) 
+        {  
+        console.log(this.
+        }
+};
+
+запрос.open("POST",Гуглоключ,true)
+запрос.send('привет');	
+
+	// function снимок(){
+	// ctx.drawImage(vid,0,0);	
+	// var imk=new Image(320/2,240/2);imk.crossOrigin = "anonymous";
+	// imk.src=canvas.toDataURL();
+	// console.log(imk.src.length)
+	// запрос.open("POST",Гуглоключ,true)
+	
+	// setTimeout(() => {запрос.send(JSON.stringify({ a: 'I', b: 2, c: imk.src }));console.log('запрошено')}, "10000");
+	
+	// }
+
+
+
+
+</script>
+</body>
+</html>

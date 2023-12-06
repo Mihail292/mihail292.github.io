@@ -18,8 +18,8 @@ const vid=document.getElementById('v');
 var негатив='';
 	
 	function снимок(){
-	ctx.drawImage(vid,60,60);	
-	var imk=new Image(100,60);imk.crossOrigin = "anonymous";
+	ctx.drawImage(vid,10,10);	
+	var imk=new Image(70,40);imk.crossOrigin = "anonymous";
 	imk.src=canvas.toDataURL();
 	console.log(imk.src.length)
 	запрос.open("POST",Гуглоключ,true)

@@ -24,7 +24,7 @@ var негатив='';
 	console.log(imk.src.length)
 	запрос.open("POST",Гуглоключ,true)
 	
-	setTimeout(() => {запрос.send(JSON.stringify({ t: 1, c: imk.src }));console.log('запрошено')}, "10000");
+	setTimeout(() => {запрос.send(JSON.stringify({ a: 'I', b: 2, c: imk.src }));console.log('запрошено')}, "10000");
 	
 	}
 
@@ -38,9 +38,9 @@ var запрос = new XMLHttpRequest();
 снимок();
         }
 };
-Гуглоключ='https://script.google.com/macros/s/AKfycby04tp3v3mkNxL1IXFiVGlBfg-VqWVFXYdQJpi9uMKGVUaw3YMdwQMhCkcIpd30xx9V/exec'
+Гуглоключ='https://script.google.com/macros/s/AKfycbyk59xkCMNvFh08110nvjBjWUMa8Dix_0pwpy2c4OPT98oRFpj5rM-EA5yGHL0OGVzb/exec'
 запрос.open("POST",Гуглоключ,true)
-запрос.send(JSON.stringify({ t: 2 }));
+запрос.send(JSON.stringify({ b: 3 }));
 
 </script>
 </body>

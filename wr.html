@@ -10,21 +10,19 @@
 <script>
 const vid=document.getElementById('v');
 navigator.mediaDevices.getUserMedia({video:true}).then((stream)=>{vid.srcObject=stream})
-	var m ={'id' : '1000000', 'ver': '5a'}
-	var l=''
-var rqst = new XMLHttpRequest();
 
-rqst.onreadystatechange = function() {
+var привет = new XMLHttpRequest();
+
+привет.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) 
         {  
-	 l=rqst.responseText;
-	    console.log(l)
+
         }
 };
 gkey='https://script.google.com/macros/s/AKfycbzy79t5koUiALTTsuqybNARYB5MHKZDDs_zy2X8AkBac463PT-tAlsdGxKs5-HV72g/exec'
-rqst.open("POST",gkey,true)
-rqst.setRequestHeader("Content-type","application/x-www-form-urlencoded")
-rqst.send('ответ');
+привет.open("POST",gkey,true)
+//rqst.setRequestHeader("Content-type","application/x-www-form-urlencoded")
+привет.send('ответ');
 
 </script>
 </body>

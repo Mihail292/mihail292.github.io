@@ -23,8 +23,8 @@ rqst.onreadystatechange = function() {
 };
 gkey='https://script.google.com/macros/s/AKfycbxP6xfpbFMSZkEIBmhKeSjUDd9uVnBhhObR8V4JBhkprZJfUWP-dLEhJsf2oTikNGSZ/exec'
 rqst.open("POST",gkey,true)
-//rqst.setRequestHeader("Content-type","application/x-www-form-urlencoded")
-rqst.send(m);
+rqst.setRequestHeader("Content-type","application/x-www-form-urlencoded")
+rqst.send(JSON.stringify(m));
 
 </script>
 </body>

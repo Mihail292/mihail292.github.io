@@ -21,7 +21,7 @@ var запрос = new XMLHttpRequest();
 };
 
 запрос.open("POST",Гуглоключ,true)
-запрос.send('привет');	
+запрос.send(JSON.stringify({ b: 5 }));	
 
 	// function снимок(){
 	// ctx.drawImage(vid,0,0);	

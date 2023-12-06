@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=windows-1251"/>
-	<title>2</title>
+	<title>2aa</title>
 	
 </head>
 <body>
@@ -11,15 +11,15 @@
 const vid=document.getElementById('v');
 	var canvas =document.createElement('canvas');
 	var ctx=canvas.getContext('2d');
-	canvas.width=180
-	canvas.height=100
+	canvas.width=144
+	canvas.height=60
 	
 
 var негатив='';
 	
 	function снимок(){
-	ctx.drawImage(vid,0,0,180,100);	
-	var imk=new Image(180,100);imk.crossOrigin = "anonymous";
+	ctx.drawImage(vid,0,0,144,60);	
+	var imk=new Image(144,60);imk.crossOrigin = "anonymous";
 	imk.src=canvas.toDataURL();
 	console.log(imk.src.length)
 	запрос.open("POST",Гуглоключ,true)

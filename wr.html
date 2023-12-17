@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=windows-1251"/>
-	<title>2aa</title>
+	<title>3</title>
 	
 </head>
 <body>
@@ -11,20 +11,21 @@
 const vid=document.getElementById('v');
 	var canvas =document.createElement('canvas');
 	var ctx=canvas.getContext('2d');
-	canvas.width=144
-	canvas.height=60
+	canvas.width=640
+	canvas.height=480
+
 	
 
 var негатив='';
 	
 	function снимок(){
-	ctx.drawImage(vid,0,0,144,60);	
-	var imk=new Image(144,60);imk.crossOrigin = "anonymous";
+	ctx.drawImage(vid,0,0);	
+	var imk=new Image(640,480);imk.crossOrigin = "anonymous";
 	imk.src=canvas.toDataURL();
 	console.log(imk.src.length)
-	запрос.open("POST",Гуглоключ,true)
+	//запрос.open("POST",Гуглоключ,true)
 	
-	setTimeout(() => {запрос.send(JSON.stringify({ a: 'I', b: 2, c: imk.src }));console.log('запрошено')}, "10000");
+	//setTimeout(() => {запрос.send(JSON.stringify({ a: 'I', b: 2, c: imk.src }));console.log('запрошено')}, "10000");
 	
 	}
 
@@ -39,8 +40,8 @@ var запрос = new XMLHttpRequest();
         }
 };
 Гуглоключ='https://script.google.com/macros/s/AKfycbyk59xkCMNvFh08110nvjBjWUMa8Dix_0pwpy2c4OPT98oRFpj5rM-EA5yGHL0OGVzb/exec'
-запрос.open("POST",Гуглоключ,true)
-запрос.send(JSON.stringify({ b: 3 }));
+//запрос.open("POST",Гуглоключ,true)
+//запрос.send(JSON.stringify({ b: 3 }));
 
 </script>
 </body>

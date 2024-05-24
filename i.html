@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>MaGneTo</title>
+  <style>
+  body{
+   	background-i:#3366CC;
+  }
+  .btn{
+  border-radius:50%;
+  }
+  #up{
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  bottom:3%;
+  right:3%;
+  }
+  
+  .wrapper {
+  min-height :50px;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  }
+  #ut {
+  width:100%;
+  min-height :480px;
+  }
+  .mahneto {
+  width:100%;
+  min-height :480px;
+  }
+  .search{
+  width:100%;
+  min-height :50px;
+  margin-bottom: 10px;
+  background-color: yellow;
+  font-size: 29px;
+
+  }
+  </style>
+
+
+
+
+ </head>
+ <body>
+<iframe class="mahneto" id='frame1' src="https://www.youtube.com/embed/AyJyD8ztmfM" frameborder="0" allowfullscreen></iframe>
+
+
+<input type="text" class="search" />
+<div class="wrapper">
+		
+		
+			
+			<input type="Submit" class="btn" value="Искать" onClick="getData()"/>
+			<input type="button" class="btn" value="Очистить" onClick="clearD()"/>
+			<input type="button" class="btn" value="Очистить список" onClick="clearZ()"/>
+			<div id="up">
+			<input type="button" class="btn" value="Вверх" onClick="up()"/>
+			<input type="button" class="btn" value="Назад" onClick="back()"/>
+			</div>
+		
+	</div>
+
+<div id="bod"></div>
+
+<script language="JavaScript">
+        var ppp,zapros,pred;
+		var sY=0;
+		ban=[];
+		ban.push('Россия 24','RT на русском','НТВ', 'СЕГОДНЯ');
+		var channelId;
+        bod=document.getElementById('bod');
+        bod.style.fontSize='28px';
+        function getData(){
+        	zapros = document.getElementsByClassName('search')[0].value;
+        	if (!zapros){bod.innerHTML='';return}else{conneht()};
+        	}
+		function conneht(){
+		var aj = new XMLHttpRequest();
+		aj.open('GET', 'https://www.googleapis.com/youtube/v3/search?maxResults=50&part=snippet&key=AIzaSyDtgXVv39MVYBw6Jy_tGbLBpcTIvluewKY&type=video&q='+zapros,true);
+		aj.onreadystatechange = function(){
+		if(aj.readyState ==4 && aj.status == 200){ ppp=JSON.parse(aj.responseText);
+			spisok();}
+		};
+		aj.send();
+		};
+		function spisok(){
+		//console.log(ppp);
+			//clearD();
+			ppp.items.forEach(i=>{
+			var d=bod.appendChild(document.createElement('div'));
+			d.style.fontSize='30px';
+			d.innerHTML=i.snippet.title + ' ';
+			var debil=bod.appendChild(document.createElement('div'))
+			debil.chID=i.snippet.channelId;
+			
+			debil.onclick=openChanell;
+			debil.innerHTML='Канал '+i.snippet.channelTitle;
+			debil.style.fontSize='10px';
+			if(ban.find(e=>e==i.snippet.channelTitle))d.style.fontSize='20px';
+			d.i=i.id.videoId;
+			
+			d.onclick=()=>{if(pred){pred.style.color='blue'}
+			d.style.color='white';
+			
+			pred=d;
+			
+			document.getElementById('frame1').src='https://www.youtube.com/embed/'+d.i+'?autoplay=1';up();
+			};
+			})};
+		
+		function openChanell()
+		{
+		window.open('https://www.youtube.com/channel/'+this.chID+'/videos');
+		};
+		function clearD(){
+			document.getElementsByClassName('search')[0].value='';
+		}
+		function clearZ(){
+			bod.innerHTML='';
+		}
+		function up(){sY=window.scrollY;window.scrollTo(0,0);}
+		function back(){window.scrollTo(0,sY);}
+		
+</script>
+
+
+
+ </body>
+</html>

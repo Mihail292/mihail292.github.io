@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-   <head>y1</head> 
+   <head>y2</head> 
    <script>
        
 		
@@ -13,12 +13,11 @@
 			JSON.parse(aj.responseText).items.forEach(i=>{
 		document.body.append(document.createElement('iframe'));
 		document.body.lastChild.style.width='30%';
-		document.body.lastChild.src='https://www.youtube.com/embed/'+i.id.videoId+'?autoplay=0
-			'});
+		document.body.lastChild.src='https://www.youtube.com/embed/'+i.id.videoId+'?autoplay=0'});
 		
-		}
+		}//200
 
-		};
+		}//ready;
 		aj.send();
 		};
 	

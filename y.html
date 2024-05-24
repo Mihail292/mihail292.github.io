@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-   <head>y2</head> 
+   <head></head> 
    <script>
        var resurs;
 		
@@ -11,9 +11,10 @@
 		if(aj.readyState ==4 && aj.status == 200){
 			resurs=JSON.parse(aj.responseText);
 			resurs.items.forEach(i=>{
-		document.body.append(document.createElement('iframe'));
+		document.body.append(document.createElement('img'));
 		document.body.lastChild.style.width='30%';
-		document.body.lastChild.src='https://www.youtube.com/embed/'+i.id.videoId+'?autoplay=0'});
+		document.body.lastChild.src=i.snippet.thumbnails.default.url
+			});
 		
 		}//200
 

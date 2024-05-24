@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-   <head></head> 
+   <head>y1</head> 
    <script>
        
 		
@@ -13,17 +13,15 @@
 			JSON.parse(aj.responseText).items.forEach(i=>{
 		document.body.append(document.createElement('iframe'));
 		document.body.lastChild.style.width='30%';
-		document.body.lastChild.src=i.id.videoId});
+		document.body.lastChild.src='https://www.youtube.com/embed/'+i.id.videoId+'?autoplay=0
+			'});
 		
 		}
 
 		};
 		aj.send();
 		};
-	function grid(){
-		
-		
-	}	
+	
    </script>
    <body style="background-color: aquamarine;">
 

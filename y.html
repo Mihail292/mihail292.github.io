@@ -2,15 +2,15 @@
 <html>
    <head>y2</head> 
    <script>
-       
+       var resurs;
 		
        function conneht(t){
 		var aj = new XMLHttpRequest();
-		aj.open('GET', 'https://www.googleapis.com/youtube/v3/search?maxResults=50&part=snippet&key=AIzaSyDtgXVv39MVYBw6Jy_tGbLBpcTIvluewKY&type=video&q='+t,true);
+		aj.open('GET', 'https://www.googleapis.com/youtube/v3/search?maxResults=10&part=snippet&key=AIzaSyDtgXVv39MVYBw6Jy_tGbLBpcTIvluewKY&type=video&q='+t,true);
 		aj.onreadystatechange = function(){
 		if(aj.readyState ==4 && aj.status == 200){
-			
-			JSON.parse(aj.responseText).items.forEach(i=>{
+			resurs=JSON.parse(aj.responseText);
+			resurs.items.forEach(i=>{
 		document.body.append(document.createElement('iframe'));
 		document.body.lastChild.style.width='30%';
 		document.body.lastChild.src='https://www.youtube.com/embed/'+i.id.videoId+'?autoplay=0'});

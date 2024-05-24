@@ -3,17 +3,27 @@
    <head></head> 
    <script>
        
-		var ppp
+		
        function conneht(t){
 		var aj = new XMLHttpRequest();
 		aj.open('GET', 'https://www.googleapis.com/youtube/v3/search?maxResults=50&part=snippet&key=AIzaSyDtgXVv39MVYBw6Jy_tGbLBpcTIvluewKY&type=video&q='+t,true);
 		aj.onreadystatechange = function(){
-		if(aj.readyState ==4 && aj.status == 200){ppp=JSON.parse(aj.responseText)}
+		if(aj.readyState ==4 && aj.status == 200){
+			
+			JSON.parse(aj.responseText).items.forEach(i=>{
+		document.body.append(document.createElement('iframe'));
+		document.body.lastChild.style.width='30%';
+		document.body.lastChild.src=i.id.videoId});
+		
+		}
 
 		};
 		aj.send();
 		};
+	function grid(){
 		
+		
+	}	
    </script>
    <body style="background-color: aquamarine;">
 

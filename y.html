@@ -14,9 +14,7 @@
 		document.body.append(document.createElement('img'));
 		document.body.lastChild.style.width='30%';
 		document.body.lastChild.src=i.snippet.thumbnails.default.url;
-		document.body.lastChild.addEventListener('click',()=>{
-			document.body.lastChild.append(document.createElement('frame'));
-			document.body.lastChild.lastChild.src='https://www.youtube.com/embed/'+i.id.videoId+'?autoplay=1'})
+		document.body.lastChild.addEventListener('onclick',kino(i.id.videoId))
 
 				
 
@@ -28,7 +26,10 @@
 		}//ready;
 		aj.send();
 		};
-	
+	function kino(v){
+		document.body.append(document.createElement('iframe'));
+		document.body.lastChild.src='https://www.youtube.com/embed/'+v+'?autoplay=1'
+	}
    </script>
    <body style="background-color: aquamarine;">
 

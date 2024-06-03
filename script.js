@@ -1,6 +1,6 @@
 <script>
 var table = document.createElement('DIV');
-document.body.appendChild(table);
+document.body.append(table);
 var stolb=[];
 var stroka=[]
 

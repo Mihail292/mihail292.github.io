@@ -7,7 +7,7 @@ var APP = {
 
 		var loader = new THREE.ObjectLoader();
 		var camera, scene;
-
+window.scene=scene;
 		var events = {};
 
 		var dom = document.createElement( 'div' );

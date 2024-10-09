@@ -159,7 +159,7 @@ var APP = {
 		
 		}
 		function animate() {
-
+			camera.updateMatrixWorld();
 			raycaster.setFromCamera( pointer, camera );
 
 			// calculate objects intersecting the picking ray

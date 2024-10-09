@@ -148,7 +148,7 @@ var APP = {
 		
 		const raycaster = new THREE.Raycaster();
 		const pointer = new THREE.Vector2();
-		
+		document.addEventListener( 'mousemove', onPointerMove );
 		function onPointerMove( event ) {
 		
 			// calculate pointer position in normalized device coordinates

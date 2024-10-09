@@ -215,7 +215,7 @@
 		"0711d414-ee05-44b4-b858-dfbc849f24ca": [
 			{
 				"name": "",
-				"source": "window.scene=scene;\n geometry = new THREE.SphereGeometry( 150, 320, 160); \n material = new THREE.MeshBasicMaterial( { color: 0xffff00 } ); \n sphere = new THREE.Mesh( geometry, material ); scene.add( sphere );\nfunction update( event ) {}"
+				"source": "window.scene=scene;function update( event ) {}"
 			}]
 	},
 	"environment": null

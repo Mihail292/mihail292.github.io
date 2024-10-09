@@ -5,8 +5,8 @@
 	"project": {
 		"shadows": true,
 		"shadowType": 1,
-		"toneMapping": 0,
-		"toneMappingExposure": 1
+		"toneMapping": 4,
+		"toneMappingExposure": 2.5
 	},
 	"camera": {
 		"metadata": {
@@ -15,20 +15,20 @@
 			"generator": "Object3D.toJSON"
 		},
 		"object": {
-		"uuid": "66b339c9-3c5e-4171-b0d6-4fc0cbaf6e57",
-		"type": "PerspectiveCamera",
-		"name": "Camera",
-		"layers": 1,
-		"matrix": [0.999964533006756,2.1684043449710086e-19,0.008422157002818764,0,0.002913203483998935,0.938272286705599,-0.34588528336098223,0,-0.007902276510028337,0.3458975513070975,0.9382390090087455,0,-1.044,6.32226140416446,6.8294064589211265,1],
-		"up": [0,1,0],
-		"fov": 50,
-		"zoom": 1,
-		"near": 0.01,
-		"far": 1000,
-		"focus": 10,
-		"aspect": 1.6574225122349102,
-		"filmGauge": 35,
-		"filmOffset": 0
+			"uuid": "66b339c9-3c5e-4171-b0d6-4fc0cbaf6e57",
+			"type": "PerspectiveCamera",
+			"name": "Camera",
+			"layers": 1,
+			"matrix": [0.8323331799718203,8.326672684688673e-17,-0.5542756331627768,0,-0.2917516478182006,0.8502583219857686,-0.43811158611626544,0,0.4712774697705821,0.5263656389753658,0.7076982129359186,0,4.913469469127532,4.74543401221644,4.8004415507065294,1],
+			"up": [0,1,0],
+			"fov": 50,
+			"zoom": 1,
+			"near": 0.01,
+			"far": 1000,
+			"focus": 10,
+			"aspect": 1.6574225122349102,
+			"filmGauge": 35,
+			"filmOffset": 0
 		}
 	},
 	"scene": {
@@ -115,6 +115,7 @@
 			"layers": 1,
 			"matrix": [1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1],
 			"up": [0,1,0],
+			"background": 3542028,
 			"children": [
 				{
 					"uuid": "c5bd0589-abe7-40a2-92c6-24022f4df237",
@@ -123,7 +124,7 @@
 					"castShadow": true,
 					"receiveShadow": true,
 					"layers": 1,
-					"matrix": [1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1],
+					"matrix": [1,0,0,0,0,1,0,0,0,0,1,0,-3.5012079997193455,0,0,1],
 					"up": [0,1,0],
 					"geometry": "009e6cac-ec3a-4397-98c8-d33799a3166d",
 					"material": "905b3565-8528-4d1d-9ec9-2397ee3213fd"
@@ -210,6 +211,12 @@
 				"XYZ"]
 		}
 	},
-	"scripts": {},
+	"scripts": {
+		"0711d414-ee05-44b4-b858-dfbc849f24ca": [
+			{
+				"name": "",
+				"source": "window.scene=scene;\n geometry = new THREE.SphereGeometry( 150, 320, 160); \n material = new THREE.MeshBasicMaterial( { color: 0xffff00 } ); \n sphere = new THREE.Mesh( geometry, material ); scene.add( sphere );\nfunction update( event ) {}"
+			}]
+	},
 	"environment": null
 }

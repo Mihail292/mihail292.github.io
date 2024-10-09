@@ -7,7 +7,7 @@ var APP = {
 
 		var loader = new THREE.ObjectLoader();
 		var camera, scene;
-		window.scene=scene;
+
 		var events = {};
 
 		var dom = document.createElement( 'div' );
@@ -30,7 +30,6 @@ var APP = {
 
 			this.setScene( loader.parse( json.scene ) );
 			this.setCamera( loader.parse( json.camera ) );
-			//var controls = new OrbitControls( camera, renderer.domElement );
 
 			events = {
 				init: [],

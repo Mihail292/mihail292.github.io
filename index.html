@@ -29,10 +29,9 @@
 
 			import * as THREE from 'three';
 			import { APP } from './js/app.js';
-			import { OrbitControls } from './js/OrbitControls.js';
-			window.OrbitControls = OrbitControls;
+
 			window.THREE = THREE; // Used by APP Scripts.
-			
+
 			var loader = new THREE.FileLoader();
 			loader.load( 'app.json', function ( text ) {
 
@@ -46,7 +45,7 @@
 				window.addEventListener( 'resize', function () {
 
 					player.setSize( window.innerWidth, window.innerHeight );
-					
+
 				} );
 
 			} );

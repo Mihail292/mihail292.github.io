@@ -161,7 +161,7 @@ var APP = {
 		function animate() {
 			camera.updateMatrixWorld();
 			raycaster.setFromCamera( pointer, camera );
-			const intersects = raycaster.intersectObjects( scene.children );
+			const intersects = raycaster.intersectObjects( window.scene.children[0] );
 			// calculate objects intersecting the picking ray
 			
 		

@@ -158,8 +158,18 @@ var APP = {
 			pointer.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
 		
 		}
+		window.addEventListener( 'pointermove', onPointerMove );
 		function animate() {
-			
+			camera.updateMatrixWorld();
+			raycaster.setFromCamera( pointer, camera );
+			const intersects = raycaster.intersectObjects( window.scene.children[0] );
+		
+			for ( let i = 0; i < intersects.length; i ++ ) {
+		
+				intersects[ i ].object.material.color.set( 0xff0000 );
+		
+			}
+
 			time = performance.now();
 
 			try {
@@ -176,17 +186,7 @@ var APP = {
 
 			prevTime = time;
 
-			camera.updateMatrixWorld();
-			raycaster.setFromCamera( pointer, camera );
-			const intersects = raycaster.intersectObjects( window.scene.children[0] );
-			// calculate objects intersecting the picking ray
-			
 		
-			for ( let i = 0; i < intersects.length; i ++ ) {
-		
-				intersects[ i ].object.material.color.set( 0xff0000 );
-		
-			}
 
 		}
 

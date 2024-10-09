@@ -159,17 +159,7 @@ var APP = {
 		
 		}
 		function animate() {
-			camera.updateMatrixWorld();
-			raycaster.setFromCamera( pointer, camera );
-			const intersects = raycaster.intersectObjects( window.scene.children[0] );
-			// calculate objects intersecting the picking ray
 			
-		
-			for ( let i = 0; i < intersects.length; i ++ ) {
-		
-				intersects[ i ].object.material.color.set( 0xff0000 );
-		
-			}
 			time = performance.now();
 
 			try {
@@ -185,6 +175,18 @@ var APP = {
 			renderer.render( scene, camera );
 
 			prevTime = time;
+
+			camera.updateMatrixWorld();
+			raycaster.setFromCamera( pointer, camera );
+			const intersects = raycaster.intersectObjects( window.scene.children[0] );
+			// calculate objects intersecting the picking ray
+			
+		
+			for ( let i = 0; i < intersects.length; i ++ ) {
+		
+				intersects[ i ].object.material.color.set( 0xff0000 );
+		
+			}
 
 		}
 

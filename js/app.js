@@ -148,7 +148,7 @@ var APP = {
 		
 		const raycaster = new THREE.Raycaster();
 		const pointer = new THREE.Vector2();
-		document.addEventListener( 'mousemove', onPointerMove );
+		
 		function onPointerMove( event ) {
 		
 			// calculate pointer position in normalized device coordinates
@@ -161,9 +161,9 @@ var APP = {
 		function animate() {
 			camera.updateMatrixWorld();
 			raycaster.setFromCamera( pointer, camera );
-
-			// calculate objects intersecting the picking ray
 			const intersects = raycaster.intersectObjects( scene.children );
+			// calculate objects intersecting the picking ray
+			
 		
 			for ( let i = 0; i < intersects.length; i ++ ) {
 		

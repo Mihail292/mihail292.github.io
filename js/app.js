@@ -30,7 +30,7 @@ var APP = {
 
 			this.setScene( loader.parse( json.scene ) );
 			this.setCamera( loader.parse( json.camera ) );
-			
+
  //var controls = new OrbitControls( camera, renderer.domElement );
 
 			events = {
@@ -159,7 +159,7 @@ var APP = {
 			pointer.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
 		
 		}
-		window.addEventListener( 'pointermove', onPointerMove );
+		window.addEventListener( 'mousemove', onPointerMove );
 		function animate() {
 			camera.updateMatrixWorld();
 			raycaster.setFromCamera( pointer, camera );

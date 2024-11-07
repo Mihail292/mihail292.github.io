@@ -1,0 +1,244 @@
+{
+	"metadata": {
+		"type": "App"
+	},
+	"project": {
+		"shadows": true,
+		"shadowType": 1,
+		"toneMapping": 0,
+		"toneMappingExposure": 1
+	},
+	"camera": {
+		"metadata": {
+			"version": 4.6,
+			"type": "Object",
+			"generator": "Object3D.toJSON"
+		},
+		"object": {
+			"uuid": "66b339c9-3c5e-4171-b0d6-4fc0cbaf6e57",
+			"type": "PerspectiveCamera",
+			"name": "Camera",
+			"layers": 1,
+			"matrix": [-0.6817305861298454,2.775557561562891e-17,-0.7316033132340618,0,-0.29055177977282853,0.9177563604410663,0.2707451313335279,0,0.6714335940403181,0.39714388182366295,-0.6256625815278818,0,15.258506368488455,7.290457297084155,-9.020579964488212,1],
+			"up": [0,1,0],
+			"fov": 50,
+			"zoom": 1,
+			"near": 0.01,
+			"far": 1000,
+			"focus": 10,
+			"aspect": 1.6818923327895596,
+			"filmGauge": 35,
+			"filmOffset": 0
+		}
+	},
+	"scene": {
+		"metadata": {
+			"version": 4.6,
+			"type": "Object",
+			"generator": "Object3D.toJSON"
+		},
+		"geometries": [
+			{
+				"uuid": "009e6cac-ec3a-4397-98c8-d33799a3166d",
+				"type": "SphereGeometry",
+				"radius": 1.02,
+				"widthSegments": 32,
+				"heightSegments": 16,
+				"phiStart": 0,
+				"phiLength": 6.283185307179586,
+				"thetaStart": 0,
+				"thetaLength": 3.141592653589793
+			},
+			{
+				"uuid": "4a3e13df-225a-4a9c-a747-759778947d37",
+				"type": "SphereGeometry",
+				"radius": 2.08,
+				"widthSegments": 32,
+				"heightSegments": 16,
+				"phiStart": 0,
+				"phiLength": 6.283185307179586,
+				"thetaStart": 0,
+				"thetaLength": 3.141592653589793
+			},
+			{
+				"uuid": "03a0a183-6637-4665-b7f1-8d3a8ca8ff19",
+				"type": "SphereGeometry",
+				"radius": 1.48,
+				"widthSegments": 32,
+				"heightSegments": 16,
+				"phiStart": 0.027925268031909273,
+				"phiLength": 6.192428186075881,
+				"thetaStart": 0,
+				"thetaLength": 3.141592653589793
+			},
+			{
+				"uuid": "bf9e55bf-710d-4a59-89dd-a002a36f678a",
+				"type": "PlaneGeometry",
+				"width": 6.14,
+				"height": 7.78,
+				"widthSegments": 1,
+				"heightSegments": 1
+			}],
+		"materials": [
+			{
+				"uuid": "ec944c54-e508-4be3-907c-059f10646074",
+				"type": "MeshToonMaterial",
+				"color": 16777215,
+				"emissive": 0,
+				"blendColor": 0
+			},
+			{
+				"uuid": "06227a31-396d-4a50-97be-166a4a03ac9f",
+				"type": "MeshToonMaterial",
+				"color": 7811634,
+				"emissive": 0,
+				"blendColor": 0
+			},
+			{
+				"uuid": "03090922-e883-4de1-a9c6-edf6364a660c",
+				"type": "MeshPhongMaterial",
+				"color": 2448991,
+				"emissive": 0,
+				"specular": 1118481,
+				"shininess": 31.48,
+				"envMapRotation": [0,0,0,
+					"XYZ"],
+				"reflectivity": 1,
+				"refractionRatio": 0.98,
+				"blendColor": 0
+			},
+			{
+				"uuid": "5a2199f4-1c71-42ba-9279-1403900d859e",
+				"type": "MeshStandardMaterial",
+				"color": 16777215,
+				"roughness": 1,
+				"metalness": 0,
+				"emissive": 0,
+				"envMapRotation": [0,0,0,
+					"XYZ"],
+				"envMapIntensity": 1,
+				"side": 2,
+				"blendColor": 0
+			}],
+		"object": {
+			"uuid": "0711d414-ee05-44b4-b858-dfbc849f24ca",
+			"type": "Scene",
+			"name": "Scene",
+			"layers": 1,
+			"matrix": [1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1],
+			"up": [0,1,0],
+			"background": 65801,
+			"children": [
+				{
+					"uuid": "c5bd0589-abe7-40a2-92c6-24022f4df237",
+					"type": "Mesh",
+					"name": "Sphere",
+					"castShadow": true,
+					"receiveShadow": true,
+					"layers": 1,
+					"matrix": [1,0,0,0,0,1,0,0,0,0,1,0,7.09355601047851,2.335280695110986,0.7432779766241375,1],
+					"up": [0,1,0],
+					"geometry": "009e6cac-ec3a-4397-98c8-d33799a3166d",
+					"material": "ec944c54-e508-4be3-907c-059f10646074"
+				},
+				{
+					"uuid": "1552d1f9-3163-4996-8af8-a62a8d4b967a",
+					"type": "Mesh",
+					"name": "Sphere",
+					"castShadow": true,
+					"receiveShadow": true,
+					"layers": 1,
+					"matrix": [1,0,0,0,0,1,0,0,0,0,1,0,2.3455444087306785,3.3713702068885034,-1.7239285467723455,1],
+					"up": [0,1,0],
+					"geometry": "4a3e13df-225a-4a9c-a747-759778947d37",
+					"material": "06227a31-396d-4a50-97be-166a4a03ac9f"
+				},
+				{
+					"uuid": "5e5e9493-1ba2-4c8b-95a3-6fb34c40b71e",
+					"type": "Mesh",
+					"name": "Sphere",
+					"castShadow": true,
+					"receiveShadow": true,
+					"layers": 1,
+					"matrix": [1,0,0,0,0,1,0,0,0,0,1,0,0.9608290763060623,3.4290517932149127,4.066622358503369,1],
+					"up": [0,1,0],
+					"geometry": "03a0a183-6637-4665-b7f1-8d3a8ca8ff19",
+					"material": "03090922-e883-4de1-a9c6-edf6364a660c"
+				},
+				{
+					"uuid": "e9b66749-c8f0-446d-bd4f-d6bb67801be2",
+					"type": "AmbientLight",
+					"name": "AmbientLight",
+					"layers": 1,
+					"matrix": [1,0,0,0,0,1,0,0,0,0,1,0,0,-2.199102410952783,0,1],
+					"up": [0,1,0],
+					"color": 16777215,
+					"intensity": 4.58
+				},
+				{
+					"uuid": "d6cf4600-e131-4484-9d6f-774af0e8feb6",
+					"type": "PointLight",
+					"name": "PointLight",
+					"layers": 1,
+					"matrix": [1,0,0,0,0,1,0,0,0,0,1,0,0,6.016451919748357,-0.11007581808452649,1],
+					"up": [0,1,0],
+					"color": 16777215,
+					"intensity": 1,
+					"distance": 0,
+					"decay": 2,
+					"shadow": {
+						"camera": {
+							"uuid": "1b273771-f703-463c-a528-bc6a8ff5e06e",
+							"type": "PerspectiveCamera",
+							"layers": 1,
+							"up": [0,1,0],
+							"fov": 90,
+							"zoom": 1,
+							"near": 0.5,
+							"far": 500,
+							"focus": 10,
+							"aspect": 1,
+							"filmGauge": 35,
+							"filmOffset": 0
+						}
+					}
+				},
+				{
+					"uuid": "608bf52d-379c-4ca8-9180-05cc4238f645",
+					"type": "Mesh",
+					"name": "Plane",
+					"castShadow": true,
+					"receiveShadow": true,
+					"layers": 1,
+					"matrix": [1,0,0,0,0,2.220446049250313e-16,1,0,0,-1,2.220446049250313e-16,0,2.7799316175603326,-2.66310416954189,-0.45740434411574427,1],
+					"up": [0,1,0],
+					"geometry": "bf9e55bf-710d-4a59-89dd-a002a36f678a",
+					"material": "5a2199f4-1c71-42ba-9279-1403900d859e"
+				}],
+			"fog": {
+				"type": "Fog",
+				"name": "",
+				"color": 11184810,
+				"near": 0.1,
+				"far": 50
+			},
+			"backgroundRotation": [0,0,0,
+				"XYZ"],
+			"environmentRotation": [0,0,0,
+				"XYZ"]
+		}
+	},
+	"scripts": {
+		"1552d1f9-3163-4996-8af8-a62a8d4b967a": [
+			{
+				"name": "cgd",
+				"source": "function update( event ) {}"
+			}],
+		"0711d414-ee05-44b4-b858-dfbc849f24ca": [
+			{
+				"name": "fff",
+				"source": "const raycaster = new THREE.Raycaster();\nconst pointer = new THREE.Vector2();\n\n\nfunction onPointerMove( event ) {\n\n\t// calculate pointer position in normalized device coordinates\n\t// (-1 to +1) for both components\n\tpointer.x = ( event.clientX / window.innerWidth) * 2 - 1;\n\t//pointer.x = ( event.clientX / window.innerWidth*1.325) * 2 - 1;\n\tpointer.y = - ( event.clientY / window.innerHeight) * 2 + 1;\n\n}\n\n\nfunction update( event ) {\nraycaster.setFromCamera( pointer, camera );\n\n\t// calculate objects intersecting the picking ray\n\tconst intersects = raycaster.intersectObjects( this.children );\n\n\tfor ( let i = 0; i < intersects.length; i ++ ) {\n\n\t\tintersects[ i ].object.material.color.set( 0xff0000 );\n\n\t}\n\n}\n\nwindow.addEventListener( 'pointermove', onPointerMove );"
+			}]
+	},
+	"environment": null
+}

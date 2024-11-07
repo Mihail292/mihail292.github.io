@@ -1,0 +1,175 @@
+{
+	"metadata": {
+		"type": "App"
+	},
+	"project": {
+		"shadows": true,
+		"shadowType": 1,
+		"toneMapping": 0,
+		"toneMappingExposure": 1
+	},
+	"camera": {
+		"metadata": {
+			"version": 4.6,
+			"type": "Object",
+			"generator": "Object3D.toJSON"
+		},
+		"object": {
+			"uuid": "66b339c9-3c5e-4171-b0d6-4fc0cbaf6e57",
+			"type": "PerspectiveCamera",
+			"name": "Camera",
+			"layers": 1,
+			"matrix": [0.9998732502950226,-4.3368086899420173e-19,-0.015921160273888124,0,-0.0052103624568859835,0.9449342551933948,-0.3272187425640104,0,0.015044449725221145,0.32726022270068855,0.9448144850553262,0,0.23298289692347413,5.068050751288407,14.631682766995628,1],
+			"up": [0,1,0],
+			"fov": 50,
+			"zoom": 1,
+			"near": 0.01,
+			"far": 1000,
+			"focus": 10,
+			"aspect": 1.6574225122349102,
+			"filmGauge": 35,
+			"filmOffset": 0
+		}
+	},
+	"scene": {
+		"metadata": {
+			"version": 4.6,
+			"type": "Object",
+			"generator": "Object3D.toJSON"
+		},
+		"geometries": [
+			{
+				"uuid": "009e6cac-ec3a-4397-98c8-d33799a3166d",
+				"type": "SphereGeometry",
+				"radius": 1.02,
+				"widthSegments": 32,
+				"heightSegments": 16,
+				"phiStart": 0,
+				"phiLength": 6.283185307179586,
+				"thetaStart": 0,
+				"thetaLength": 3.141592653589793
+			},
+			{
+				"uuid": "b80b6fe9-efd6-40a6-bee4-d0105f48bd99",
+				"type": "SphereGeometry",
+				"radius": 1,
+				"widthSegments": 32,
+				"heightSegments": 16,
+				"phiStart": 0,
+				"phiLength": 6.283185307179586,
+				"thetaStart": 0,
+				"thetaLength": 3.141592653589793
+			},
+			{
+				"uuid": "1a5368b3-f0df-467f-9f71-587c86f42840",
+				"type": "SphereGeometry",
+				"radius": 1.16,
+				"widthSegments": 32,
+				"heightSegments": 16,
+				"phiStart": 0,
+				"phiLength": 6.192428186075881,
+				"thetaStart": 0,
+				"thetaLength": 3.141592653589793
+			}],
+		"materials": [
+			{
+				"uuid": "905b3565-8528-4d1d-9ec9-2397ee3213fd",
+				"type": "MeshStandardMaterial",
+				"color": 16777215,
+				"roughness": 1,
+				"metalness": 0,
+				"emissive": 0,
+				"envMapRotation": [0,0,0,
+					"XYZ"],
+				"envMapIntensity": 1,
+				"blendColor": 0
+			},
+			{
+				"uuid": "06227a31-396d-4a50-97be-166a4a03ac9f",
+				"type": "MeshToonMaterial",
+				"color": 7811634,
+				"emissive": 0,
+				"blendColor": 0
+			},
+			{
+				"uuid": "0eb84ec2-e352-421e-aca6-24aa45052e16",
+				"type": "MeshStandardMaterial",
+				"color": 10904676,
+				"roughness": 1,
+				"metalness": 0,
+				"emissive": 0,
+				"envMapRotation": [0,0,0,
+					"XYZ"],
+				"envMapIntensity": 1,
+				"blendColor": 0
+			}],
+		"object": {
+			"uuid": "0711d414-ee05-44b4-b858-dfbc849f24ca",
+			"type": "Scene",
+			"name": "Scene",
+			"layers": 1,
+			"matrix": [1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1],
+			"up": [0,1,0],
+			"children": [
+				{
+					"uuid": "c5bd0589-abe7-40a2-92c6-24022f4df237",
+					"type": "Mesh",
+					"name": "Sphere",
+					"castShadow": true,
+					"receiveShadow": true,
+					"layers": 1,
+					"matrix": [1,0,0,0,0,1,0,0,0,0,1,0,5.616258694245802,2.335280695110986,0,1],
+					"up": [0,1,0],
+					"geometry": "009e6cac-ec3a-4397-98c8-d33799a3166d",
+					"material": "905b3565-8528-4d1d-9ec9-2397ee3213fd"
+				},
+				{
+					"uuid": "1552d1f9-3163-4996-8af8-a62a8d4b967a",
+					"type": "Mesh",
+					"name": "Sphere",
+					"layers": 1,
+					"matrix": [1,0,0,0,0,1,0,0,0,0,1,0,2.3455444087306785,0.856626116729909,0,1],
+					"up": [0,1,0],
+					"geometry": "b80b6fe9-efd6-40a6-bee4-d0105f48bd99",
+					"material": "06227a31-396d-4a50-97be-166a4a03ac9f"
+				},
+				{
+					"uuid": "5e5e9493-1ba2-4c8b-95a3-6fb34c40b71e",
+					"type": "Mesh",
+					"name": "Sphere",
+					"layers": 1,
+					"matrix": [1,0,0,0,0,1,0,0,0,0,1,0,-3.5026188117407226,2.5135119698144477,0,1],
+					"up": [0,1,0],
+					"geometry": "1a5368b3-f0df-467f-9f71-587c86f42840",
+					"material": "0eb84ec2-e352-421e-aca6-24aa45052e16"
+				},
+				{
+					"uuid": "e9b66749-c8f0-446d-bd4f-d6bb67801be2",
+					"type": "AmbientLight",
+					"name": "AmbientLight",
+					"layers": 1,
+					"matrix": [1,0,0,0,0,1,0,0,0,0,1,0,0,-2.199102410952783,0,1],
+					"up": [0,1,0],
+					"color": 16777215,
+					"intensity": 4.58
+				}],
+			"backgroundRotation": [0,0,0,
+				"XYZ"],
+			"environmentRotation": [0,0,0,
+				"XYZ"]
+		}
+	},
+	"scripts": {
+		"1552d1f9-3163-4996-8af8-a62a8d4b967a": [
+			{
+				"name": "cgd",
+				"source": "function update( event ) {}"
+			}],
+		"0711d414-ee05-44b4-b858-dfbc849f24ca": [
+			{
+				"name": "fff",
+				"source": "const raycaster = new THREE.Raycaster();\nconst pointer = new THREE.Vector2();\n\n\nfunction onPointerMove( event ) {\n\n\t// calculate pointer position in normalized device coordinates\n\t// (-1 to +1) for both components\n\n\tpointer.x = ( event.clientX / window.innerWidth ) * 2 - 1;\n\tpointer.y = - ( event.clientY / window.innerHeight ) * 2 + 1;\n\n}\n\n\nfunction update( event ) {\nraycaster.setFromCamera( pointer, camera );\n\n\t// calculate objects intersecting the picking ray\n\tconst intersects = raycaster.intersectObjects( this.children );\n\n\tfor ( let i = 0; i < intersects.length; i ++ ) {\n\n\t\tintersects[ i ].object.material.color.set( 0xff0000 );\n\n\t}\n\n}\n\nwindow.addEventListener( 'pointermove', onPointerMove );"
+			}]
+	},
+	"environment": null
+}

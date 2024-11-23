@@ -2,7 +2,7 @@
 <html>
  <head>
   <meta charset="utf-8">
-  <title>yforn4</title>
+  <title>yforn5</title>
   <style>
   body{
    	background-color:#3366CC;
@@ -11,7 +11,7 @@
   </style></head><body>
   <iframe width="695" height="391" src="https://www.youtube.com/embed/uuGi6Ujajbg" title="Art of Melodic Techno &amp; Progressive House DJ Mix - Charlie Chaplin by Patrick Slayer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 <script>
-
+var src=document.querySelector('iframe').src;
 function rq(prm){
 
 var gkey="https://script.google.com/macros/s/AKfycbzW_u6J8Yk3_6GDUkxEl2ovsfYrfKeEVg-2ESOgaM9NlfKd15nwzcboMfnY7A6yqbH0Yg/exec"
@@ -23,7 +23,7 @@ xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {  
     var ssil=xhttp.responseText;
     var eleven=ssil.substr(32,11);
-    document.querySelector('iframe').src='https://www.youtube.com/embed/'+eleven;
+    src='https://www.youtube.com/embed/'+eleven;
 	    consol.log(xhttp.responseText)
     }
 }};

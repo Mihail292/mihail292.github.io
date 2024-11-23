@@ -83,7 +83,7 @@ ods();
 function sive(){
 
 			rq('?z='+document.getElementsByName("textarea")[0].value);
-document.getElementsByName("textarea")[0].value='  '
+
 	};
 
 function rq(prm){
@@ -94,7 +94,7 @@ var xsrc=gkey+prm;
 var xhttp = new XMLHttpRequest();xhttp.open("GET", xsrc, true);
 xhttp.send();
 xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {  console.log(xhttp.responseText) }
+    if (this.readyState == 4 && this.status == 200) {  document.getElementsByName("textarea")[0].value='  ' }
 }};
 	
 

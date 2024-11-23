@@ -11,8 +11,27 @@
   </style></head><body>
   <iframe width="695" height="391" src="https://www.youtube.com/embed/" title="Art of Melodic Techno &amp; Progressive House DJ Mix - Charlie Chaplin by Patrick Slayer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 <script>
-var ssil='https://www.youtube.com/watch?v=dDIy5Nf8hIY&pp=ygUTQXJndXMgLSBNeXN0aWMgR2xvdw%3D%3D'
-var eleven=ssil.substr(32,11);
- document.querySelector('iframe').src='https://www.youtube.com/embed/'+eleven
+ function rq(prm){
+
+var gkey="https://script.google.com/macros/s/AKfycbzW_u6J8Yk3_6GDUkxEl2ovsfYrfKeEVg-2ESOgaM9NlfKd15nwzcboMfnY7A6yqbH0Yg/exec"
+var xsrc=gkey+prm;
+
+var xhttp = new XMLHttpRequest();xhttp.open("GET", xsrc, true);
+xhttp.send();
+xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {  
+    var ssil=xhttp.responseText;
+    var eleven=ssil.substr(32,11);
+    document.querySelector('iframe').src='https://www.youtube.com/embed/'+eleven;
+    }
+}};
+
+ 
+ function sive(){
+	rq('?z='@');
+	};
+
+
+ 
 </script>
 </html>

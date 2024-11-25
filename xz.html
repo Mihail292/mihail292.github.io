@@ -2,7 +2,7 @@
 <html>
  <head>
   <meta charset="utf-8">
-  <title>yforn12</title>
+  <title>yforn13</title>
   <style>
   body{
    	background-color:#3366CC;
@@ -24,11 +24,12 @@ background-color: transparent;
 	 font-size: 50px;
 	 border-radius: 50%;
 	 min-height: 5rem;
+	 background-image: url(images/Sun.jpg);
 	">вставлено</button>
 
 <script>
 function wood(infa){document.querySelector('iframe').src='https://www.youtube.com/embed/'+infa.substr(32,11);
-		   rqtw(infa)};
+		   rqtw()};
 function rq(prm){
 
 var gkey="https://script.google.com/macros/s/AKfycbzFGYaHGaSCW-libxBBSjptJcwhB8gP8G_1juryyqu8XKcxjSDG5_ColUHQbCADmI0g-Q/exec"
@@ -45,10 +46,10 @@ xhttp.onreadystatechange = function() {
     }
 }};
 
-function rqtw(prm){
+function rqtw(){
 
 var gkey="https://script.google.com/macros/s/AKfycbzwCcKXLS5LIBDoKih7kRF3vt1WHY0oa5S15OxRFLhgt3fM3DUoct5licmEdny2403R/exec"
-var xsrc=gkey+prm;
+var xsrc=gkey+document.getElementsByName("textarea")[0].value;
 
 var xhttp = new XMLHttpRequest();xhttp.open("GET", xsrc, true);
 xhttp.send();

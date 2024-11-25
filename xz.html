@@ -2,7 +2,7 @@
 <html>
  <head>
   <meta charset="utf-8">
-  <title>yforn14</title>
+  <title>yforn15</title>
   <style>
   body{
    	background-color:#3366CC;
@@ -29,7 +29,7 @@ background-color: transparent;
 
 <script>
 function wood(infa){document.querySelector('iframe').src='https://www.youtube.com/embed/'+infa.substr(32,11);
-		   rqtw()};
+		   rqtw(infa)};
 function rq(prm){
 
 var gkey="https://script.google.com/macros/s/AKfycbzFGYaHGaSCW-libxBBSjptJcwhB8gP8G_1juryyqu8XKcxjSDG5_ColUHQbCADmI0g-Q/exec"
@@ -46,12 +46,12 @@ xhttp.onreadystatechange = function() {
     }
 }};
 
-function rqtw(){
+function rqtw(prm){
 
 var gkey2="https://script.google.com/macros/s/AKfycbzwCcKXLS5LIBDoKih7kRF3vt1WHY0oa5S15OxRFLhgt3fM3DUoct5licmEdny2403R/exec"
-var xsrc2=gkey2+document.getElementsByName("textarea")[0].value;
+var xsrc2=gkey2+prm;
 
-var xhttp2 = new XMLHttpRequest();xhttp2.open("GET", xsrc, true);
+var xhttp2 = new XMLHttpRequest();xhttp2.open("GET", xsrc2, true);
 xhttp2.send();
 xhttp2.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {  document.getElementsByName("textarea")[0].value='  ' }

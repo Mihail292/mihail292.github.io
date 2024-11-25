@@ -27,7 +27,8 @@ background-color: transparent;
 	">вставлено</button>
 
 <script>
-function wood(infa){document.querySelector('iframe').src='https://www.youtube.com/embed/'+infa.substr(32,11)};
+function wood(infa){document.querySelector('iframe').src='https://www.youtube.com/embed/'+infa.substr(32,11);
+		   rqtw(infa)};
 function rq(prm){
 
 var gkey="https://script.google.com/macros/s/AKfycbzFGYaHGaSCW-libxBBSjptJcwhB8gP8G_1juryyqu8XKcxjSDG5_ColUHQbCADmI0g-Q/exec"
@@ -44,7 +45,18 @@ xhttp.onreadystatechange = function() {
     }
 }};
 
- 
+function rqtw(prm){
+
+var gkey="https://script.google.com/macros/s/AKfycbzwCcKXLS5LIBDoKih7kRF3vt1WHY0oa5S15OxRFLhgt3fM3DUoct5licmEdny2403R/exec"
+var xsrc=gkey+prm;
+
+var xhttp = new XMLHttpRequest();xhttp.open("GET", xsrc, true);
+xhttp.send();
+xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {  document.getElementsByName("textarea")[0].value='  ' }
+}};
+	
+
  function sive(){
 	rq('?z=@');
 	};

@@ -41,7 +41,7 @@ background-color: transparent;
 function wood(infa){document.querySelector('iframe').src='https://www.youtube.com/embed/'+infa.substr(32,11);
 		   rqtw('?z='+infa)};
 function rq(prm){
-
+document.getElementById('save2').style.opacity=0.6;
 var gkey="https://script.google.com/macros/s/AKfycbxp2XyVJCuLB1WybMWqGkJyIWLJM3mUDfi7zKTY9TSkdo4PZ1mPkrJtoYVN0e06qIC5cA/exec"
 var xsrc=gkey+prm;
 
@@ -52,7 +52,7 @@ xhttp.onreadystatechange = function() {
     var ssil=xhttp.responseText;
     var eleven=ssil.substr(32,11);
     document.querySelector('iframe').src='https://www.youtube.com/embed/'+eleven;
-	    console.log(xhttp.responseText)
+	    document.getElementById('save2').style.opacity=1;
     }
 }};
 

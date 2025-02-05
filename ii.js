@@ -1,76 +1,69 @@
 import * as THREE from 'three';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+// import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';  //No longer needed as imported in HTML
 
-// 1. Создание сцены, камеры и рендерера
+// Scene, Camera, Renderer
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-const renderer = new THREE.WebGLRenderer({ antialias: true });
+const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
-// 2. Настройка камеры
-camera.position.z = 5;
+// Orbit Controls
+const controls = new THREE.OrbitControls(camera, renderer.domElement);
 
-// 3. Добавление OrbitControls (для управления камерой)
-const controls = new OrbitControls(camera, renderer.domElement);
-controls.enableDamping = true; // плавное движение
-controls.dampingFactor = 0.05;
-controls.screenSpacePanning = false;
-controls.minDistance = 2;
-controls.maxDistance = 10;
+// Spheres
+const sphereGeometry = new THREE.SphereGeometry(1, 32, 32);
+const sphereMaterial1 = new THREE.MeshBasicMaterial({ color: 0xff0000 }); // Red
+const sphereMaterial2 = new THREE.MeshBasicMaterial({ color: 0x00ff00 }); // Green
+const sphereMaterial3 = new THREE.MeshBasicMaterial({ color: 0x0000ff }); // Blue
+const sphere1 = new THREE.Mesh(sphereGeometry, sphereMaterial1);
+const sphere2 = new THREE.Mesh(sphereGeometry, sphereMaterial2);
+const sphere3 = new THREE.Mesh(sphereGeometry, sphereMaterial3);
 
-// 4. Создание и добавление сфер
-const geometry = new THREE.SphereGeometry(0.5, 32, 32); // Радиус, сегменты, кольца
-const material = new THREE.MeshLambertMaterial({ color: 0x00ffff }); // Голубой цвет
+sphere1.position.set(-5, 0, 0);
+sphere2.position.set(0, 0, 0);
+sphere3.position.set(5, 0, 0);
 
-const centralSphere = new THREE.Mesh(geometry, material);
-scene.add(centralSphere);
+scene.add(sphere1, sphere2, sphere3);
 
-const orbitingSphere1 = new THREE.Mesh(geometry, new THREE.MeshLambertMaterial({ color: 0xff0000 })); // Красный
-const orbitingSphere2 = new THREE.Mesh(geometry, new THREE.MeshLambertMaterial({ color: 0x00ff00 })); // Зеленый
-scene.add(orbitingSphere1);
-scene.add(orbitingSphere2);
+camera.position.z = 10;
 
-// Позиционирование орбитирующих сфер на расстоянии от центральной
-const orbitRadius = 2;  // Расстояние от центра
-orbitingSphere1.position.x = orbitRadius;
-orbitingSphere2.position.x = -orbitRadius;
+// Animation variables
+let animationRunning = true;
+let hue1 = 0, hue2 = 120, hue3 = 240;
 
-// 5. Добавление освещения
-const ambientLight = new THREE.AmbientLight(0x404040); // Мягкий, рассеянный свет
-scene.add(ambientLight);
-
-const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5); // Направленный свет (белый, интенсивность 0.5)
-directionalLight.position.set(1, 1, 1); // Направление света
-scene.add(directionalLight);
-
-
-// 6. Анимация
-const rotationSpeed = 2 * Math.PI / 20; // Угол в радианах, который сфера должна пройти за секунду (один оборот за 20 секунд)
-
+// Animation function
 function animate() {
-    requestAnimationFrame(animate);
+  requestAnimationFrame(animate);
 
-    // Вращение орбитирующих сфер вокруг центра
-    orbitingSphere1.position.x = Math.cos(Date.now() * rotationSpeed) * orbitRadius;
-    orbitingSphere1.position.z = Math.sin(Date.now() * rotationSpeed) * orbitRadius;
+  if (animationRunning) {
+    // Change sphere colors
+    sphereMaterial1.color.setHSL(hue1 / 360, 1, 0.5);
+    sphereMaterial2.color.setHSL(hue2 / 360, 1, 0.5);
+    sphereMaterial3.color.setHSL(hue3 / 360, 1, 0.5);
+    hue1 += 0.5;
+    hue2 += 0.7;
+    hue3 += 0.3;
+    hue1 %= 360;
+    hue2 %= 360;
+    hue3 %= 360;
 
-    orbitingSphere2.position.x = Math.cos(Date.now() * rotationSpeed + Math.PI) * orbitRadius; // Сдвиг фазы на PI для противоположного вращения
-    orbitingSphere2.position.z = Math.sin(Date.now() * rotationSpeed + Math.PI) * orbitRadius;
 
-    // Важно: заставляем OrbitControls обновить своё состояние
-    controls.update();
+    // Rotate spheres
+    sphere1.rotation.y += 0.01;
+    sphere2.rotation.y += 0.02;
+    sphere3.rotation.y += 0.015;
+  }
 
-    renderer.render(scene, camera);
+  renderer.render(scene, camera);
 }
 
-// 7. Обработчик изменения размера окна
-function onWindowResize() {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-}
+//Pause/Resume functionality
+document.addEventListener('keydown', (event) => {
+  if (event.code === 'Space') {
+    animationRunning = !animationRunning;
+  }
+});
 
-window.addEventListener('resize', onWindowResize, false);
 
 animate();
